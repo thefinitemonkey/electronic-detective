@@ -1,0 +1,30 @@
+{
+	"name": "",
+	"victimID": 0,
+	"clueSelections": {
+		"sex": "",
+		"location": {
+			"side": "",
+			"town": ""
+		},
+		"weapon": {
+			"type": "" 
+		},
+		"locations": [
+			{
+				"id": 0,
+				"attendees": [],
+				"address": {
+					"side": "",
+					"town": ""
+				}
+			}
+		]
+	},
+	"suspectStatements": [
+		{
+			"id": 0,
+			"statements": []
+		}
+	]
+}

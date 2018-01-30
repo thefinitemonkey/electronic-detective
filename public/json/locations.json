@@ -1,0 +1,85 @@
+{"locations": [
+	{
+		"id": 0,
+		"name": "Art Show",
+		"address": {
+			"side": "",
+			"town": ""
+		},
+		"crime": false,
+		"weapon": {
+			"type": ""
+		},
+		"attendees": []
+	},
+
+	{
+		"id": 0,
+		"name": "Box at Theatre",
+		"address": {
+			"side": "",
+			"town": ""
+		},
+		"crime": false,
+		"weapon": {
+			"type": ""
+		},
+		"attendees": []
+	},
+
+	{
+		"id": 0,
+		"name": "Card Party",
+		"address": {
+			"side": "",
+			"town": ""
+		},
+		"crime": false,
+		"weapon": {
+			"type": ""
+		},
+		"attendees": []
+	},
+
+	{
+		"id": 0,
+		"name": "Docks",
+		"address": {
+			"side": "",
+			"town": ""
+		},
+		"crime": false,
+		"weapon": {
+			"type": ""
+		},
+		"attendees": []
+	},
+
+	{
+		"id": 0,
+		"name": "Embassy",
+		"address": {
+			"side": "",
+			"town": ""
+		},
+		"crime": false,
+		"weapon": {
+			"type": ""
+		},
+		"attendees": []
+	},
+
+	{
+		"id": 0,
+		"name": "Factory",
+		"address": {
+			"side": "",
+			"town": ""
+		},
+		"crime": false,
+		"weapon": {
+			"type": ""
+		},
+		"attendees": []
+	}	
+]}

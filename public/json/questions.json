@@ -1,0 +1,113 @@
+{"questions": [
+	{
+		"id": 1,
+		"subject": "murderer",
+		"question": "Did the murderer go to the EAST SIDE?",
+		"responseText": "`${response} ? `Yes`:`No`, the murderer went to the ${response} ? `EAST SIDE`:`WEST SIDE``",
+		"answerFunction": "checkEastSide"
+	},
+
+	{
+		"id": 2,
+		"subject": "murderer",
+		"question": "Did a male do it?",
+		"responseText": "`${response} ? `Yes`:`No`, a ${response} ? `male`:`female` did it`",
+		"answerFunction": "checkMurdererGender"
+	},
+	
+	{
+		"id": 3,
+		"subject": "murderer",
+		"question": "What part of town did the murderer go to?",
+		"responseText": "`I saw them go ${response}`",
+		"answerFunction": "checkTownLocation"
+	},
+	
+	{
+		"id": 4,
+		"subject": "victim",
+		"question": "Was the murder weapon a .38?",
+		"responseText": "`${response} ? `Yes`:`No`, the weapon was a ${response} ? `.38`:`.45``",
+		"answerFunction": "checkMurderWeapon"
+	},
+	
+	{
+		"id": 5,
+		"subject": "weapon",
+		"question": "Where was the .38 hidden?",
+		"responseText": "`The .38 was hidden at the ${response}`",
+		"answerFunction": "check38Location"
+	},
+	
+	{
+		"id": 6,
+		"subject": "weapon",
+		"question": "Where was the .45 hidden?",
+		"responseText": "`The .45 was hidden at the ${response}`",
+		"answerFunction": "check45Location"
+	},
+	
+	{
+		"id": 7,
+		"subject": "location",
+		"question": "Which place contained only 3 suspects?",
+		"responseText": "`The ${response} had only 3 people there`",
+		"answerFunction": "checkEmptySeat"
+	},
+	
+	{
+		"id": 8,
+		"subject": "murderer",
+		"question": "Did the murderer go to the Art Show, Box at the Theatre, or the Card Party?",
+		"responseText": "`${response} ? `Yes, they went to one of those`:`No, they didn't go to any of those``",
+		"answerFunction": "checkPlaceNames"
+	},
+	
+	{
+		"id": 9,
+		"subject": "suspect",
+		"question": "Were you on the EAST SIDE?",
+		"responseText": "`${response} ? `Yes, I was on the East side`:`No, I was on the West side``",
+		"answerFunction": "checkEastSide"
+	},
+	
+	{
+		"id": 10,
+		"subject": "suspect",
+		"question": "Which part of town were you in?",
+		"responseText": "`I was ${response}`",
+		"answerFunction": "checkTownLocation"
+	},
+	
+	{
+		"id": 11,
+		"subject": "suspect",
+		"question": "Were you at the Art Show, the Box at the Theatre, or the Card Party?",
+		"responseText": "`${response} ? `Yes, I was at one of those`:`No, I don't hang out at those places``",
+		"answerFunction": "checkPlaceNames"
+	},
+	
+	{
+		"id": 12,
+		"subject": "suspect",
+		"question": "Were you where a weapon was hidden?",
+		"responseText": "`${response} ? `No` : `Yes``",
+		"answerFunction": "checkWeaponLocation"
+	},
+	
+	{
+		"id": 13,
+		"subject": "murderer",
+		"question": "Are an odd-numbered suspect's prints on the .38?",
+		"responseText": "`${response===undefined} ? `I didn't see a gun`:`${response} ? `Yes, they were from an odd-numbered suspect`:`No, they were from an even-numbered suspect```",
+		"answerFunction": "check38Prints"
+	},
+	
+	{
+		"id": 14,
+		"subject": "murderer",
+		"question": "Are an odd-numbered suspect's prints on the .45?",
+		"responseText": "`${response===undefined} ? `I didn't see a gun`:`${response} ? `Yes, they were from an odd-numbered suspect`:`No, they were from an even-numbered suspect```",
+		"answerFunction": "check45Prints"
+	}	
+]}
