@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
 import '../css/App.css';
+import Characters from "./characters/Characters.js";
 
 class App extends Component {
 
- 
   constructor(props) {
     super(props);
+
+    this.state = {characterList: ""}
+
+    // Lovely JavaScript class function bindings
+    this.createCharacters = this.createCharacters.bind(this);
+    this.createLocations = this.createLocations.bind(this);
+    this.createQuestions = this.createQuestions.bind(this);
+    this.createCaseSheet = this.createCaseSheet.bind(this);
+    this.initGame = this.initGame.bind(this);
+    this.render = this.render.bind(this);
 
     // Load in the JSON files for the game setup
     // Create an array of all the promises for each JSON file that we can use
@@ -17,40 +27,49 @@ class App extends Component {
       {"name":"questions.json", "function":this.createQuestions},
       {"name":"casesheet.json", "function":this.createCaseSheet}
     ];
-    let promises = [];
-    for (const file of jsonFiles) {
-      promises.push(
-        fetch(`/json/${file.name}`)
-        .then((response)=>{return (response.json())})
-        .then((json)=>{file.function(json)})
-      )
-    }
+    const promises = jsonFiles.map(this.mapJsonPromises);
+
+    // Set properties to hold the various game objects
+    this.characters = new Characters();
 
     // Don't try setting up the game until we have all the game object data loaded
-    const init = this.initGame;
-    Promise.all(promises).then(init);
+    Promise.all(promises).then(this.initGame);
+  }
+
+  mapJsonPromises(jsonFile){
+    return(
+      fetch(`/json/${jsonFile.name}`)
+      .then((response)=>{return (response.json())})
+      .then((json)=>{jsonFile.function(json)})
+    )
   }
 
   createCharacters(jsonData){
-    console.log(jsonData);
+    this.characters.createCharacters(jsonData);
+    console.log("Characters created", this.characters);
+    let newList = this.characters.render();
+    this.setState({characterList: newList});
+    console.log("Characters rendered");
   }
 
   createLocations(jsonData){
-    console.log(jsonData);
+    console.log("Location data loaded");
   }
 
   createQuestions(jsonData){
-    console.log(jsonData);
+    console.log("Question data loaded");
   }
 
   createCaseSheet(jsonData){
-    console.log(jsonData);
+    console.log("Case sheet data loaded");
   }
 
 
-  initGame() {
+  initGame(renderFunction) {
     // All of the JSON data has loaded (and objects are created), so set up the game
-    console.log("All JSON loaded");
+    console.log("Ready to init game");
+    console.log(this);
+    this.render();
   }
 
 
@@ -64,6 +83,9 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <div className="CharacterList">
+          {this.state.characterList}
+        </div>
       </div>
     );
   }

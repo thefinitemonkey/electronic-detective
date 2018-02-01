@@ -1,26 +1,35 @@
 // Character class for Electronic Detective
 
-class Character extends Component {
+import React, { Component } from 'react';
 
-	constructor(props, jsonData) {
+
+
+export default class Character extends Component {
+
+	constructor(props) {
 		super(props);
 
-		const this.id = jsonData.id;
-		const this.odd = this.id % 2 === 1 ? true : false;
-		const this.name = jsonData.name;
-		const this.gender = jsonData.gender;
-		const this.occupation = jsonData.occupation;
-		const this.relationshipID = jsonData.relationshipID;
-		const this.relationshipStatus = jsonData.relationshipStatus;
-		const this.faceImage = jsonData.images.face;
-		const this.profileImage = jsonData.images.profile;
-		const this.questions = jsonData.availableQuestions;
+	    // Lovely JavaScript class function bindings
+    	this.render = this.render.bind(this);
 
-		let this.locationName = "";
-		let this.locationSide = "";
-		let this.locationTown = "";
-		let this.status = "suspect";
-		let this.weaponType = "";
+		this.id = props.id;
+		this.odd = this.id % 2 === 1 ? true : false;
+		this.name = props.name;
+		this.gender = props.gender;
+		this.occupation = props.occupation;
+		this.relationshipID = props.relationshipID;
+		this.relationshipStatus = props.relationshipStatus;
+		this.faceImage = props.images.face;
+		this.profileImage = props.images.profile;
+		this.questions = props.availableQuestions;
+
+		this.locationName = "";
+		this.locationSide = "";
+		this.locationTown = "";
+		this.status = "suspect";
+		this.weaponType = "";
+
+		return this;
 	}
 
 
@@ -29,8 +38,8 @@ class Character extends Component {
       		<div className="Character">
         		<header className="Character-header">
           			<h1 className="App-title">{this.name}</h1>
-	          		<img src={this.faceImage} className="Character-image" alt="{this.name}{' '}face image" />
-    	      		<img src={this.profileImage} className="Character-image" alt="{this.name}{' '}profile image" />
+	          		<img src={this.faceImage} className="Character-image" alt={this.name + ' face'} />
+    	      		<img src={this.profileImage} className="Character-image" alt={this.name + ' profile'} />
         		</header>
         		<p className="Character-info">
           			Gender: {this.gender === "M" ? "Male" : "Female"}
