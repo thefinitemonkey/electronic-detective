@@ -1,6 +1,6 @@
 {"locations": [
 	{
-		"id": 0,
+		"id": "A",
 		"name": "Art Show",
 		"address": {
 			"side": "",
@@ -14,7 +14,7 @@
 	},
 
 	{
-		"id": 0,
+		"id": "B",
 		"name": "Box at Theatre",
 		"address": {
 			"side": "",
@@ -28,7 +28,7 @@
 	},
 
 	{
-		"id": 0,
+		"id": "C",
 		"name": "Card Party",
 		"address": {
 			"side": "",
@@ -42,7 +42,7 @@
 	},
 
 	{
-		"id": 0,
+		"id": "D",
 		"name": "Docks",
 		"address": {
 			"side": "",
@@ -56,7 +56,7 @@
 	},
 
 	{
-		"id": 0,
+		"id": "E",
 		"name": "Embassy",
 		"address": {
 			"side": "",
@@ -70,7 +70,7 @@
 	},
 
 	{
-		"id": 0,
+		"id": "F",
 		"name": "Factory",
 		"address": {
 			"side": "",
