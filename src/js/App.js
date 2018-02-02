@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import logo from '../logo.svg';
 import '../css/App.css';
 import Characters from "./characters/Characters.js";
+import Locations from "./locations/Locations.js";
 
 class App extends Component {
 
   constructor(props) {
     super(props);
 
-    this.state = {characterList: ""}
+    this.state = {
+      characterList: "",
+      locationList: ""
+    }
 
     // Lovely JavaScript class function bindings
     this.createCharacters = this.createCharacters.bind(this);
@@ -31,6 +35,7 @@ class App extends Component {
 
     // Set properties to hold the various game objects
     this.characters = new Characters();
+    this.locations = new Locations();
 
     // Don't try setting up the game until we have all the game object data loaded
     Promise.all(promises).then(this.initGame);
@@ -46,12 +51,14 @@ class App extends Component {
 
   createCharacters(jsonData){
     this.characters.createCharacters(jsonData);
-    let newList = this.characters.render();
+    const newList = this.characters.render();
     this.setState({characterList: newList});
   }
 
   createLocations(jsonData){
-    console.log("Location data loaded");
+    this.locations.createLocations(jsonData);
+    const newList = this.locations.render();
+    this.setState({locationList: newList});
   }
 
   createQuestions(jsonData){
@@ -67,7 +74,6 @@ class App extends Component {
     // All of the JSON data has loaded (and objects are created), so set up the game
     console.log("Ready to init game");
     console.log(this);
-    this.render();
   }
 
 
@@ -82,7 +88,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <div className="CharacterList">
-          {this.state.characterList}
+          {this.state.locationList}
         </div>
       </div>
     );

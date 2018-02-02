@@ -1,5 +1,8 @@
 // Class for managing the locations in the game
 
+import React, { Component } from 'react';
+import Location from "./Location.js";
+
 
 export default class Locations {
 
@@ -9,6 +12,7 @@ export default class Locations {
     	//this.render = this.render.bind(this);
 
 		this.list = [];
+		this.locationList = "";
 
 		return this;
 
@@ -21,6 +25,21 @@ export default class Locations {
 			this.list.push(new Location(location));
 		}
 
+		this.locationList = this.list.map(this.mapLocationRender);
+	}
+
+
+	mapLocationRender(location) {
+		return (<div key={location.id}>{location.render()}</div>);
+	}
+
+
+	render() {
+		return (
+			<div className="Locations">
+				{this.locationList}
+			</div>
+		)
 	}
 
 }

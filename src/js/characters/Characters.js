@@ -9,12 +9,14 @@ export default class Characters extends Component {
 	constructor(props) {
 
 		super(props);
+		this.state = {
+			characterList: ""
+		}
 
 	    // Lovely JavaScript class function bindings
     	this.render = this.render.bind(this);
 
 		this.list = [];
-		this.characterList = "";
 
 		return this;
 
@@ -27,7 +29,9 @@ export default class Characters extends Component {
 			this.list.push(new Character(character));
 		}
 
-		this.characterList = this.list.map(this.mapCharacterRender);
+		const newList = this.list.map(this.mapCharacterRender);
+		//this.setState({characterList: newList});
+		this.characterList = newList;
 
 	}
 
