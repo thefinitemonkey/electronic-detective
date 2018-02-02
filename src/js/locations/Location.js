@@ -10,7 +10,7 @@ export default class Location extends Component {
 		super(props);
 		this.state = {
 			attendees: {men:[], women:[]},
-			crime: props.crime,
+			scene: props.crime,
 			address: {side: this.props.side, town: this.props.town},
 			weapon: {type: undefined}
 		}
@@ -32,7 +32,7 @@ export default class Location extends Component {
 		// Add the character to the appropriate list of Men or Women at the location
 		// depending on the gender of the character
 		const obj = Object.assign({}, this.state.attendees);
-		obj.attendees[character.gender==="M"?"men":"women"].push(character);
+		obj[character.gender==="M"?"men":"women"].push(character);
 		this.setState({attendees: obj});
 	}
 
@@ -44,6 +44,11 @@ export default class Location extends Component {
 
 	setAddress(newside, newtown) {
 		this.setState({address: {side: newside, town: newtown}});
+	}
+
+
+	setScene() {
+		this.setState({scene: true});
 	}
 
 

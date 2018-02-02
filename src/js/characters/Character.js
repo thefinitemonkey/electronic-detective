@@ -33,6 +33,16 @@ export default class Character extends Component {
 	}
 
 
+	setStatus(newstatus) {
+		this.status = newstatus;
+	}
+
+
+	setWeapon(newweapon) {
+		this.weaponType = newweapon;
+	}
+
+
 	render() {
     	return (
       		<div className="Character">

@@ -36,6 +36,11 @@ export default class Characters extends Component {
 	}
 
 
+	getCharacters() {
+		return this.list;
+	}
+
+
 	mapCharacterRender(character) {
 		return (<div key={character.id}>{character.render()}</div>);
 	}

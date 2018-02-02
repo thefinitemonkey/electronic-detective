@@ -29,6 +29,11 @@ export default class Locations {
 	}
 
 
+	getLocations() {
+		return this.list;
+	}
+
+
 	mapLocationRender(location) {
 		return (<div key={location.id}>{location.render()}</div>);
 	}

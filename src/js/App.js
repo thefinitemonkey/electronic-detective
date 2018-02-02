@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
 import '../css/App.css';
+import GameManager from "./GameManager.js";
 import Characters from "./characters/Characters.js";
 import Locations from "./locations/Locations.js";
 
@@ -34,6 +35,7 @@ class App extends Component {
     const promises = jsonFiles.map(this.mapJsonPromises);
 
     // Set properties to hold the various game objects
+    this.manager = new GameManager();
     this.characters = new Characters();
     this.locations = new Locations();
 
@@ -73,7 +75,10 @@ class App extends Component {
   initGame(renderFunction) {
     // All of the JSON data has loaded (and objects are created), so set up the game
     console.log("Ready to init game");
-    console.log(this);
+    this.manager.setLocations(this.locations);
+    this.manager.setCharacters(this.characters);
+    this.manager.createMayhem();
+    this.render();
   }
 
 
