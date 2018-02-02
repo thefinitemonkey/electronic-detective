@@ -10,6 +10,9 @@ export default class Characters extends Component {
 
 		super(props);
 
+	    // Lovely JavaScript class function bindings
+    	this.render = this.render.bind(this);
+
 		this.list = [];
 		this.characterList = "";
 
@@ -27,10 +30,10 @@ export default class Characters extends Component {
 		this.characterList = this.list.map(this.mapCharacterRender);
 
 	}
-	
+
 
 	mapCharacterRender(character) {
-		return (<div>{character.render()}</div>);
+		return (<div key={character.id}>{character.render()}</div>);
 	}
 
 

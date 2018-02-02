@@ -46,10 +46,8 @@ class App extends Component {
 
   createCharacters(jsonData){
     this.characters.createCharacters(jsonData);
-    console.log("Characters created", this.characters);
     let newList = this.characters.render();
     this.setState({characterList: newList});
-    console.log("Characters rendered");
   }
 
   createLocations(jsonData){
