@@ -10,7 +10,7 @@
 		"weapon": {
 			"type": ""
 		},
-		"attendees": []
+		"attendees": {"men":[], "women":[]}
 	},
 
 	{
@@ -24,7 +24,7 @@
 		"weapon": {
 			"type": ""
 		},
-		"attendees": []
+		"attendees": {"men":[], "women":[]}
 	},
 
 	{
@@ -38,7 +38,7 @@
 		"weapon": {
 			"type": ""
 		},
-		"attendees": []
+		"attendees": {"men":[], "women":[]}
 	},
 
 	{
@@ -52,7 +52,7 @@
 		"weapon": {
 			"type": ""
 		},
-		"attendees": []
+		"attendees": {"men":[], "women":[]}
 	},
 
 	{
@@ -66,7 +66,7 @@
 		"weapon": {
 			"type": ""
 		},
-		"attendees": []
+		"attendees": {"men":[], "women":[]}
 	},
 
 	{
@@ -80,6 +80,6 @@
 		"weapon": {
 			"type": ""
 		},
-		"attendees": []
+		"attendees": {"men":[], "women":[]}
 	}	
 ]}

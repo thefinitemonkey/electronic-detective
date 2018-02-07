@@ -1,34 +1,30 @@
 // Location class for Electronic Detective
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 
 
 export default class Location extends Component {
 
-	constructor(props) {
+	constructor(props, locationData = {}) {
 		super(props);
 		this.state = {
-			attendees: {men:[], women:[]},
-			scene: props.crime,
-			address: {side: this.props.side, town: this.props.town},
-			weapon: {type: undefined}
+            ...locationData
 		}
 
 	    // Lovely JavaScript class function bindings
+	    /*
     	this.render = this.render.bind(this);
     	this.addAttendee = this.addAttendee.bind(this);
     	this.addWeapon = this.addWeapon.bind(this);
     	this.setAddress = this.setAddress.bind(this);
-
-		this.id = props.id;
-		this.name = props.name;
+    	*/
 
 		return this;
 	}
 
 
-	addAttendee(character) {
+	addAttendee = (character) => {
 		// Add the character to the appropriate list of Men or Women at the location
 		// depending on the gender of the character
 		const obj = Object.assign({}, this.state.attendees);
@@ -37,29 +33,29 @@ export default class Location extends Component {
 	}
 
 
-	addWeapon(weapontype) {
+	addWeapon = (weapontype) => {
 		this.setState({weapon: {type: weapontype}});
 	}
 
 
-	setAddress(newside, newtown) {
+	setAddress = (newside, newtown) => {
 		this.setState({address: {side: newside, town: newtown}});
 	}
 
 
-	setScene() {
+	setScene = () => {
 		this.setState({scene: true});
 	}
 
 
-	render() {
+	render = () => {
     	return (
       		<div className="Location">
         		<header className="Location-header">
-          			<h1 className="Location-id">{this.id}</h1>
+          			<h1 className="Location-id">{this.state.id}</h1>
         		</header>
         		<p className="Location-name">
-          			{this.name}
+          			{this.state.name}
 	        	</p>
         		<table>
         			<thead>

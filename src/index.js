@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
-import App from './js/App';
+//mport App from './js/App';
+import GameManager from './js/GameManager';
 //import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<GameManager />, document.getElementById('root'));
 //registerServiceWorker();

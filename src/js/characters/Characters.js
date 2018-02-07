@@ -14,8 +14,10 @@ export default class Characters extends Component {
 		}
 
 	    // Lovely JavaScript class function bindings
+	    /*
     	this.render = this.render.bind(this);
-
+		*/
+		
 		this.list = [];
 
 		return this;
@@ -23,7 +25,7 @@ export default class Characters extends Component {
 	}
 
 
-	createCharacters(jsonData) {
+	createCharacters = (jsonData) => {
 
 		for (const character of jsonData.characters) {
 			this.list.push(new Character(character));
@@ -36,17 +38,17 @@ export default class Characters extends Component {
 	}
 
 
-	getCharacters() {
+	getCharacters = () => {
 		return this.list;
 	}
 
 
-	mapCharacterRender(character) {
+	mapCharacterRender = (character) => {
 		return (<div key={character.id}>{character.render()}</div>);
 	}
 
 
-	render() {
+	render = () => {
 		return (
 	    	<div className="Characters">
 	    		{this.characterList}
