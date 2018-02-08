@@ -1,6 +1,6 @@
 // Location class for Electronic Detective
 
-import React, {Component} from 'react';
+import React from 'react';
 
 
 const Location = function (props) {
@@ -21,18 +21,18 @@ const Location = function (props) {
                 </thead>
                 <tbody>
                 <tr>
-                    <td>{props.locationData.attendees.men[0] && props.locationData.attendees.men[0].id}</td>
-                    <td>{props.locationData.attendees.women[0] && props.locationData.attendees.women[0].id}</td>
+                    <td>{props.locationData.attendees.men[0] && props.locationData.attendees.men[0].name}</td>
+                    <td>{props.locationData.attendees.women[0] && props.locationData.attendees.women[0].name}</td>
                 </tr>
                 <tr>
-                    <td>{props.locationData.attendees.men[1] && props.locationData.attendees.men[1].id}</td>
-                    <td>{props.locationData.attendees.women[1] && props.locationData.attendees.women[1].id}</td>
+                    <td>{props.locationData.attendees.men[1] && props.locationData.attendees.men[1].name}</td>
+                    <td>{props.locationData.attendees.women[1] && props.locationData.attendees.women[1].name}</td>
                 </tr>
                 </tbody>
             </table>
             <div className="Location-address">
                 <div className="Location-side">
-                    {props.locationData.address.side}
+                    {props.locationData.address.side}{` Side`}
                 </div>
                 <div className="Location-town">
                     {props.locationData.address.town}

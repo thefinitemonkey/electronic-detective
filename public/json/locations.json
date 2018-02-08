@@ -6,7 +6,7 @@
 			"side": "",
 			"town": ""
 		},
-		"crime": false,
+		"scene": false,
 		"weapon": {
 			"type": ""
 		},
@@ -20,7 +20,7 @@
 			"side": "",
 			"town": ""
 		},
-		"crime": false,
+		"scene": false,
 		"weapon": {
 			"type": ""
 		},
@@ -34,7 +34,7 @@
 			"side": "",
 			"town": ""
 		},
-		"crime": false,
+		"scene": false,
 		"weapon": {
 			"type": ""
 		},
@@ -48,7 +48,7 @@
 			"side": "",
 			"town": ""
 		},
-		"crime": false,
+		"scene": false,
 		"weapon": {
 			"type": ""
 		},
@@ -62,7 +62,7 @@
 			"side": "",
 			"town": ""
 		},
-		"crime": false,
+		"scene": false,
 		"weapon": {
 			"type": ""
 		},
@@ -76,7 +76,7 @@
 			"side": "",
 			"town": ""
 		},
-		"crime": false,
+		"scene": false,
 		"weapon": {
 			"type": ""
 		},
