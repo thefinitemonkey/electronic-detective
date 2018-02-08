@@ -1,0 +1,46 @@
+.AttendeesTable {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin-bottom: 1.5em;
+}
+
+
+.AttendeesTable th {
+    text-align: left;
+}
+
+.AttendeesTable tbody {
+}
+
+
+.AttendeesTable tr {
+    max-width: 50%;
+}
+
+.AttendeesTable td {
+    height: 1.25em;
+    min-height: 1em;
+    border: 1px solid darkgray;
+    padding: .5em;
+}
+
+.Location {
+    width: 250px;
+    padding: 5px;
+}
+
+
+.Scene {
+    width: 250px;
+    background-color: lightgray;
+    padding: 5px;
+}
+
+.Location-address {
+    margin-bottom: 1em;
+}
+
+.Location-weapon {
+    margin-bottom: 1em;
+}
