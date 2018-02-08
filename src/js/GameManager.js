@@ -19,7 +19,7 @@ class GameManager extends Component {
 			weapon: {}
 		}
 
-        // Load in the JSON files for the game setup
+		// Load in the JSON files for the game setup
         // Create an array of all the promises for each JSON file that we can use
         // to track when all files have been loaded
         const jsonFiles = [
@@ -35,7 +35,6 @@ class GameManager extends Component {
 
         // Don't try setting up the game until we have all the game object data loaded
         Promise.all(promises).then(this.createMayhem);
-
 
         return this;
 	}
@@ -122,9 +121,6 @@ class GameManager extends Component {
 
         // Everyone scatter!
 		this.scatterSuspects()
-
-        console.log("state", this.state);
-
     }
 
 
@@ -195,10 +191,15 @@ class GameManager extends Component {
             <div className="ElectronicDetective">
 				<h1>Electronic Detective Game State</h1>
 				<h2>I've been killed</h2>
-				<Character name={this.state.victim.name} />
+				<Character characterData={this.state.victim} />
 				<h2>I'm the murderer</h2>
-				<Character name={this.state.murderer.name} />
+				<Character characterData={this.state.murderer} />
 				<h2>This is the city</h2>
+				<div className="CityList">
+					{this.state.locations.map(location =>
+						<Location key={location.id} locationData={location} />
+					)}
+				</div>
             </div>
         )
     }
