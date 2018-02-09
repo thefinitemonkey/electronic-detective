@@ -1,0 +1,15 @@
+.Questions {
+    margin: 3px;
+}
+
+.Question {
+    margin-bottom: 5px;
+}
+
+.Question-clicked {
+    text-decoration: line-through;
+}
+
+.Question-unclicked {
+    text-decoration: none;
+}

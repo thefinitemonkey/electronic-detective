@@ -3,7 +3,10 @@
 		"id": 1,
 		"subject": "murderer",
 		"question": "Did the murderer go to the EAST SIDE?",
-		"responseText": "`${response} ? `Yes`:`No`, the murderer went to the ${response} ? `EAST SIDE`:`WEST SIDE``",
+		"responseText": {
+			"affirmative": "Yes, the murderer went to the EAST side",
+			"negative": "No, the murderer went to the WEST side"
+		},
 		"answerFunction": "checkEastSide"
 	},
 
@@ -67,7 +70,10 @@
 		"id": 9,
 		"subject": "suspect",
 		"question": "Were you on the EAST SIDE?",
-		"responseText": "`${response} ? `Yes, I was on the East side`:`No, I was on the West side``",
+		"responseText": {
+			"affirmative": "Yes, I was on the EAST side",
+			"negative": "No, I was on the WEST side"
+		},
 		"answerFunction": "checkEastSide"
 	},
 	

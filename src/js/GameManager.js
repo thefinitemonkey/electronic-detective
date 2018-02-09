@@ -143,8 +143,6 @@ class GameManager extends Component {
         // Everyone scatter!
         this.scatterSuspects();
         this.tossWeapons();
-
-        console.log(this.state);
     }
 
 
@@ -242,6 +240,7 @@ class GameManager extends Component {
 
         // Put the two weapons at random locations from the remaining list of eligible locations
         const totoss = [];
+        const stateWeapons = [];
         for (let option of this.weapons) {
             option === this.state.weapon
               ? totoss.push({weapon: option, print: this.state.murderer.id})
@@ -252,11 +251,12 @@ class GameManager extends Component {
             const loc = workLocs[randpos];
             loc.weapon.type = item.weapon;
             loc.weapon.print = item.print;
+            stateWeapons.push ({type: item.weapon, print: item.print, location: loc});
             workLocs.splice(randpos, 1);
         }
 
         // Set the state with the updated location data
-        this.setState({locations: copyLocs});
+        this.setState({locations: copyLocs, weapons: stateWeapons});
     }
 
 
@@ -267,7 +267,8 @@ class GameManager extends Component {
                 <h2>I've been killed</h2>
                 <Character characterData={this.state.victim} renderType="full" />
                 <h2>I'm the murderer</h2>
-                <Character characterData={this.state.murderer} renderType="full" />
+                <Character characterData={this.state.murderer} murdererData={this.state.murderer}
+                           renderType="questions" />
                 <h2>This is the city</h2>
                 <div className="CityList">
                     {this.state.locations.map(location =>
