@@ -8,7 +8,8 @@
 		},
 		"scene": false,
 		"weapon": {
-			"type": ""
+			"type": "",
+			"print": null
 		},
 		"attendees": {"men":[], "women":[]}
 	},
@@ -22,7 +23,8 @@
 		},
 		"scene": false,
 		"weapon": {
-			"type": ""
+			"type": "",
+			"print": null
 		},
 		"attendees": {"men":[], "women":[]}
 	},
@@ -36,7 +38,8 @@
 		},
 		"scene": false,
 		"weapon": {
-			"type": ""
+			"type": "",
+			"print": null
 		},
 		"attendees": {"men":[], "women":[]}
 	},
@@ -50,7 +53,8 @@
 		},
 		"scene": false,
 		"weapon": {
-			"type": ""
+			"type": "",
+			"print": null
 		},
 		"attendees": {"men":[], "women":[]}
 	},
@@ -64,7 +68,8 @@
 		},
 		"scene": false,
 		"weapon": {
-			"type": ""
+			"type": "",
+			"print": null
 		},
 		"attendees": {"men":[], "women":[]}
 	},
@@ -78,7 +83,8 @@
 		},
 		"scene": false,
 		"weapon": {
-			"type": ""
+			"type": "",
+			"print": null
 		},
 		"attendees": {"men":[], "women":[]}
 	}	

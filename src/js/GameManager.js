@@ -22,6 +22,7 @@ class GameManager extends Component {
         }
 
         this.caseSheetTemplate = {};
+        this.weapons = [".45", ".38"];
 
         // Load in the JSON files for the game setup
         // Create an array of all the promises for each JSON file that we can use
@@ -92,11 +93,17 @@ class GameManager extends Component {
         let suspectArr = this.state.characters.slice(0);
         for (let susp of suspectArr) {
             susp.status = "suspect";
+            susp.questions = [];
+
+            // Give each suspect the full data to display the questions they are away of
+            for (let id of susp.availableQuestions) {
+                susp.questions.push(this.state.questions[id - 1]);
+            }
         }
 
         // Can't have a murder without a weapon
         const weaponNum = this.getRandomInt(2);
-        const selectedWeapon = weaponNum ? ".45" : ".38";
+        const selectedWeapon = this.weapons[weaponNum];
 
         // But then one is killed, becomes the victim, and is removed from the pool of suspects
         let charCount = suspectArr.length;
@@ -110,6 +117,11 @@ class GameManager extends Component {
         const murdererPos = this.getRandomInt(charCount);
         const selectedMurderer = suspectArr[murdererPos];
         selectedMurderer.status = "murderer";
+
+        // Every suspect needs to know about the murderer to be able to answer questions for clues
+        for (let susp of suspectArr) {
+            susp.murderer = selectedMurderer;
+        }
 
         // Select where the murder took place. The victim is still there and nobody
         // else wants to be, so remove it from the list of locations.
@@ -131,6 +143,8 @@ class GameManager extends Component {
         // Everyone scatter!
         this.scatterSuspects();
         this.tossWeapons();
+
+        console.log(this.state);
     }
 
 
@@ -151,10 +165,11 @@ class GameManager extends Component {
         ];
 
 
+        const charCopy = this.state.characters.slice(0);
         for (let group of groups) {
             // Iterate through the characters and find all those matching the criteria and add
             // them to the given array
-            for (let character of this.state.characters) {
+            for (let character of charCopy) {
                 if (character.gender === group.gender) {
                     if ((character.odd && group.odd) || (!character.odd && !group.odd)) {
                         group.arr.push(character);
@@ -176,11 +191,11 @@ class GameManager extends Component {
                 // Pick one character from each of the four groups and add them to the attendees
                 // at the selected location
                 for (let group of groups) {
-                    //console.log("In group of groups");
                     if (group.arr.length) {
                         const randchar = this.getRandomInt(group.arr.length);
                         const attendee = group.arr[randchar];
                         loc.attendees[attendee.gender === "M" ? "men" : "women"].push(attendee);
+                        attendee.location = loc;
 
                         // Remove the selected character from the group now that they've been
                         // added as an attendee at a location
@@ -194,7 +209,10 @@ class GameManager extends Component {
         }
 
         // Set the state with the updated locations
-        this.setState({locations: locState});
+        this.setState({
+            locations: locState,
+            characters: charCopy
+        });
     }
 
     tossWeapons = () => {
@@ -223,11 +241,17 @@ class GameManager extends Component {
         }
 
         // Put the two weapons at random locations from the remaining list of eligible locations
-        const weapons = [".38", ".45"];
-        for (let weapon of weapons) {
+        const totoss = [];
+        for (let option of this.weapons) {
+            option === this.state.weapon
+              ? totoss.push({weapon: option, print: this.state.murderer.id})
+              : totoss.push({weapon: option, print: (this.state.murderer.id + 1)})
+        }
+        for (let item of totoss) {
             const randpos = this.getRandomInt(workLocs.length);
             const loc = workLocs[randpos];
-            loc.weapon.type = weapon;
+            loc.weapon.type = item.weapon;
+            loc.weapon.print = item.print;
             workLocs.splice(randpos, 1);
         }
 
