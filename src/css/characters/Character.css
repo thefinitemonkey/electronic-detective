@@ -1,0 +1,28 @@
+.Character-info {
+    display: flex;
+    flex-flow: wrap;
+}
+
+.Character-name {
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+.Character-info .Character-images {
+    display: flex;
+    flex-flow: wrap;
+}
+
+.Character-info .Character-image {
+    margin: 3px;
+    border: 1px solid darkgray;
+}
+
+.Character-info .Character-image img {
+    width: 60px;
+    padding:2px 2px 10px 2px;
+}
+
+.Character-info .Character-demographics {
+    margin: 3px;
+}

@@ -6,10 +6,11 @@
 		"gender": "M",
 		"occupation": "Bartender",
 		"relationshipID": 11,
-		"relationshipStatus": "married",
+		"relationshipStatus": "Married",
+		"spouse": "Ivy Little",
 		"images": {
-			"face": "",
-			"profile": ""
+			"portrait": "01-Portrait.jpg",
+			"profile": "01-Profile.jpg"
 		},
 		"location": {
 			"name": "",
@@ -30,10 +31,10 @@
 		"gender": "M",
 		"occupation": "Tycoon",
 		"relationshipID": 0,
-		"relationshipStatus": "playboy",
+		"relationshipStatus": "Playboy",
 		"images": {
-			"face": "",
-			"profile": ""
+			"portrait": "02-Portrait.jpg",
+			"profile": "02-Profile.jpg"
 		},
 		"location": {
 			"name": "",
@@ -54,10 +55,11 @@
 		"gender": "M",
 		"occupation": "Flamenco Dancer",
 		"relationshipID": 13,
-		"relationshipStatus": "married",
+		"relationshipStatus": "Married",
+		"spouse": "Piper Perez",
 		"images": {
-			"face": "",
-			"profile": ""
+			"portrait": "03-Portrait.jpg",
+			"profile": "03-Profile.jpg"
 		},
 		"location": {
 			"name": "",
@@ -78,10 +80,11 @@
 		"gender": "M",
 		"occupation": "Promoter",
 		"relationshipID": 14,
-		"relationshipStatus": "married",
+		"relationshipStatus": "Married",
+		"spouse": "Dina Racheti",
 		"images": {
-			"face": "",
-			"profile": ""
+			"portrait": "04-Portrait.jpg",
+			"profile": "04-Profile.jpg"
 		},
 		"location": {
 			"name": "",
@@ -102,10 +105,10 @@
 		"gender": "M",
 		"occupation": "Retired Cop",
 		"relationshipID": 0,
-		"relationshipStatus": "single",
+		"relationshipStatus": "Single",
 		"images": {
-			"face": "",
-			"profile": ""
+			"portrait": "05-Portrait.jpg",
+			"profile": "05-Profile.jpg"
 		},
 		"location": {
 			"name": "",
@@ -126,10 +129,11 @@
 		"gender": "M",
 		"occupation": "Producer",
 		"relationshipID": 16,
-		"relationshipStatus": "married",
+		"relationshipStatus": "Married",
+		"spouse": "Joan Fineflugle",
 		"images": {
-			"face": "",
-			"profile": ""
+			"portrait": "06-Portrait.jpg",
+			"profile": "06-Profile.jpg"
 		},
 		"location": {
 			"name": "",
@@ -150,10 +154,10 @@
 		"gender": "M",
 		"occupation": "Dockworker",
 		"relationshipID": 0,
-		"relationshipStatus": "single",
+		"relationshipStatus": "Single",
 		"images": {
-			"face": "",
-			"profile": ""
+			"portrait": "07-Portrait.jpg",
+			"profile": "07-Profile.jpg"
 		},
 		"location": {
 			"name": "",
@@ -174,10 +178,10 @@
 		"gender": "M",
 		"occupation": "Basketball Player",
 		"relationshipID": 0,
-		"relationshipStatus": "single",
+		"relationshipStatus": "Single",
 		"images": {
-			"face": "",
-			"profile": ""
+			"portrait": "08-Portrait.jpg",
+			"profile": "08-Profile.jpg"
 		},
 		"location": {
 			"name": "",
@@ -198,10 +202,11 @@
 		"gender": "M",
 		"occupation": "Musician",
 		"relationshipID": 19,
-		"relationshipStatus": "married",
+		"relationshipStatus": "Married",
+		"spouse": "Candy Roll",
 		"images": {
-			"face": "",
-			"profile": ""
+			"portrait": "09-Portrait.jpg",
+			"profile": "09-Profile.jpg"
 		},
 		"location": {
 			"name": "",
@@ -222,10 +227,10 @@
 		"gender": "M",
 		"occupation": "Restaurant Owner",
 		"relationshipID": 0,
-		"relationshipStatus": "bachelor",
+		"relationshipStatus": "Bachelor",
 		"images": {
-			"face": "",
-			"profile": ""
+			"portrait": "10-Portrait.jpg",
+			"profile": "10-Profile.jpg"
 		},
 		"location": {
 			"name": "",
@@ -246,10 +251,11 @@
 		"gender": "F",
 		"occupation": "Landlady",
 		"relationshipID": 1,
-		"relationshipStatus": "married",
+		"relationshipStatus": "Married",
+		"spouse": "Lenny Little",
 		"images": {
-			"face": "",
-			"profile": ""
+			"portrait": "11-Portrait.jpg",
+			"profile": "11-Profile.jpg"
 		},
 		"location": {
 			"name": "",
@@ -270,10 +276,10 @@
 		"gender": "F",
 		"occupation": "Secretary",
 		"relationshipID": 0,
-		"relationshipStatus": "still looking",
+		"relationshipStatus": "Still looking",
 		"images": {
-			"face": "",
-			"profile": ""
+			"portrait": "12-Portrait.jpg",
+			"profile": "12-Profile.jpg"
 		},
 		"location": {
 			"name": "",
@@ -294,10 +300,11 @@
 		"gender": "F",
 		"occupation": "Latin Singer",
 		"relationshipID": 3,
-		"relationshipStatus": "married",
+		"relationshipStatus": "Married",
+		"spouse": "Pepe Perez",
 		"images": {
-			"face": "",
-			"profile": ""
+			"portrait": "13-Portrait.jpg",
+			"profile": "13-Profile.jpg"
 		},
 		"location": {
 			"name": "",
@@ -318,10 +325,11 @@
 		"gender": "F",
 		"occupation": "Socialite",
 		"relationshipID": 4,
-		"relationshipStatus": "married",
+		"relationshipStatus": "Married",
+		"spouse": "Tony Racheti",
 		"images": {
-			"face": "",
-			"profile": ""
+			"portrait": "14-Portrait.jpg",
+			"profile": "14-Profile.jpg"
 		},
 		"location": {
 			"name": "",
@@ -342,10 +350,10 @@
 		"gender": "F",
 		"occupation": "Actress",
 		"relationshipID": 0,
-		"relationshipStatus": "eligible",
+		"relationshipStatus": "Eligible",
 		"images": {
-			"face": "",
-			"profile": ""
+			"portrait": "15-Portrait.jpg",
+			"profile": "15-Profile.jpg"
 		},
 		"location": {
 			"name": "",
@@ -366,10 +374,11 @@
 		"gender": "F",
 		"occupation": "Accountant",
 		"relationshipID": 6,
-		"relationshipStatus": "married",
+		"relationshipStatus": "Married",
+		"spouse": "Max Fineflugle",
 		"images": {
-			"face": "",
-			"profile": ""
+			"portrait": "16-Portrait.jpg",
+			"profile": "16-Profile.jpg"
 		},
 		"location": {
 			"name": "",
@@ -390,10 +399,10 @@
 		"gender": "F",
 		"occupation": "Gossip Columnist",
 		"relationshipID": 0,
-		"relationshipStatus": "unattached",
+		"relationshipStatus": "Unattached",
 		"images": {
-			"face": "",
-			"profile": ""
+			"portrait": "17-Portrait.jpg",
+			"profile": "17-Profile.jpg"
 		},
 		"location": {
 			"name": "",
@@ -414,10 +423,10 @@
 		"gender": "F",
 		"occupation": "Lady Newscaster",
 		"relationshipID": 0,
-		"relationshipStatus": "not looking",
+		"relationshipStatus": "Not looking",
 		"images": {
-			"face": "",
-			"profile": ""
+			"portrait": "18-Portrait.jpg",
+			"profile": "18-Profile.jpg"
 		},
 		"location": {
 			"name": "",
@@ -438,10 +447,11 @@
 		"gender": "F",
 		"occupation": "Groupie",
 		"relationshipID": 9,
-		"relationshipStatus": "married",
+		"relationshipStatus": "Married",
+		"spouse": "Rocky Roll",
 		"images": {
-			"face": "",
-			"profile": ""
+			"portrait": "19-Portrait.jpg",
+			"profile": "19-Profile.jpg"
 		},
 		"location": {
 			"name": "",
@@ -462,10 +472,10 @@
 		"gender": "F",
 		"occupation": "Waitress",
 		"relationshipID": 0,
-		"relationshipStatus": "single",
+		"relationshipStatus": "Single",
 		"images": {
-			"face": "",
-			"profile": ""
+			"portrait": "20-Portrait.jpg",
+			"profile": "20-Profile.jpg"
 		},
 		"location": {
 			"name": "",

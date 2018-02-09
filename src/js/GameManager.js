@@ -17,8 +17,11 @@ class GameManager extends Component {
             victim: {},
             murderer: {},
             scene: {},
-            weapon: {}
+            weapon: {},
+            players: [{}]
         }
+
+        this.caseSheetTemplate = {};
 
         // Load in the JSON files for the game setup
         // Create an array of all the promises for each JSON file that we can use
@@ -71,11 +74,11 @@ class GameManager extends Component {
 
 
     createQuestions = (jsonData) => {
-        console.log("Question data loaded");
+        this.setState({questions: jsonData.questions});
     }
 
     createCaseSheet = (jsonData) => {
-        console.log("Case sheet data loaded");
+        this.caseSheetTemplate = jsonData.casesheet;
     }
 
 
@@ -238,9 +241,9 @@ class GameManager extends Component {
             <div className="ElectronicDetective">
                 <h1>Electronic Detective Game State</h1>
                 <h2>I've been killed</h2>
-                <Character characterData={this.state.victim}/>
+                <Character characterData={this.state.victim} renderType="full" />
                 <h2>I'm the murderer</h2>
-                <Character characterData={this.state.murderer}/>
+                <Character characterData={this.state.murderer} renderType="full" />
                 <h2>This is the city</h2>
                 <div className="CityList">
                     {this.state.locations.map(location =>

@@ -9,6 +9,11 @@ const Location = function (props) {
     const address = props.locationData.address;
     const weapon = props.locationData.weapon;
     const scene = props.locationData.scene;
+    const m0 = attendees.men[0] && attendees.men[0].name;
+    const m1 = attendees.men[1] && attendees.men[1].name;
+    const w0 = attendees.women[0] && attendees.women[0].name;
+    const w1 = attendees.women[1] && attendees.women[1].name;
+
 
     return (
         <div className={scene ? "Scene" : "Location"}>
@@ -27,12 +32,16 @@ const Location = function (props) {
                 </thead>
                 <tbody>
                 <tr>
-                    <td>{((attendees.men[0] && attendees.men[0].name) || ` `)}</td>
-                    <td>{((attendees.women[0] && attendees.women[0].name) || ` `)}</td>
+                    <td>{m0 ? attendees.men[0].name : ` `}
+                        {m0 ? ` (${attendees.men[0].id})` : ` `}</td>
+                    <td>{w0 ? attendees.women[0].name : ` `}
+                        {w0 ? ` (${attendees.women[0].id})` : ` `}</td>
                 </tr>
                 <tr>
-                    <td>{((attendees.men[1] && attendees.men[1].name) || ` `)}</td>
-                    <td>{((attendees.women[1] && attendees.women[1].name) || ` `)}</td>
+                    <td>{m1 ? attendees.men[1].name : ` `}
+                        {m1 ? ` (${attendees.men[1].id})` : ` `}</td>
+                    <td>{w1 ? attendees.women[1].name : ` `}
+                        {w1 ? ` (${attendees.women[1].id})` : ` `}</td>
                 </tr>
                 </tbody>
             </table>
