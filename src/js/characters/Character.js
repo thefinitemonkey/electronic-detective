@@ -12,7 +12,8 @@ class Character extends Component {
         super(props);
         this.props = props;
 
-        this.state = {characterData: {}};
+        const newState = Object.assign({}, props);
+        this.state = newState;
 
         this.imgPath = "\\images\\characters\\";
     }
@@ -95,8 +96,8 @@ class Character extends Component {
         // response for display (there is no negative response)
         let display;
         subject === "murderer" ?
-        display = response.affirmative + this.state.murdererData.location.address.town :
-        display = response.affirmative + this.state.characterData.location.address.town;
+            display = response.affirmative + this.state.murdererData.location.address.town :
+            display = response.affirmative + this.state.characterData.location.address.town;
 
         this.setState({answer: display});
     };
@@ -178,7 +179,6 @@ class Character extends Component {
 
         // Get the weapon for the character's location
         const weapon = this.state.characterData.location.weapon;
-        console.log(weapon);
 
         // If the character is the same gender as the murderer then they have to give a truthful answer
         if (this.state.characterData.gender === this.state.murdererData.gender) {
@@ -199,7 +199,32 @@ class Character extends Component {
     }
 
 
+    handleViewTabClick = (e, data) => {
+        // For switching between character info and character questions views
+        e.preventDefault();
+        this.setState({renderType: data});
 
+    }
+
+
+    setViewTabRender = () => {
+        if (this.props.characterType === "victim") return null;
+
+        return (
+            <div className="Character-viewtypetabs">
+                <div className="Character-viewtypetab">
+                    <a href="fullswitch" className={this.state.renderType === "questions" ?
+                        "Character-switchviewtype" : "Character-noswitchviewtype"}
+                       onClick={((e) => this.handleViewTabClick(e, "full"))}>Info</a>
+                </div>
+                <div className="Character-viewtypetab">
+                    <a href="questionsswitch" className={this.state.renderType === "questions" ?
+                        "Character-noswitchviewtype" : "Character-switchviewtype"}
+                       onClick={((e) => this.handleViewTabClick(e, "questions"))}>Questions</a>
+                </div>
+            </div>
+        );
+    }
 
     render = () => {
         if (this.state.characterData === undefined) return null;
@@ -209,7 +234,11 @@ class Character extends Component {
 
         return (
             <div className="Character">
-                <div className="Character-name">{this.state.characterData.name}</div>
+                <div className="Character-header">
+                    <div className="Character-name">{this.state.characterData.name} ({this.state.characterData.id})</div>
+                    {this.setViewTabRender()}
+                </div>
+
                 <div className="Character-info">
                     <div className="Character-images">
                         <div className="Character-image">
@@ -237,16 +266,26 @@ class Character extends Component {
                             <div className="Character-text">
                                 Occcupation: {this.state.characterData.occupation}
                             </div>
+                            {this.props.characterType === "victim" && this.state.characterData.location ?
+                                <div className="Character-victimlocation">
+                                    I was murdered at the <span className="Character-locationname">
+                                    {this.state.characterData.location.name}</span>
+                                </div> : ""
+                            }
                         </div> : ""
                     }
                     {this.state.renderType === "questions" ?
                         <CharacterQuestions questions={this.state.characterData.questions}
+                                            characterId={this.state.characterData.id}
                                             handleQuestionClick={this.handleQuestionClick}/> : ""
                     }
                 </div>
-                {this.state.answer !== undefined ?
-                    <div className="Character-answer">{this.state.answer}</div> : ""
-                }
+                <div className="Character-answertext">
+                    {this.state.answer !== undefined && this.state.renderType === "questions" ?
+                        <div className="Character-answer" selectedSuspect={this.state.selectedSuspect}
+                        >{this.state.answer}</div> : ""
+                    }
+                </div>
             </div>
         );
     }

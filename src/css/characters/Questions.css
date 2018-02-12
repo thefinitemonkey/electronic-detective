@@ -13,3 +13,8 @@
 .Question-unclicked {
     text-decoration: none;
 }
+
+.Questions .Questions-selectsuspect {
+    float: right;
+    margin-top: 2em;
+}

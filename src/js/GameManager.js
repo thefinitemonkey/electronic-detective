@@ -2,8 +2,9 @@
 
 import React, {Component} from 'react';
 
+import Characters from "./characters/Characters";
 import Character from "./characters/Character";
-import Location from "./locations/Location";
+// import Location from "./locations/Location";
 import "../css/GameManager.css";
 
 class GameManager extends Component {
@@ -19,7 +20,16 @@ class GameManager extends Component {
             scene: {},
             weapon: {},
             players: [{}]
-        }
+        };
+
+        this.gameReady = false;
+
+        this.characters = [];
+        this.victim = {};
+        this.murderer = {};
+        this.locations = [];
+        this.weapon = {};
+        this.scene = {};
 
         this.caseSheetTemplate = {};
         this.weapons = [".45", ".38"];
@@ -58,7 +68,7 @@ class GameManager extends Component {
     }
 
     createCharacters = (jsonData) => {
-        this.setState({characters: jsonData.characters});
+        this.characters = jsonData.characters;
     }
 
     createLocations = (jsonData) => {
@@ -70,7 +80,7 @@ class GameManager extends Component {
             location.address.side = side;
             location.address.town = town;
         }
-        this.setState({locations: jsonData.locations});
+        this.locations = jsonData.locations;
     }
 
 
@@ -94,7 +104,7 @@ class GameManager extends Component {
         const selectedWeapon = this.weapons[weaponNum];
 
         // Everyone starts as a suspect and knows what the murder weapon is
-        let suspectArr = this.state.characters.slice(0);
+        let suspectArr = this.characters.slice(0);
         for (let susp of suspectArr) {
             susp.status = "suspect";
             susp.questions = [];
@@ -126,26 +136,35 @@ class GameManager extends Component {
 
         // Select where the murder took place. The victim is still there and nobody
         // else wants to be, so remove it from the list of locations.
-        let locationCount = this.state.locations.length;
+        let locationCount = this.locations.length;
         const locationPos = this.getRandomInt(locationCount);
-        const murderScene = this.state.locations[locationPos];
+        const murderScene = this.locations[locationPos];
         selectedVictim.location = murderScene;
-        const newLocations = this.state.locations.slice(0);
+        const newLocations = this.locations.slice(0);
         newLocations[locationPos].scene = true;
         newLocations[locationPos].attendees[selectedVictim.gender === "M" ? "men" : "women"].push(selectedVictim);
 
-        this.setState({
-            characters: suspectArr,
-            victim: selectedVictim,
-            murderer: selectedMurderer,
-            locations: newLocations,
-            weapon: selectedWeapon,
-            scene: murderScene
-        });
+        this.characters = suspectArr;
+        this.victim = selectedVictim;
+        this.murderer = selectedMurderer;
+        this.locations = newLocations;
+        this.weapon = selectedWeapon;
+        this.scene = murderScene;
+
 
         // Everyone scatter!
         this.scatterSuspects();
         this.tossWeapons();
+
+        this.gameReady = true;
+        this.setState({
+            characters: this.characters,
+            victim: this.victim,
+            murderer: this.murderer,
+            locations: this.locations,
+            weapon: this.weapon,
+            scene: this.scene
+        });
     }
 
 
@@ -166,7 +185,7 @@ class GameManager extends Component {
         ];
 
 
-        const charCopy = this.state.characters.slice(0);
+        const charCopy = this.characters.slice(0);
         for (let group of groups) {
             // Iterate through the characters and find all those matching the criteria and add
             // them to the given array
@@ -181,7 +200,7 @@ class GameManager extends Component {
 
 
         // Create a copy of the locations array so we can randomly select locations to populate
-        const locCopy = this.state.locations.slice(0);
+        const locCopy = this.locations.slice(0);
         const locState = locCopy.slice(0);
         while (locCopy.length) {
             // Randomly select a location
@@ -210,15 +229,13 @@ class GameManager extends Component {
         }
 
         // Set the state with the updated locations
-        this.setState({
-            locations: locState,
-            characters: charCopy
-        });
+        this.locations = locState;
+        this.characters = charCopy;
     }
 
     tossWeapons = () => {
         // Create working and new state copys of the locations list
-        const copyLocs = this.state.locations.slice(0);
+        const copyLocs = this.locations.slice(0);
         const workLocs = copyLocs.slice(0);
 
         // Weed out the crime scene and location of the murderer from the locations
@@ -234,7 +251,7 @@ class GameManager extends Component {
             // Check if the murderer is at this location
             const attendees = [...workLoc.attendees.men, ...workLoc.attendees.women];
             for (let character of attendees) {
-                if (character === this.state.murderer) {
+                if (character === this.murderer) {
                     workLocs.splice(i, 1);
                     continue;
                 }
@@ -245,9 +262,9 @@ class GameManager extends Component {
         const totoss = [];
         const stateWeapons = [];
         for (let option of this.weapons) {
-            option === this.state.weapon
-              ? totoss.push({weapon: option, print: this.state.murderer.id})
-              : totoss.push({weapon: option, print: (this.state.murderer.id + 1)})
+            option === this.weapon
+              ? totoss.push({weapon: option, print: this.murderer.id})
+              : totoss.push({weapon: option, print: (this.murderer.id + 1)})
         }
         for (let item of totoss) {
             const randpos = this.getRandomInt(workLocs.length);
@@ -259,40 +276,64 @@ class GameManager extends Component {
         }
 
         // Set the state with the updated location data
-        this.setState({locations: copyLocs, weapons: stateWeapons});
+        this.locations = copyLocs;
+        this.weapons = stateWeapons;
     }
 
 
     render = () => {
-        // Find a character at a weapon location with the same gender as the murderer
-        let location;
-        for (location of this.state.locations) {
-            if (location.weapon.type === ".38") break;
-        }
-        let char;
-        if (location) {
-            char = this.state.murderer.gender === "M" ?
-                location.attendees.men[0] :
-                location.attendees.women[0];
+        {
+            // Find a character at a weapon location with the same gender as the murderer
+            // For testing purposes only
+            /*
+            let location;
+            for (location of this.state.locations) {
+                if (location.weapon.type === ".38") break;
+            }
+            let char;
+            if (location) {
+                char = this.state.murderer.gender === "M" ?
+                    location.attendees.men[0] :
+                    location.attendees.women[0];
+            }
+            */
         }
 
-        console.log(this.state.victim);
+        if (!this.gameReady) {
+            return (
+                <div>Loading...</div>
+            )
+        }
 
         return (
+
             <div className="ElectronicDetective">
                 <h1>Electronic Detective Game State</h1>
                 <h2>Find my killer!</h2>
-                <Character characterData={this.state.victim} renderType="full" />
-                <h2>I'm the murderer</h2>
-                <Character characterData={char} murdererData={this.state.murderer}
-                           weaponData={this.state.weapons} locationData={this.state.locations}
-                           renderType="questions" />
-                <h2>This is the city</h2>
-                <div className="CityList">
-                    {this.state.locations.map(location =>
-                        <Location key={location.id} locationData={location}/>
-                    )}
-                </div>
+                <Character characterData={this.state.victim} characterType="victim" renderType="full" />
+
+                <h2>We are the suspects</h2>
+                <Characters charactersData={this.state.characters} murdererData={this.state.murderer}
+                           weaponsData={this.state.weapons} locationsData={this.state.locations} />
+
+                {
+                    /*
+                    <Character characterData={char} murdererData={this.state.murderer}
+                               weaponData={this.state.weapons} locationData={this.state.locations}
+                               renderType="questions" />
+                    */
+
+                    /*
+                    // This section will display all the location data for the game setup. Not to be seen
+                    // during regular gameplay. Just for development purposes.
+                    <h2>This is the city</h2>
+                    <div className="CityList">
+                        {this.state.locations.map(location =>
+                            <Location key={location.id} locationData={location}/>
+                        )}
+                    </div>
+                    */
+                }
             </div>
         )
     }

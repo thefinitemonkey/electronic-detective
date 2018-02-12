@@ -1,4 +1,15 @@
+.Character {
+    margin-bottom: 3em;
+}
+
+.Character-header {
+    display: flex;
+    flex-flow: wrap;
+    border-bottom: 1px solid darkgray;
+}
+
 .Character-info {
+    margin-top: .75em;
     display: flex;
     flex-flow: wrap;
 }
@@ -16,6 +27,7 @@
 .Character-info .Character-image {
     margin: 3px;
     border: 1px solid darkgray;
+    height: 87px;
 }
 
 .Character-info .Character-image img {
@@ -27,3 +39,31 @@
     margin: 3px;
 }
 
+.Character-info .Character-victimlocation {
+    margin-top: 8px;
+}
+
+.Character-info .Character-victimlocation .Character-locationname {
+    font-weight: bold;
+    color: darkred;
+}
+
+.Character-viewtypetabs {
+    margin-left: 1em;
+    margin-top: .05em;
+    display: flex;
+}
+
+.Character-viewtypetab {
+    margin-right: 1em;
+}
+
+.Character-viewtypetab .Character-noswitchviewtype {
+    text-decoration: none;
+    color: black;
+}
+
+.Character-viewtypetab .Character-switchviewtype {
+    text-decoration: underline;
+    color: blue;
+}
