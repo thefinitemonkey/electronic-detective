@@ -19,7 +19,7 @@
 		},
 		"status": "",
 		"weapon": {
-			"type":""
+			"type": null
 		},
 		"availableQuestions": [1, 2, 9, 13, 14]
 	},
@@ -43,7 +43,7 @@
 		},
 		"status": "",
 		"weapon": {
-			"type":""
+			"type": null
 		},
 		"availableQuestions": [2, 3, 9, 13, 14]
 	},
@@ -68,7 +68,7 @@
 		},
 		"status": "",
 		"weapon": {
-			"type":""
+			"type": null
 		},
 		"availableQuestions": [3, 4, 5, 13, 14]
 	},
@@ -93,7 +93,7 @@
 		},
 		"status": "",
 		"weapon": {
-			"type":""
+			"type": null
 		},
 		"availableQuestions": [4, 5, 9, 13, 14]
 	},
@@ -117,7 +117,7 @@
 		},
 		"status": "",
 		"weapon": {
-			"type":""
+			"type": null
 		},
 		"availableQuestions": [1, 4, 9, 13, 14]
 	},
@@ -142,7 +142,7 @@
 		},
 		"status": "",
 		"weapon": {
-			"type":""
+			"type": null
 		},
 		"availableQuestions": [5, 6, 12, 13, 14]
 	},
@@ -166,7 +166,7 @@
 		},
 		"status": "",
 		"weapon": {
-			"type":""
+			"type": null
 		},
 		"availableQuestions": [2, 5, 12, 13, 14]
 	},
@@ -190,7 +190,7 @@
 		},
 		"status": "",
 		"weapon": {
-			"type":""
+			"type": null
 		},
 		"availableQuestions": [3, 5, 12, 13, 14]
 	},
@@ -215,7 +215,7 @@
 		},
 		"status": "",
 		"weapon": {
-			"type":""
+			"type": null
 		},
 		"availableQuestions": [1, 5, 12, 13, 14]
 	},
@@ -239,7 +239,7 @@
 		},
 		"status": "",
 		"weapon": {
-			"type":""
+			"type": null
 		},
 		"availableQuestions": [7, 8, 12, 13, 14]
 	},
@@ -264,7 +264,7 @@
 		},
 		"status": "",
 		"weapon": {
-			"type":""
+			"type": null
 		},
 		"availableQuestions": [6, 7, 11, 13, 14]
 	},
@@ -288,7 +288,7 @@
 		},
 		"status": "",
 		"weapon": {
-			"type":""
+			"type": null
 		},
 		"availableQuestions": [2, 6, 11, 13, 14]
 	},
@@ -313,7 +313,7 @@
 		},
 		"status": "",
 		"weapon": {
-			"type":""
+			"type": null
 		},
 		"availableQuestions": [3, 7, 11, 13, 14]
 	},
@@ -338,7 +338,7 @@
 		},
 		"status": "",
 		"weapon": {
-			"type":""
+			"type": null
 		},
 		"availableQuestions": [1, 6, 11, 13, 14]
 	},
@@ -362,7 +362,7 @@
 		},
 		"status": "",
 		"weapon": {
-			"type":""
+			"type": null
 		},
 		"availableQuestions": [4, 7, 11, 13, 14]
 	},
@@ -387,7 +387,7 @@
 		},
 		"status": "",
 		"weapon": {
-			"type":""
+			"type": null
 		},
 		"availableQuestions": [6, 8, 10, 13, 14]
 	},
@@ -411,7 +411,7 @@
 		},
 		"status": "",
 		"weapon": {
-			"type":""
+			"type": null
 		},
 		"availableQuestions": [2, 7, 10, 13, 14]
 	},
@@ -435,7 +435,7 @@
 		},
 		"status": "",
 		"weapon": {
-			"type":""
+			"type":null
 		},
 		"availableQuestions": [1, 8, 10, 13, 14]
 	},
@@ -460,7 +460,7 @@
 		},
 		"status": "",
 		"weapon": {
-			"type":""
+			"type": null
 		},
 		"availableQuestions": [3, 8, 10, 13, 14]
 	},
@@ -484,7 +484,7 @@
 		},
 		"status": "",
 		"weapon": {
-			"type":""
+			"type": null
 		},
 		"availableQuestions": [4, 8, 10, 13, 14]
 	}	

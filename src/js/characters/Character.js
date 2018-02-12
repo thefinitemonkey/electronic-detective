@@ -54,17 +54,14 @@ class Character extends Component {
             case "checkEmptySeat":
                 this.checkEmptySeat(question.subject, question.responseText);
                 break;
-            case "checkPlaceName":
-                this.checkPlaceName(question.subject, question.responseText);
+            case "checkPlaceNames":
+                this.checkPlaceNames(question.subject, question.responseText);
                 break;
             case "checkWeaponLocation":
                 this.checkWeaponLocation(question.subject, question.responseText);
                 break;
-            case "check38Prints":
-                this.check38Prints(question.subject, question.responseText);
-                break;
-            case "check45Prints":
-                this.check45Prints(question.subject, question.responseText);
+            case "checkPrints":
+                this.checkPrints(question.subject, question.responseText);
                 break;
             default:
         }
@@ -85,57 +82,128 @@ class Character extends Component {
     };
 
 
-    checkMurdererGender = (subject, responseText) => {
+    checkMurdererGender = (subject, response) => {
+        // Check whether the murderer is male and display the appropriate response
+        const display = this.state.murdererData.gender === "M" ? response.affirmative : response.negative;
 
+        this.setState({answer: display});
     };
 
 
-    checkTownLocation = (subject, responseText) => {
+    checkTownLocation = (subject, response) => {
+        // Get the part of town the subject went to and append it to the affirmative
+        // response for display (there is no negative response)
+        let display;
+        subject === "murderer" ?
+        display = response.affirmative + this.state.murdererData.location.address.town :
+        display = response.affirmative + this.state.characterData.location.address.town;
 
+        this.setState({answer: display});
     };
 
 
-    checkMurderWeapon = (subject, responseText) => {
+    checkMurderWeapon = (subject, response) => {
+        // Check the victim to see whether the weapon used was a .38 and display the response
+        const display = this.state.characterData.weapon.type === ".38" ?
+            response.affirmative : response.negative;
 
+        this.setState({answer: display});
     };
 
 
-    check38Location = (subject, responseText) => {
+    check38Location = (subject, response) => {
+        // Display the location of the .38 from the collection of weapons data
+        let weapon;
+        for (weapon of this.state.weaponData) {
+            if (weapon.type === ".38") break;
+        }
 
+        const display = response.affirmative + weapon.location.name;
+        this.setState({answer: display});
     };
 
 
-    check45Location = (subject, responseText) => {
+    check45Location = (subject, response) => {
+        // Display the location of the .45 from the collection of weapons data
+        let weapon;
+        for (weapon of this.state.weaponData) {
+            if (weapon.type === ".45") break;
+        }
 
+        const display = response.affirmative + weapon.location.name;
+        this.setState({answer: display});
     };
 
 
-    checkEmptySeat = (subject, responseText) => {
+    checkEmptySeat = (subject, response) => {
+        // Display the location name of the place with only three suspects
+        let location;
+        for (location of this.state.locationData) {
+            if (location.attendees.men.length + location.attendees.women.length === 3) break;
+        }
 
+        const display = response.affirmative + location.name;
+        this.setState({answer: display});
     };
 
 
-    checkPlaceName = (subject, responseText) => {
+    checkPlaceNames = (subject, response) => {
+        // Check if the murderer was at location A, B, or C and respond appropriately
+        const locID = subject === "murderer" ?
+            this.state.murdererData.location.id :
+            this.state.characterData.location.id;
 
+        const display = (locID === "A" || locID === "B" || locID === "C") ?
+            response.affirmative : response.negative;
+        this.setState({answer: display});
     };
 
 
-    checkWeaponLocation = (subject, responseText) => {
+    checkWeaponLocation = (subject, response) => {
+        // Check whether the character was at a location with a weapon
+        const display = this.state.characterData.location.weapon.type === null ?
+            response.negative : response.positive;
 
+        this.setState({answer: display});
     };
 
 
-    check38Prints = (subject, responseText) => {
+    checkPrints = (subject, response) => {
+        // This one is trickier. Only people who were at a location with a weapon can answer.
+        if (this.state.characterData.location.weapon.type === null ||
+            this.state.characterData.location.weapon.type !== subject) {
+            this.setState({answer: response.unknown});
+            return;
+        }
 
+        // Get the weapon for the character's location
+        const weapon = this.state.characterData.location.weapon;
+        console.log(weapon);
+
+        // If the character is the same gender as the murderer then they have to give a truthful answer
+        if (this.state.characterData.gender === this.state.murdererData.gender) {
+            const display = weapon.print % 2 === 1 ? response.affirmative : response.negative;
+            this.setState({answer: display});
+            return;
+        }
+
+        // If the character is not the same gender as the murderer then they might lie. It's a coin toss.
+        const lie = this.getRandomInt(2);
+        const display = lie ? response.negative : response.affirmative;
+        this.setState({answer: display});
     };
 
 
-    check45Prints = (subject, responseText) => {
+    getRandomInt = (max) => {
+        return Math.floor(Math.random() * Math.floor(max));
+    }
 
-    };
+
 
 
     render = () => {
+        if (this.state.characterData === undefined) return null;
+
         const portraitImage = (this.state.characterData.images && this.state.characterData.images.portrait) || "";
         const profileImage = (this.state.characterData.images && this.state.characterData.images.profile) || "";
 

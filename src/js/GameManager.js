@@ -89,7 +89,11 @@ class GameManager extends Component {
 
 
     createMayhem = () => {
-        // Everyone starts as a suspect
+        // Can't have a murder without a weapon
+        const weaponNum = this.getRandomInt(2);
+        const selectedWeapon = this.weapons[weaponNum];
+
+        // Everyone starts as a suspect and knows what the murder weapon is
         let suspectArr = this.state.characters.slice(0);
         for (let susp of suspectArr) {
             susp.status = "suspect";
@@ -99,11 +103,8 @@ class GameManager extends Component {
             for (let id of susp.availableQuestions) {
                 susp.questions.push(this.state.questions[id - 1]);
             }
+            susp.weapon.type = selectedWeapon;
         }
-
-        // Can't have a murder without a weapon
-        const weaponNum = this.getRandomInt(2);
-        const selectedWeapon = this.weapons[weaponNum];
 
         // But then one is killed, becomes the victim, and is removed from the pool of suspects
         let charCount = suspectArr.length;
@@ -127,7 +128,8 @@ class GameManager extends Component {
         // else wants to be, so remove it from the list of locations.
         let locationCount = this.state.locations.length;
         const locationPos = this.getRandomInt(locationCount);
-        this.setState({scene: this.state.locations[locationPos]});
+        const murderScene = this.state.locations[locationPos];
+        selectedVictim.location = murderScene;
         const newLocations = this.state.locations.slice(0);
         newLocations[locationPos].scene = true;
         newLocations[locationPos].attendees[selectedVictim.gender === "M" ? "men" : "women"].push(selectedVictim);
@@ -137,7 +139,8 @@ class GameManager extends Component {
             victim: selectedVictim,
             murderer: selectedMurderer,
             locations: newLocations,
-            weapon: selectedWeapon
+            weapon: selectedWeapon,
+            scene: murderScene
         });
 
         // Everyone scatter!
@@ -261,13 +264,28 @@ class GameManager extends Component {
 
 
     render = () => {
+        // Find a character at a weapon location with the same gender as the murderer
+        let location;
+        for (location of this.state.locations) {
+            if (location.weapon.type === ".38") break;
+        }
+        let char;
+        if (location) {
+            char = this.state.murderer.gender === "M" ?
+                location.attendees.men[0] :
+                location.attendees.women[0];
+        }
+
+        console.log(this.state.victim);
+
         return (
             <div className="ElectronicDetective">
                 <h1>Electronic Detective Game State</h1>
-                <h2>I've been killed</h2>
+                <h2>Find my killer!</h2>
                 <Character characterData={this.state.victim} renderType="full" />
                 <h2>I'm the murderer</h2>
-                <Character characterData={this.state.murderer} murdererData={this.state.murderer}
+                <Character characterData={char} murdererData={this.state.murderer}
+                           weaponData={this.state.weapons} locationData={this.state.locations}
                            renderType="questions" />
                 <h2>This is the city</h2>
                 <div className="CityList">
