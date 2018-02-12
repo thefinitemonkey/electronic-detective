@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9fc3975-a2b9-4099-a71f-0ba25fd41e81" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/js/characters/Characters.js" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/css/characters/Character.css" afterPath="$PROJECT_DIR$/src/css/characters/Character.css" />
       <change beforePath="$PROJECT_DIR$/src/css/characters/Questions.css" afterPath="$PROJECT_DIR$/src/css/characters/Questions.css" />
-      <change beforePath="$PROJECT_DIR$/src/js/GameManager.js" afterPath="$PROJECT_DIR$/src/js/GameManager.js" />
       <change beforePath="$PROJECT_DIR$/src/js/characters/Character.js" afterPath="$PROJECT_DIR$/src/js/characters/Character.js" />
       <change beforePath="$PROJECT_DIR$/src/js/characters/CharacterQuestions.js" afterPath="$PROJECT_DIR$/src/js/characters/CharacterQuestions.js" />
+      <change beforePath="$PROJECT_DIR$/src/js/characters/Characters.js" afterPath="$PROJECT_DIR$/src/js/characters/Characters.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,22 +32,10 @@
       <file leaf-file-name="Characters.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/characters/Characters.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="752">
+              <caret line="54" column="75" lean-forward="false" selection-start-line="54" selection-start-column="75" selection-end-line="54" selection-end-column="75" />
               <folding>
                 <element signature="e#47#86#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Location.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/locations/Location.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
-              <caret line="43" column="52" lean-forward="false" selection-start-line="43" selection-start-column="52" selection-end-line="43" selection-end-column="52" />
-              <folding>
-                <element signature="e#44#70#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -58,35 +44,15 @@
       <file leaf-file-name="Character.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/characters/Character.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="278" column="54" lean-forward="false" selection-start-line="278" selection-start-column="54" selection-end-line="278" selection-end-column="54" />
+            <state relative-caret-position="315">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="27" selection-end-column="6" />
               <folding>
                 <element signature="e#46#85#0" expanded="true" />
-                <marker date="1518472434000" expanded="true" signature="9351:9386" ph="..." />
-                <marker date="1518472434000" expanded="true" signature="9707:9841" ph="..." />
-                <marker date="1518472434000" expanded="true" signature="9905:10270" ph="..." />
-                <marker date="1518472434000" expanded="true" signature="10331:10449" ph="..." />
+                <marker date="1518475850000" expanded="true" signature="11053:11088" ph="..." />
+                <marker date="1518475850000" expanded="true" signature="11409:11543" ph="..." />
+                <marker date="1518475850000" expanded="true" signature="11607:11972" ph="..." />
+                <marker date="1518475850000" expanded="true" signature="12033:12151" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Character.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/css/characters/Character.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Questions.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/css/characters/Questions.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="20" lean-forward="false" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -94,12 +60,22 @@
       <file leaf-file-name="CharacterQuestions.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/js/characters/CharacterQuestions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
-              <caret line="87" column="67" lean-forward="false" selection-start-line="87" selection-start-column="67" selection-end-line="87" selection-end-column="67" />
+            <state relative-caret-position="405">
+              <caret line="27" column="64" lean-forward="false" selection-start-line="27" selection-start-column="64" selection-end-line="27" selection-end-column="64" />
               <folding>
                 <element signature="e#46#85#0" expanded="true" />
-                <marker date="1518472481000" expanded="true" signature="2964:3067" ph="..." />
+                <marker date="1518475932000" expanded="true" signature="2742:2804" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Questions.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/css/characters/Questions.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -125,6 +101,9 @@
       <find>console</find>
       <find>console.log</find>
       <find>this.setState</find>
+      <find>getsele</find>
+      <find>selectedSus</find>
+      <find>selectedsu</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -143,10 +122,10 @@
         <option value="$PROJECT_DIR$/public/json/characters.json" />
         <option value="$PROJECT_DIR$/public/json/locations.json" />
         <option value="$PROJECT_DIR$/public/json/questions.json" />
-        <option value="$PROJECT_DIR$/src/css/characters/Character.css" />
-        <option value="$PROJECT_DIR$/src/js/characters/Characters.js" />
         <option value="$PROJECT_DIR$/src/js/GameManager.js" />
         <option value="$PROJECT_DIR$/src/css/characters/Questions.css" />
+        <option value="$PROJECT_DIR$/src/css/characters/Character.css" />
+        <option value="$PROJECT_DIR$/src/js/characters/Characters.js" />
         <option value="$PROJECT_DIR$/src/js/characters/Character.js" />
         <option value="$PROJECT_DIR$/src/js/characters/CharacterQuestions.js" />
       </list>
@@ -473,53 +452,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/characters/Questions.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/characters/Character.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="71" column="17" lean-forward="true" selection-start-line="71" selection-start-column="17" selection-end-line="71" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/characters/Characters.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="752">
+          <caret line="54" column="75" lean-forward="false" selection-start-line="54" selection-start-column="75" selection-end-line="54" selection-end-column="75" />
           <folding>
             <element signature="e#47#86#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/characters/Character.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/characters/Questions.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="20" lean-forward="false" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/characters/Character.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="278" column="54" lean-forward="false" selection-start-line="278" selection-start-column="54" selection-end-line="278" selection-end-column="54" />
+        <state relative-caret-position="315">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="27" selection-end-column="6" />
           <folding>
             <element signature="e#46#85#0" expanded="true" />
-            <marker date="1518472434000" expanded="true" signature="9351:9386" ph="..." />
-            <marker date="1518472434000" expanded="true" signature="9707:9841" ph="..." />
-            <marker date="1518472434000" expanded="true" signature="9905:10270" ph="..." />
-            <marker date="1518472434000" expanded="true" signature="10331:10449" ph="..." />
+            <marker date="1518475850000" expanded="true" signature="11053:11088" ph="..." />
+            <marker date="1518475850000" expanded="true" signature="11409:11543" ph="..." />
+            <marker date="1518475850000" expanded="true" signature="11607:11972" ph="..." />
+            <marker date="1518475850000" expanded="true" signature="12033:12151" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/characters/CharacterQuestions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="87" column="67" lean-forward="false" selection-start-line="87" selection-start-column="67" selection-end-line="87" selection-end-column="67" />
+        <state relative-caret-position="405">
+          <caret line="27" column="64" lean-forward="false" selection-start-line="27" selection-start-column="64" selection-end-line="27" selection-end-column="64" />
           <folding>
             <element signature="e#46#85#0" expanded="true" />
-            <marker date="1518472481000" expanded="true" signature="2964:3067" ph="..." />
+            <marker date="1518475932000" expanded="true" signature="2742:2804" ph="..." />
           </folding>
         </state>
       </provider>

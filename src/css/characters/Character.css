@@ -67,3 +67,12 @@
     text-decoration: underline;
     color: blue;
 }
+
+.Character .Character-selectsuspect {
+    float: right;
+    margin-top: 2em;
+}
+.Character .Character-endinterrogation {
+    margin-top: 2em;
+    float: right;
+}

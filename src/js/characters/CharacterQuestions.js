@@ -22,6 +22,13 @@ class CharacterQuestions extends Component {
         };
     }
 
+
+    componentWillReceiveProps = (props) => {
+        this.props = props;
+        this.setState({allowed: props.allowedQuestions, asked: 0});
+    };
+
+
     handleQuestionClick = (e, data) => {
         // Don't let the standard browser click go anywhere
         e.preventDefault();
@@ -38,6 +45,7 @@ class CharacterQuestions extends Component {
     }
 
 
+    /*
     handleSuspectClick = (e, data) => {
         // Don't let the standard browser click go anywhere
         e.preventDefault();
@@ -48,10 +56,11 @@ class CharacterQuestions extends Component {
         // Update this character to be the interrogated suspect
         this.props.handleSuspectClick(data);
     }
+    */
 
 
     getQuestionRender = () => {
-        if (this.props.selectedSuspect) {
+        if (this.props.interrogate && (this.state.asked < this.state.allowed)) {
             return (
                 <div>
                     {this.props.questions && this.props.questions.map(question =>
@@ -80,23 +89,10 @@ class CharacterQuestions extends Component {
     }
 
 
-    getSelectRender = () => {
-        if (this.props.selectedSuspect) return null;
-
-        return (
-            <div className="Questions-selectsuspect">
-                <a href={`interrogate-link-${this.props.characterId}`} key={this.props.characterId}
-                    onClick={((e) => this.handleSuspectClick(e, this.props.characterId))}>
-                    Interrogate suspect</a>
-            </div>
-        )
-    }
-
     render = () => {
         return (
             <div className="Questions">
                 {this.getQuestionRender()}
-                {this.getSelectRender()}
             </div>
         );
     }

@@ -20,7 +20,10 @@ class Character extends Component {
 
 
     componentWillReceiveProps = (props) => {
+        this.props = props;
         const newState = Object.assign({}, props);
+        newState.interrogate = (props.selectedSuspect === newState.characterData.id);
+        newState.renderType = "questions";
         this.setState(newState);
     };
 
@@ -199,6 +202,21 @@ class Character extends Component {
     }
 
 
+    handleSuspectClick = (e, data) => {
+        // Update the change in state to Characters
+        e.preventDefault();
+        this.setState({allowedQuestions: 3});
+        this.props.handleSuspectClick(e, data);
+    }
+
+
+    handleEndInterrogationClick = (e) => {
+        // Update the change in state to Characters
+        e.preventDefault();
+        this.setState({renderType: "full"});
+        this.props.handleEndInterrogation(e);
+    }
+
     handleViewTabClick = (e, data) => {
         // For switching between character info and character questions views
         e.preventDefault();
@@ -209,6 +227,8 @@ class Character extends Component {
 
     setViewTabRender = () => {
         if (this.props.characterType === "victim") return null;
+
+        if (this.state.renderType === "questions" && this.state.interrogate) return null;
 
         return (
             <div className="Character-viewtypetabs">
@@ -226,8 +246,37 @@ class Character extends Component {
         );
     }
 
+
+    getInterrogateRender = () => {
+        if (this.state.interrogate || this.props.characterType === "victim") return null;
+
+        return (
+            <div className="Character-selectsuspect">
+                <a href={`interrogate-link-${this.state.characterData.id}`} key={this.state.characterData.id}
+                   onClick={((e) => this.handleSuspectClick(e, this.state.characterData.id))}>
+                    Interrogate suspect</a>
+            </div>
+        )
+    }
+
+
+    renderEndInterrogation = () => {
+        if (this.state.interrogate) {
+            return (
+                <div className="Character-endinterrogation">
+                    <a href={`link-interrogation-end-${this.state.characterData.id}`}
+                        onClick={((e) => this.handleEndInterrogationClick(e))}
+                    >End interrogation</a>
+                </div>
+            )
+        }
+    }
+
+
     render = () => {
         if (this.state.characterData === undefined) return null;
+
+        if (!this.state.interrogate && this.props.selectedSuspect > -1) return null;
 
         const portraitImage = (this.state.characterData.images && this.state.characterData.images.portrait) || "";
         const profileImage = (this.state.characterData.images && this.state.characterData.images.profile) || "";
@@ -235,7 +284,8 @@ class Character extends Component {
         return (
             <div className="Character">
                 <div className="Character-header">
-                    <div className="Character-name">{this.state.characterData.name} ({this.state.characterData.id})</div>
+                    <div className="Character-name">{this.state.characterData.name} ({this.state.characterData.id})
+                    </div>
                     {this.setViewTabRender()}
                 </div>
 
@@ -276,16 +326,20 @@ class Character extends Component {
                     }
                     {this.state.renderType === "questions" ?
                         <CharacterQuestions questions={this.state.characterData.questions}
+                                            allowedQuestions={this.state.allowedQuestions}
                                             characterId={this.state.characterData.id}
-                                            handleQuestionClick={this.handleQuestionClick}/> : ""
+                                            handleQuestionClick={this.handleQuestionClick}
+                                            handleSuspectClick={this.handleSuspectClick}
+                                            interrogate={this.state.interrogate}/> : ""
                     }
                 </div>
                 <div className="Character-answertext">
                     {this.state.answer !== undefined && this.state.renderType === "questions" ?
-                        <div className="Character-answer" selectedSuspect={this.state.selectedSuspect}
-                        >{this.state.answer}</div> : ""
+                        <div className="Character-answer" >{this.state.answer}</div> : ""
                     }
                 </div>
+                {this.getInterrogateRender()}
+                {this.renderEndInterrogation()}
             </div>
         );
     }
