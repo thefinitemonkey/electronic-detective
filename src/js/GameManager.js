@@ -337,27 +337,32 @@ class GameManager extends Component {
 
         return (
             <div className="ElectronicDetective">
-                <h1>Electronic Detective Game State</h1>
-                <h2>Find my killer!</h2>
-                <Character characterData={this.state.victim} characterType="victim" renderType="full"/>
+                <div>
+                    <h1>Electronic Detective Game State</h1>
+                    <h2>Find my killer!</h2>
+                    <Character characterData={this.state.victim} characterType="victim" renderType="full"/>
 
-                <h2>We are the suspects</h2>
-                <Characters charactersData={this.state.characters} murdererData={this.state.murderer}
-                            weaponsData={this.state.weapons} locationsData={this.state.locations}
-                            handleAccusationClick={this.handleAccusationClick}/>
+                    <h2>We are the suspects</h2>
+                    <Characters charactersData={this.state.characters} murdererData={this.state.murderer}
+                                weaponsData={this.state.weapons} locationsData={this.state.locations}
+                                handleAccusationClick={this.handleAccusationClick}/>
 
-                {
-                    /*
-                    <Character characterData={char} murdererData={this.state.murderer}
-                               weaponData={this.state.weapons} locationData={this.state.locations}
-                               renderType="questions" />
-                    */
+                    {
+                        /*
+                        <Character characterData={char} murdererData={this.state.murderer}
+                                   weaponData={this.state.weapons} locationData={this.state.locations}
+                                   renderType="questions" />
+                        */
 
-                    // This section will display all the location data for the game setup. Not to be seen
-                    // during regular gameplay. Just for development purposes.
-                }
-                {this.renderGameState()}
-
+                        // This section will display all the location data for the game setup. Not to be seen
+                        // during regular gameplay. Just for development purposes.
+                    }
+                    {this.renderGameState()}
+                </div>
+                <div>
+                    You'll want to print off a <a target="_blank" href="../../images/Case_Fact_Sheet.jpeg">case
+                    sheet</a>
+                </div>
             </div>
         )
     }

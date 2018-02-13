@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9fc3975-a2b9-4099-a71f-0ba25fd41e81" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/Case_Fact_Sheet.jpeg" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/css/GameManager.css" afterPath="$PROJECT_DIR$/src/css/GameManager.css" />
+      <change beforePath="$PROJECT_DIR$/src/js/GameManager.js" afterPath="$PROJECT_DIR$/src/js/GameManager.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GameManager.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameManager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/js/GameManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2580">
-              <caret line="172" column="32" lean-forward="false" selection-start-line="172" selection-start-column="32" selection-end-line="172" selection-end-column="32" />
+            <state relative-caret-position="680">
+              <caret line="363" column="29" lean-forward="false" selection-start-line="363" selection-start-column="29" selection-end-line="363" selection-end-column="29" />
               <folding>
                 <element signature="e#53#92#0" expanded="true" />
               </folding>
@@ -65,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CharacterQuestions.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CharacterQuestions.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/characters/CharacterQuestions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+            <state relative-caret-position="405">
+              <caret line="27" column="27" lean-forward="true" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
               <folding>
                 <element signature="e#46#85#0" expanded="true" />
                 <marker date="1518538819000" expanded="true" signature="2419:2481" ph="..." />
@@ -137,7 +140,6 @@
         <option value="$PROJECT_DIR$/src/js/App.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/css/locations/Locations.css" />
-        <option value="$PROJECT_DIR$/src/css/GameManager.css" />
         <option value="$PROJECT_DIR$/src/css/locations/Location.css" />
         <option value="$PROJECT_DIR$/src/js/locations/Location.js" />
         <option value="$PROJECT_DIR$/public/json/characters.json" />
@@ -149,8 +151,9 @@
         <option value="$PROJECT_DIR$/src/css/characters/Character.css" />
         <option value="$PROJECT_DIR$/src/js/characters/Character.js" />
         <option value="$PROJECT_DIR$/src/js/characters/Characters.js" />
-        <option value="$PROJECT_DIR$/src/js/GameManager.js" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/js/GameManager.js" />
+        <option value="$PROJECT_DIR$/src/css/GameManager.css" />
       </list>
     </option>
   </component>
@@ -194,7 +197,24 @@
             <path>
               <item name="site-components" type="b2602c69:ProjectViewProjectNode" />
               <item name="site-components" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="site-components" type="b2602c69:ProjectViewProjectNode" />
+              <item name="site-components" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="site-components" type="b2602c69:ProjectViewProjectNode" />
+              <item name="site-components" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="site-components" type="b2602c69:ProjectViewProjectNode" />
+              <item name="site-components" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="site-components" type="b2602c69:ProjectViewProjectNode" />
@@ -457,14 +477,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/GameManager.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/static/js/main.e35e0447.js.map">
       <provider editor-type-id="sourcemapFileViewerProvider">
         <state />
@@ -575,16 +587,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/GameManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2580">
-          <caret line="172" column="32" lean-forward="false" selection-start-line="172" selection-start-column="32" selection-end-line="172" selection-end-column="32" />
-          <folding>
-            <element signature="e#53#92#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/characters/Characters.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="407">
@@ -629,11 +631,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/characters/CharacterQuestions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state relative-caret-position="405">
+          <caret line="27" column="27" lean-forward="true" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
           <folding>
             <element signature="e#46#85#0" expanded="true" />
             <marker date="1518538819000" expanded="true" signature="2419:2481" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/GameManager.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="18" lean-forward="false" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/GameManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="363" column="29" lean-forward="false" selection-start-line="363" selection-start-column="29" selection-end-line="363" selection-end-column="29" />
+          <folding>
+            <element signature="e#53#92#0" expanded="true" />
           </folding>
         </state>
       </provider>

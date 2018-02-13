@@ -1,6 +1,7 @@
 .ElectronicDetective {
     margin: 3em;
     font-size: .8em;
+    display: flex;
 }
 
 h1 {
