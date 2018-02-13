@@ -10,7 +10,15 @@
     text-decoration: line-through;
 }
 
+a.Question-clicked {
+    color: blue;
+}
+
 .Question-unclicked {
     text-decoration: none;
+}
+
+a.Question-unclicked {
+    color: blue;
 }
 

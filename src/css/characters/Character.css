@@ -1,5 +1,5 @@
 .Character {
-    margin-bottom: 4em;
+    margin-bottom: 5em;
     max-width: 600px;
 }
 
@@ -65,20 +65,44 @@
 }
 
 .Character-viewtypetab .Character-switchviewtype {
-    text-decoration: underline;
+    text-decoration: none;
     color: blue;
 }
 
-.Character .Character-selectsuspect {
-    float: right;
-    margin-top: 1.5em;
+.Character .Character-actions {
+    float:right;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    display: flex;
 }
+
+.Character .Character-selectsuspect {
+    margin-right: 1em;
+}
+
 .Character .Character-endinterrogation {
-    margin-top: 2em;
-    float: right;
+    margin-right: 1em;
 }
 
 
 .Character .Character-alibi {
     margin-bottom: 1em;
+}
+
+.Character .Character-accusationresponse {
+    font-weight: bold;
+    margin-bottom: 1em;
+    margin-top: .5em;
+}
+
+.Character .Character-guiltyresponse {
+    font-weight: bold;
+    color: darkred;
+    margin-bottom: 1em;
+    margin-top: .5em;
+}
+
+.Character .Character-accusation a, .Character .Character-selectsuspect a, .Character .Character-endinterrogation a {
+    color: blue;
+    text-decoration: none;
 }

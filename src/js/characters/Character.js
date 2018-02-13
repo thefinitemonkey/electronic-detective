@@ -226,6 +226,18 @@ class Character extends Component {
     }
 
 
+    handleAccusationClick = (e) => {
+        // Set the state appropriately for whether this character is the murderer
+        e.preventDefault();
+        if (this.props.characterData === this.props.murdererData) {
+            this.setState({accused: true, murderer: true});
+            return;
+        }
+
+        this.setState({accused: true, murderer: false});
+    }
+
+
     setViewTabRender = () => {
         if (this.props.characterType === "victim") return null;
 
@@ -271,6 +283,37 @@ class Character extends Component {
                 </div>
             )
         }
+    }
+
+
+    renderAccusation = () => {
+        if (this.props.characterType === "victim") return;
+
+        return (
+            <div className="Character-accusation">
+                <a href={`link-accusation-${this.state.characterData.id}`}
+                   onClick={((e) => this.handleAccusationClick(e))}>
+                    Accuse Suspect</a>
+            </div>
+        )
+
+    }
+
+
+    renderAccusationResponse = () => {
+        if (!this.state.accused) return null;
+
+        return (
+            <div className="Character-accusationresponse">
+                {this.state.accused && !this.state.murderer ?
+                    <div className="Character-notguiltyresponse">
+                        Just wait until my lawyers get a hold of you for making wrongful accusations like that!
+                    </div> :
+                    <div className="Character-guiltyresponse">
+                        Yeah, I did it. And I would have gotten away with it too if it wasn't for you kids!
+                    </div>}
+            </div>
+        )
     }
 
 
@@ -334,6 +377,7 @@ class Character extends Component {
                                             interrogate={this.state.interrogate}/> : ""
                     }
                 </div>
+                {this.renderAccusationResponse()}
                 {this.state.interrogate ?
                     < CharacterAlibi characterData={this.state.characterData}/> : ""
                 }
@@ -342,8 +386,11 @@ class Character extends Component {
                         <div className="Character-answer">{this.state.answer}</div> : ""
                     }
                 </div>
-                {this.getInterrogateRender()}
-                {this.renderEndInterrogation()}
+                <div className="Character-actions">
+                    {this.getInterrogateRender()}
+                    {this.renderEndInterrogation()}
+                    {this.renderAccusation()}
+                </div>
             </div>
         );
     }
