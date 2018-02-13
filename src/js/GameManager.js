@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 
 import Characters from "./characters/Characters";
 import Character from "./characters/Character";
-// import Location from "./locations/Location";
+import Location from "./locations/Location";
 import "../css/GameManager.css";
 
 class GameManager extends Component {
@@ -72,13 +72,18 @@ class GameManager extends Component {
     }
 
     createLocations = (jsonData) => {
-        const sides = ["East", "East", "East", "West", "West", "West"];
-        const towns = ["Uptown", "Uptown", "Midtown", "Midtown", "Downtown", "Downtown"];
+        const addresses = [
+            {side: "East", town: "Uptown"},
+            {side: "East", town: "Midtown"},
+            {side: "East", town: "Downtown"},
+            {side: "West", town: "Uptown"},
+            {side: "West", town: "Midtown"},
+            {side: "West", town: "Downtown"}
+        ];
         for (let location of jsonData.locations) {
-            const side = sides.splice(this.getRandomInt(sides.length), 1)[0];
-            const town = towns.splice(this.getRandomInt(towns.length), 1)[0];
-            location.address.side = side;
-            location.address.town = town;
+            const address = addresses.splice(this.getRandomInt(addresses.length), 1)[0];
+            location.address.side = address.side;
+            location.address.town = address.town;
         }
         this.locations = jsonData.locations;
     }
@@ -164,7 +169,8 @@ class GameManager extends Component {
             locations: this.locations,
             weapon: this.weapon,
             scene: this.scene,
-            weapons: this.weapons
+            weapons: this.weapons,
+            foundMurderer: false
         });
     }
 
@@ -264,15 +270,15 @@ class GameManager extends Component {
         const stateWeapons = [];
         for (let option of this.weapons) {
             option === this.weapon
-              ? totoss.push({weapon: option, print: this.murderer.id})
-              : totoss.push({weapon: option, print: (this.murderer.id + 1)})
+                ? totoss.push({weapon: option, print: this.murderer.id})
+                : totoss.push({weapon: option, print: (this.murderer.id + 1)})
         }
         for (let item of totoss) {
             const randpos = this.getRandomInt(workLocs.length);
             const loc = workLocs[randpos];
             loc.weapon.type = item.weapon;
             loc.weapon.print = item.print;
-            stateWeapons.push ({type: item.weapon, print: item.print, location: loc});
+            stateWeapons.push({type: item.weapon, print: item.print, location: loc});
             workLocs.splice(randpos, 1);
         }
 
@@ -281,6 +287,29 @@ class GameManager extends Component {
         this.weapons = stateWeapons;
     }
 
+
+    handleAccusationClick = (e, foundMurderer) => {
+        // Set the state appropriately for whether this character is the murderer
+        e.preventDefault();
+
+        if (foundMurderer) this.setState({displayGame: true});
+    }
+
+
+    renderGameState = () => {
+        if (!this.state.foundMurderer) return null;
+
+        return (
+            <div>
+                <h2>This is the city</h2>
+                < div className="CityList">
+                    {this.state.locations.map(location =>
+                        <Location key={location.id} locationData={location}/>
+                    )}
+                </div>
+            </div>
+        )
+    }
 
     render = () => {
         {
@@ -310,11 +339,12 @@ class GameManager extends Component {
             <div className="ElectronicDetective">
                 <h1>Electronic Detective Game State</h1>
                 <h2>Find my killer!</h2>
-                <Character characterData={this.state.victim} characterType="victim" renderType="full" />
+                <Character characterData={this.state.victim} characterType="victim" renderType="full"/>
 
                 <h2>We are the suspects</h2>
                 <Characters charactersData={this.state.characters} murdererData={this.state.murderer}
-                           weaponsData={this.state.weapons} locationsData={this.state.locations} />
+                            weaponsData={this.state.weapons} locationsData={this.state.locations}
+                            handleAccusationClick={this.handleAccusationClick}/>
 
                 {
                     /*
@@ -323,17 +353,11 @@ class GameManager extends Component {
                                renderType="questions" />
                     */
 
-                    /*
                     // This section will display all the location data for the game setup. Not to be seen
                     // during regular gameplay. Just for development purposes.
-                    <h2>This is the city</h2>
-                    <div className="CityList">
-                        {this.state.locations.map(location =>
-                            <Location key={location.id} locationData={location}/>
-                        )}
-                    </div>
-                    */
                 }
+                {this.renderGameState()}
+
             </div>
         )
     }

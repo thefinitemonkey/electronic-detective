@@ -43,6 +43,14 @@ class Characters extends Component {
     }
 
 
+    handleAccusationClick = (e, foundMurderer) => {
+        // Set the state appropriately for whether this character is the murderer
+        e.preventDefault();
+
+        this.props.handleAccusationClick(e, foundMurderer);
+    }
+
+
     render = () => {
         if (!this.state.characters) return null;
 
@@ -53,7 +61,8 @@ class Characters extends Component {
                                weaponData={this.state.weapons} locationData={this.state.locations}
                                renderType="full" selectedSuspect={this.state.selectedSuspect}
                                handleSuspectClick={this.handleSuspectClick}
-                               handleEndInterrogation={this.handleEndInterrogationClick}/>
+                               handleEndInterrogation={this.handleEndInterrogationClick}
+                               handleAccusationClick={this.handleAccusationClick}/>
                 )}
             </div>
         )

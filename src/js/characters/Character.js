@@ -229,12 +229,16 @@ class Character extends Component {
     handleAccusationClick = (e) => {
         // Set the state appropriately for whether this character is the murderer
         e.preventDefault();
+        let foundMurderer = false;
+
         if (this.props.characterData === this.props.murdererData) {
             this.setState({accused: true, murderer: true});
-            return;
+            foundMurderer = true;
+        } else {
+            this.setState({accused: true, murderer: false});
         }
 
-        this.setState({accused: true, murderer: false});
+        this.props.handleAccusationClick(e, foundMurderer);
     }
 
 
