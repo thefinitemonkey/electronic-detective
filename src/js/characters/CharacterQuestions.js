@@ -23,12 +23,6 @@ class CharacterQuestions extends Component {
     }
 
 
-    componentWillReceiveProps = (props) => {
-        this.props = props;
-        this.setState({allowed: props.allowedQuestions, asked: 0});
-    };
-
-
     handleQuestionClick = (e, data) => {
         // Don't let the standard browser click go anywhere
         e.preventDefault();
@@ -43,20 +37,6 @@ class CharacterQuestions extends Component {
 
         this.props.handleQuestionClick(data);
     }
-
-
-    /*
-    handleSuspectClick = (e, data) => {
-        // Don't let the standard browser click go anywhere
-        e.preventDefault();
-
-        // New interrogation, so reset the question counter
-        this.setState({asked: 0});
-
-        // Update this character to be the interrogated suspect
-        this.props.handleSuspectClick(data);
-    }
-    */
 
 
     getQuestionRender = () => {
@@ -81,7 +61,10 @@ class CharacterQuestions extends Component {
             <div>
                 {this.props.questions && this.props.questions.map(question =>
                     <div className="Question" key={question.id}>
+                        <span className={this.state.clicked[question.id - 1] ?
+                            "Question-clicked" : "Question-unclicked"}>
                         {question.question}
+                        </span>
                     </div>
                 )}
             </div>

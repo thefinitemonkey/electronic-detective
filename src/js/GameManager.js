@@ -163,7 +163,8 @@ class GameManager extends Component {
             murderer: this.murderer,
             locations: this.locations,
             weapon: this.weapon,
-            scene: this.scene
+            scene: this.scene,
+            weapons: this.weapons
         });
     }
 
@@ -306,7 +307,6 @@ class GameManager extends Component {
         }
 
         return (
-
             <div className="ElectronicDetective">
                 <h1>Electronic Detective Game State</h1>
                 <h2>Find my killer!</h2>

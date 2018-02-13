@@ -1,5 +1,6 @@
 .Character {
-    margin-bottom: 3em;
+    margin-bottom: 4em;
+    max-width: 600px;
 }
 
 .Character-header {
@@ -70,9 +71,14 @@
 
 .Character .Character-selectsuspect {
     float: right;
-    margin-top: 2em;
+    margin-top: 1.5em;
 }
 .Character .Character-endinterrogation {
     margin-top: 2em;
     float: right;
+}
+
+
+.Character .Character-alibi {
+    margin-bottom: 1em;
 }

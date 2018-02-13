@@ -4,6 +4,7 @@
 import React, {Component} from 'react';
 import "../../css/characters/Character.css";
 import CharacterQuestions from "./CharacterQuestions";
+import CharacterAlibi from "./CharacterAlibi";
 
 
 class Character extends Component {
@@ -23,7 +24,7 @@ class Character extends Component {
         this.props = props;
         const newState = Object.assign({}, props);
         newState.interrogate = (props.selectedSuspect === newState.characterData.id);
-        newState.renderType = "questions";
+        if (newState.interrogate) newState.renderType = "questions";
         this.setState(newState);
     };
 
@@ -265,7 +266,7 @@ class Character extends Component {
             return (
                 <div className="Character-endinterrogation">
                     <a href={`link-interrogation-end-${this.state.characterData.id}`}
-                        onClick={((e) => this.handleEndInterrogationClick(e))}
+                       onClick={((e) => this.handleEndInterrogationClick(e))}
                     >End interrogation</a>
                 </div>
             )
@@ -333,9 +334,12 @@ class Character extends Component {
                                             interrogate={this.state.interrogate}/> : ""
                     }
                 </div>
+                {this.state.interrogate ?
+                    < CharacterAlibi characterData={this.state.characterData}/> : ""
+                }
                 <div className="Character-answertext">
                     {this.state.answer !== undefined && this.state.renderType === "questions" ?
-                        <div className="Character-answer" >{this.state.answer}</div> : ""
+                        <div className="Character-answer">{this.state.answer}</div> : ""
                     }
                 </div>
                 {this.getInterrogateRender()}
