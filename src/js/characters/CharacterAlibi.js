@@ -10,12 +10,8 @@ class CharacterAlibi extends Component {
     constructor(props) {
         super(props);
         this.props = props;
-        this.state = {};
-    }
 
-
-    componentDidMount = () => {
-        this.createAlibi();
+        this.state = {alibi: this.createAlibi()};
     }
 
 
@@ -80,7 +76,7 @@ class CharacterAlibi extends Component {
             pos++;
         }
 
-        this.setState({ alibi: alibiArr });
+        return alibiArr;
     }
 
 

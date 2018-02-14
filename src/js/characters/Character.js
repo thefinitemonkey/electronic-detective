@@ -280,6 +280,9 @@ class Character extends Component {
 
     renderEndInterrogation = () => {
         if (this.state.interrogate) {
+            // Reset the answer to an undefined response
+            this.state.answer = undefined;
+
             return (
                 <div className="Character-endinterrogation">
                     <a href={`link-interrogation-end-${this.state.characterData.id}`}

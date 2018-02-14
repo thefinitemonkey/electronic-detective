@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "http://www.finitemonkey.com/detective",
   "dependencies": {
+    "mocha": "^5.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
@@ -18,6 +19,8 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "redux-devtools": "^3.4.1"
   }
 }
