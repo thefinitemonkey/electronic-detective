@@ -1,10 +1,11 @@
 // Character class for Electronic Detective
 
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import "../../css/characters/Character.css";
 import CharacterQuestions from "./CharacterQuestions";
 import CharacterAlibi from "./CharacterAlibi";
+import ErrorBoundary from "../ErrorBoundary";
 
 
 class Character extends Component {
@@ -83,7 +84,7 @@ class Character extends Component {
 
         const display = side === "East" ? response.affirmative : response.negative;
 
-        this.setState({answer: display});
+        this.setState({ answer: display });
     };
 
 
@@ -91,7 +92,7 @@ class Character extends Component {
         // Check whether the murderer is male and display the appropriate response
         const display = this.state.murdererData.gender === "M" ? response.affirmative : response.negative;
 
-        this.setState({answer: display});
+        this.setState({ answer: display });
     };
 
 
@@ -103,7 +104,7 @@ class Character extends Component {
             display = response.affirmative + this.state.murdererData.location.address.town :
             display = response.affirmative + this.state.characterData.location.address.town;
 
-        this.setState({answer: display});
+        this.setState({ answer: display });
     };
 
 
@@ -112,7 +113,7 @@ class Character extends Component {
         const display = this.state.characterData.weapon.type === ".38" ?
             response.affirmative : response.negative;
 
-        this.setState({answer: display});
+        this.setState({ answer: display });
     };
 
 
@@ -124,7 +125,7 @@ class Character extends Component {
         }
 
         const display = response.affirmative + weapon.location.name;
-        this.setState({answer: display});
+        this.setState({ answer: display });
     };
 
 
@@ -136,7 +137,7 @@ class Character extends Component {
         }
 
         const display = response.affirmative + weapon.location.name;
-        this.setState({answer: display});
+        this.setState({ answer: display });
     };
 
 
@@ -148,7 +149,7 @@ class Character extends Component {
         }
 
         const display = response.affirmative + location.name;
-        this.setState({answer: display});
+        this.setState({ answer: display });
     };
 
 
@@ -160,7 +161,7 @@ class Character extends Component {
 
         const display = (locID === "A" || locID === "B" || locID === "C") ?
             response.affirmative : response.negative;
-        this.setState({answer: display});
+        this.setState({ answer: display });
     };
 
 
@@ -169,7 +170,7 @@ class Character extends Component {
         const display = this.state.characterData.location.weapon.type === null ?
             response.negative : response.positive;
 
-        this.setState({answer: display});
+        this.setState({ answer: display });
     };
 
 
@@ -177,7 +178,7 @@ class Character extends Component {
         // This one is trickier. Only people who were at a location with a weapon can answer.
         if (this.state.characterData.location.weapon.type === null ||
             this.state.characterData.location.weapon.type !== subject) {
-            this.setState({answer: response.unknown});
+            this.setState({ answer: response.unknown });
             return;
         }
 
@@ -187,14 +188,14 @@ class Character extends Component {
         // If the character is the same gender as the murderer then they have to give a truthful answer
         if (this.state.characterData.gender === this.state.murdererData.gender) {
             const display = weapon.print % 2 === 1 ? response.affirmative : response.negative;
-            this.setState({answer: display});
+            this.setState({ answer: display });
             return;
         }
 
         // If the character is not the same gender as the murderer then they might lie. It's a coin toss.
         const lie = this.getRandomInt(2);
         const display = lie ? response.negative : response.affirmative;
-        this.setState({answer: display});
+        this.setState({ answer: display });
     };
 
 
@@ -206,7 +207,7 @@ class Character extends Component {
     handleSuspectClick = (e, data) => {
         // Update the change in state to Characters
         e.preventDefault();
-        this.setState({allowedQuestions: 3});
+        this.setState({ allowedQuestions: 3 });
         this.props.handleSuspectClick(e, data);
     }
 
@@ -214,14 +215,14 @@ class Character extends Component {
     handleEndInterrogationClick = (e) => {
         // Update the change in state to Characters
         e.preventDefault();
-        this.setState({renderType: "full"});
+        this.setState({ renderType: "full" });
         this.props.handleEndInterrogation(e);
     }
 
     handleViewTabClick = (e, data) => {
         // For switching between character info and character questions views
         e.preventDefault();
-        this.setState({renderType: data});
+        this.setState({ renderType: data });
 
     }
 
@@ -232,10 +233,10 @@ class Character extends Component {
         let foundMurderer = false;
 
         if (this.props.characterData === this.props.murdererData) {
-            this.setState({accused: true, murderer: true});
+            this.setState({ accused: true, murderer: true });
             foundMurderer = true;
         } else {
-            this.setState({accused: true, murderer: false});
+            this.setState({ accused: true, murderer: false });
         }
 
         this.props.handleAccusationClick(e, foundMurderer);
@@ -252,12 +253,12 @@ class Character extends Component {
                 <div className="Character-viewtypetab">
                     <a href="fullswitch" className={this.state.renderType === "questions" ?
                         "Character-switchviewtype" : "Character-noswitchviewtype"}
-                       onClick={((e) => this.handleViewTabClick(e, "full"))}>Info</a>
+                        onClick={((e) => this.handleViewTabClick(e, "full"))}>Info</a>
                 </div>
                 <div className="Character-viewtypetab">
                     <a href="questionsswitch" className={this.state.renderType === "questions" ?
                         "Character-noswitchviewtype" : "Character-switchviewtype"}
-                       onClick={((e) => this.handleViewTabClick(e, "questions"))}>Questions</a>
+                        onClick={((e) => this.handleViewTabClick(e, "questions"))}>Questions</a>
                 </div>
             </div>
         );
@@ -270,7 +271,7 @@ class Character extends Component {
         return (
             <div className="Character-selectsuspect">
                 <a href={`interrogate-link-${this.state.characterData.id}`} key={this.state.characterData.id}
-                   onClick={((e) => this.handleSuspectClick(e, this.state.characterData.id))}>
+                    onClick={((e) => this.handleSuspectClick(e, this.state.characterData.id))}>
                     Interrogate suspect</a>
             </div>
         )
@@ -282,7 +283,7 @@ class Character extends Component {
             return (
                 <div className="Character-endinterrogation">
                     <a href={`link-interrogation-end-${this.state.characterData.id}`}
-                       onClick={((e) => this.handleEndInterrogationClick(e))}
+                        onClick={((e) => this.handleEndInterrogationClick(e))}
                     >End interrogation</a>
                 </div>
             )
@@ -296,7 +297,7 @@ class Character extends Component {
         return (
             <div className="Character-accusation">
                 <a href={`link-accusation-${this.state.characterData.id}`}
-                   onClick={((e) => this.handleAccusationClick(e))}>
+                    onClick={((e) => this.handleAccusationClick(e))}>
                     Accuse Suspect</a>
             </div>
         )
@@ -331,70 +332,72 @@ class Character extends Component {
 
         return (
             <div className="Character">
-                <div className="Character-header">
-                    <div className="Character-name">{this.state.characterData.name} ({this.state.characterData.id})
+                <ErrorBoundary>
+                    <div className="Character-header">
+                        <div className="Character-name">{this.state.characterData.name} ({this.state.characterData.id})
                     </div>
-                    {this.setViewTabRender()}
-                </div>
+                        {this.setViewTabRender()}
+                    </div>
 
-                <div className="Character-info">
-                    <div className="Character-images">
-                        <div className="Character-image">
-                            <img src={this.imgPath + portraitImage} alt={this.state.characterData.name +
-                            ' face'}/>
-                        </div>
-                        {this.state.renderType === "full" ?
+                    <div className="Character-info">
+                        <div className="Character-images">
                             <div className="Character-image">
-                                <img src={this.imgPath + profileImage} alt={this.state.characterData.name +
-                                ' profile'}/>
-                            </div> : ""
-                        }
-                    </div>
-                    {this.state.renderType === "full" ?
-                        <div className="Character-demographics">
-                            <div className="Character-text">
-                                Gender: {this.state.characterData.gender === "M" ? "Male" : "Female"}
+                                <img src={this.imgPath + portraitImage} alt={this.state.characterData.name +
+                                    ' face'} />
                             </div>
-                            <div className="Character-text">
-                                Relationship Status: {this.state.characterData.relationshipStatus}
-                                {this.state.characterData.spouse
-                                    ? ` to ${this.state.characterData.spouse} (${this.state.characterData.relationshipID})`
-                                    : ``}
-                            </div>
-                            <div className="Character-text">
-                                Occcupation: {this.state.characterData.occupation}
-                            </div>
-                            {this.props.characterType === "victim" && this.state.characterData.location ?
-                                <div className="Character-victimlocation">
-                                    I was murdered at the <span className="Character-locationname">
-                                    {this.state.characterData.location.name}</span>
+                            {this.state.renderType === "full" ?
+                                <div className="Character-image">
+                                    <img src={this.imgPath + profileImage} alt={this.state.characterData.name +
+                                        ' profile'} />
                                 </div> : ""
                             }
-                        </div> : ""
+                        </div>
+                        {this.state.renderType === "full" ?
+                            <div className="Character-demographics">
+                                <div className="Character-text">
+                                    Gender: {this.state.characterData.gender === "M" ? "Male" : "Female"}
+                                </div>
+                                <div className="Character-text">
+                                    Relationship Status: {this.state.characterData.relationshipStatus}
+                                    {this.state.characterData.spouse
+                                        ? ` to ${this.state.characterData.spouse} (${this.state.characterData.relationshipID})`
+                                        : ``}
+                                </div>
+                                <div className="Character-text">
+                                    Occcupation: {this.state.characterData.occupation}
+                                </div>
+                                {this.props.characterType === "victim" && this.state.characterData.location ?
+                                    <div className="Character-victimlocation">
+                                        I was murdered at the <span className="Character-locationname">
+                                            {this.state.characterData.location.name}</span>
+                                    </div> : ""
+                                }
+                            </div> : ""
+                        }
+                        {this.state.renderType === "questions" ?
+                            <CharacterQuestions questions={this.state.characterData.questions}
+                                allowedQuestions={this.state.allowedQuestions}
+                                characterId={this.state.characterData.id}
+                                handleQuestionClick={this.handleQuestionClick}
+                                handleSuspectClick={this.handleSuspectClick}
+                                interrogate={this.state.interrogate} /> : ""
+                        }
+                    </div>
+                    {this.renderAccusationResponse()}
+                    {this.state.interrogate ?
+                        < CharacterAlibi characterData={this.state.characterData} /> : ""
                     }
-                    {this.state.renderType === "questions" ?
-                        <CharacterQuestions questions={this.state.characterData.questions}
-                                            allowedQuestions={this.state.allowedQuestions}
-                                            characterId={this.state.characterData.id}
-                                            handleQuestionClick={this.handleQuestionClick}
-                                            handleSuspectClick={this.handleSuspectClick}
-                                            interrogate={this.state.interrogate}/> : ""
-                    }
-                </div>
-                {this.renderAccusationResponse()}
-                {this.state.interrogate ?
-                    < CharacterAlibi characterData={this.state.characterData}/> : ""
-                }
-                <div className="Character-answertext">
-                    {this.state.answer !== undefined && this.state.renderType === "questions" ?
-                        <div className="Character-answer">{this.state.answer}</div> : ""
-                    }
-                </div>
-                <div className="Character-actions">
-                    {this.getInterrogateRender()}
-                    {this.renderEndInterrogation()}
-                    {this.renderAccusation()}
-                </div>
+                    <div className="Character-answertext">
+                        {this.state.answer !== undefined && this.state.renderType === "questions" ?
+                            <div className="Character-answer">{this.state.answer}</div> : ""
+                        }
+                    </div>
+                    <div className="Character-actions">
+                        {this.getInterrogateRender()}
+                        {this.renderEndInterrogation()}
+                        {this.renderAccusation()}
+                    </div>
+                </ErrorBoundary>
             </div>
         );
     }

@@ -1,7 +1,8 @@
 // Character alibi class for Electronic Detective
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import "../../css/characters/Character.css";
+import ErrorBoundary from "../ErrorBoundary";
 
 
 class CharacterAlibi extends Component {
@@ -57,27 +58,29 @@ class CharacterAlibi extends Component {
         for (let fact of arrSelectedFacts) {
             switch (fact) {
                 case "side":
-                    alibiArr.push({id: pos,
-                        fact: `I was on the ${this.props.characterData.location.address.side} side`});
+                    alibiArr.push({
+                        id: pos,
+                        fact: `I was on the ${this.props.characterData.location.address.side} side`
+                    });
                     break;
                 case "town":
-                    alibiArr.push({id: pos, fact: `I was ${this.props.characterData.location.address.town}`});
+                    alibiArr.push({ id: pos, fact: `I was ${this.props.characterData.location.address.town}` });
                     break;
                 case "location":
-                    alibiArr.push({id: pos, fact: `I was at the ${this.props.characterData.location.name}`});
+                    alibiArr.push({ id: pos, fact: `I was at the ${this.props.characterData.location.name}` });
                     break;
                 case "suspect":
                     const attendeeNum = this.getRandomInt(attendeeArr.length);
-                    alibiArr.push({id: pos, fact: `I was with ${attendeeArr[attendeeNum].name}`});
+                    alibiArr.push({ id: pos, fact: `I was with ${attendeeArr[attendeeNum].name}` });
                     attendeeArr.splice(attendeeNum, 1);
                     break;
-                default:{}
+                default: { }
             }
 
             pos++;
         }
 
-        this.setState({alibi: alibiArr});
+        this.setState({ alibi: alibiArr });
     }
 
 
@@ -86,8 +89,10 @@ class CharacterAlibi extends Component {
 
         return (
             <div className="Character-alibi">
-                {this.state.alibi.map(fact =>
-                    <div className="Character-alibifact" key={fact.id}>{fact.fact}</div>)}
+                <ErrorBoundary>
+                    {this.state.alibi.map(fact =>
+                        <div className="Character-alibifact" key={fact.id}>{fact.fact}</div>)}
+                </ErrorBoundary>
             </div>
         )
     }

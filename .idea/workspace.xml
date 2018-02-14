@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d9fc3975-a2b9-4099-a71f-0ba25fd41e81" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/Case_Fact_Sheet.jpeg" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/css/GameManager.css" afterPath="$PROJECT_DIR$/src/css/GameManager.css" />
-      <change beforePath="$PROJECT_DIR$/src/js/GameManager.js" afterPath="$PROJECT_DIR$/src/js/GameManager.js" />
-    </list>
+    <list default="true" id="d9fc3975-a2b9-4099-a71f-0ba25fd41e81" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +67,7 @@
         <entry file="file://$PROJECT_DIR$/src/js/characters/CharacterQuestions.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="405">
-              <caret line="27" column="27" lean-forward="true" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+              <caret line="27" column="27" lean-forward="false" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
               <folding>
                 <element signature="e#46#85#0" expanded="true" />
                 <marker date="1518538819000" expanded="true" signature="2419:2481" ph="..." />
@@ -342,7 +337,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="434" y="44" width="1400" height="976" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -632,7 +626,7 @@
     <entry file="file://$PROJECT_DIR$/src/js/characters/CharacterQuestions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
-          <caret line="27" column="27" lean-forward="true" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+          <caret line="27" column="27" lean-forward="false" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
           <folding>
             <element signature="e#46#85#0" expanded="true" />
             <marker date="1518538819000" expanded="true" signature="2419:2481" ph="..." />

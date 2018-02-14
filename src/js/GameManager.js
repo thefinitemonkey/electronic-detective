@@ -1,10 +1,11 @@
 // Class for managing game setup and play functions
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import Characters from "./characters/Characters";
 import Character from "./characters/Character";
 import Location from "./locations/Location";
+import ErrorBoundary from "./ErrorBoundary";
 import "../css/GameManager.css";
 
 class GameManager extends Component {
@@ -38,10 +39,10 @@ class GameManager extends Component {
         // Create an array of all the promises for each JSON file that we can use
         // to track when all files have been loaded
         const jsonFiles = [
-            {"name": "characters.json", "function": this.createCharacters},
-            {"name": "locations.json", "function": this.createLocations},
-            {"name": "questions.json", "function": this.createQuestions},
-            {"name": "casesheet.json", "function": this.createCaseSheet}
+            { "name": "characters.json", "function": this.createCharacters },
+            { "name": "locations.json", "function": this.createLocations },
+            { "name": "questions.json", "function": this.createQuestions },
+            { "name": "casesheet.json", "function": this.createCaseSheet }
         ];
         const promises = jsonFiles.map(this.mapJsonPromises);
 
@@ -73,12 +74,12 @@ class GameManager extends Component {
 
     createLocations = (jsonData) => {
         const addresses = [
-            {side: "East", town: "Uptown"},
-            {side: "East", town: "Midtown"},
-            {side: "East", town: "Downtown"},
-            {side: "West", town: "Uptown"},
-            {side: "West", town: "Midtown"},
-            {side: "West", town: "Downtown"}
+            { side: "East", town: "Uptown" },
+            { side: "East", town: "Midtown" },
+            { side: "East", town: "Downtown" },
+            { side: "West", town: "Uptown" },
+            { side: "West", town: "Midtown" },
+            { side: "West", town: "Downtown" }
         ];
         for (let location of jsonData.locations) {
             const address = addresses.splice(this.getRandomInt(addresses.length), 1)[0];
@@ -90,7 +91,7 @@ class GameManager extends Component {
 
 
     createQuestions = (jsonData) => {
-        this.setState({questions: jsonData.questions});
+        this.setState({ questions: jsonData.questions });
     }
 
     createCaseSheet = (jsonData) => {
@@ -185,10 +186,10 @@ class GameManager extends Component {
         const oddWomen = [];
         const evenWomen = [];
         const groups = [
-            {odd: true, gender: "M", arr: oddMen},
-            {odd: false, gender: "M", arr: evenMen},
-            {odd: true, gender: "F", arr: oddWomen},
-            {odd: false, gender: "F", arr: evenWomen}
+            { odd: true, gender: "M", arr: oddMen },
+            { odd: false, gender: "M", arr: evenMen },
+            { odd: true, gender: "F", arr: oddWomen },
+            { odd: false, gender: "F", arr: evenWomen }
         ];
 
 
@@ -270,15 +271,15 @@ class GameManager extends Component {
         const stateWeapons = [];
         for (let option of this.weapons) {
             option === this.weapon
-                ? totoss.push({weapon: option, print: this.murderer.id})
-                : totoss.push({weapon: option, print: (this.murderer.id + 1)})
+                ? totoss.push({ weapon: option, print: this.murderer.id })
+                : totoss.push({ weapon: option, print: (this.murderer.id + 1) })
         }
         for (let item of totoss) {
             const randpos = this.getRandomInt(workLocs.length);
             const loc = workLocs[randpos];
             loc.weapon.type = item.weapon;
             loc.weapon.print = item.print;
-            stateWeapons.push({type: item.weapon, print: item.print, location: loc});
+            stateWeapons.push({ type: item.weapon, print: item.print, location: loc });
             workLocs.splice(randpos, 1);
         }
 
@@ -292,7 +293,7 @@ class GameManager extends Component {
         // Set the state appropriately for whether this character is the murderer
         e.preventDefault();
 
-        if (foundMurderer) this.setState({displayGame: true});
+        if (foundMurderer) this.setState({ displayGame: true });
     }
 
 
@@ -304,7 +305,7 @@ class GameManager extends Component {
                 <h2>This is the city</h2>
                 < div className="CityList">
                     {this.state.locations.map(location =>
-                        <Location key={location.id} locationData={location}/>
+                        <Location key={location.id} locationData={location} />
                     )}
                 </div>
             </div>
@@ -337,32 +338,34 @@ class GameManager extends Component {
 
         return (
             <div className="ElectronicDetective">
-                <div>
-                    <h1>Electronic Detective Game State</h1>
-                    <h2>Find my killer!</h2>
-                    <Character characterData={this.state.victim} characterType="victim" renderType="full"/>
+                <ErrorBoundary>
+                    <div>
+                        <h1>Electronic Detective Game State</h1>
+                        <h2>Find my killer!</h2>
+                        <Character characterData={this.state.victim} characterType="victim" renderType="full" />
 
-                    <h2>We are the suspects</h2>
-                    <Characters charactersData={this.state.characters} murdererData={this.state.murderer}
-                                weaponsData={this.state.weapons} locationsData={this.state.locations}
-                                handleAccusationClick={this.handleAccusationClick}/>
+                        <h2>We are the suspects</h2>
+                        <Characters charactersData={this.state.characters} murdererData={this.state.murderer}
+                            weaponsData={this.state.weapons} locationsData={this.state.locations}
+                            handleAccusationClick={this.handleAccusationClick} />
 
-                    {
-                        /*
-                        <Character characterData={char} murdererData={this.state.murderer}
-                                   weaponData={this.state.weapons} locationData={this.state.locations}
-                                   renderType="questions" />
-                        */
+                        {
+                            /*
+                            <Character characterData={char} murdererData={this.state.murderer}
+                                       weaponData={this.state.weapons} locationData={this.state.locations}
+                                       renderType="questions" />
+                            */
 
-                        // This section will display all the location data for the game setup. Not to be seen
-                        // during regular gameplay. Just for development purposes.
-                    }
-                    {this.renderGameState()}
-                </div>
-                <div>
-                    You'll want to print off a <a target="_blank" href="../../images/Case_Fact_Sheet.jpeg">case
+                            // This section will display all the location data for the game setup. Not to be seen
+                            // during regular gameplay. Just for development purposes.
+                        }
+                        {this.renderGameState()}
+                    </div>
+                    <div>
+                        You'll want to print off a <a target="_blank" href="../../images/Case_Fact_Sheet.jpeg">case
                     sheet</a>
-                </div>
+                    </div>
+                </ErrorBoundary>
             </div>
         )
     }

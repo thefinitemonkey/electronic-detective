@@ -1,8 +1,9 @@
 // Character class for Electronic Detective
 
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import "../../css/characters/Questions.css";
+import ErrorBoundary from "../ErrorBoundary";
 
 class CharacterQuestions extends Component {
 
@@ -33,7 +34,7 @@ class CharacterQuestions extends Component {
         // Update the state of the clicked item to true
         const clickedState = this.state.clicked.slice(0);
         clickedState[data - 1] = true;
-        this.setState({clicked: clickedState, asked: newAsked});
+        this.setState({ clicked: clickedState, asked: newAsked });
 
         this.props.handleQuestionClick(data);
     }
@@ -46,9 +47,9 @@ class CharacterQuestions extends Component {
                     {this.props.questions && this.props.questions.map(question =>
                         <div className="Question" key={question.id}>
                             <a href={`question-link-${question.id}`} key={question.id}
-                               className={this.state.clicked[question.id - 1] ?
-                                   "Question-clicked" : "Question-unclicked"}
-                               onClick={((e) => this.handleQuestionClick(e, question.id))}>
+                                className={this.state.clicked[question.id - 1] ?
+                                    "Question-clicked" : "Question-unclicked"}
+                                onClick={((e) => this.handleQuestionClick(e, question.id))}>
                                 {question.question}
                             </a>
                         </div>
@@ -63,7 +64,7 @@ class CharacterQuestions extends Component {
                     <div className="Question" key={question.id}>
                         <span className={this.state.clicked[question.id - 1] ?
                             "Question-clicked" : "Question-unclicked"}>
-                        {question.question}
+                            {question.question}
                         </span>
                     </div>
                 )}
@@ -75,7 +76,9 @@ class CharacterQuestions extends Component {
     render = () => {
         return (
             <div className="Questions">
-                {this.getQuestionRender()}
+                <ErrorBoundary>
+                    {this.getQuestionRender()}
+                </ErrorBoundary>
             </div>
         );
     }

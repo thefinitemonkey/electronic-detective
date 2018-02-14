@@ -1,9 +1,10 @@
 // Characters class for Electronic Detective
 
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import "../../css/characters/Character.css";
 import Character from "./Character";
+import ErrorBoundary from "../ErrorBoundary";
 
 
 class Characters extends Component {
@@ -33,13 +34,13 @@ class Characters extends Component {
 
     handleSuspectClick = (e, data) => {
         // Update the state to reflect the selected suspect id
-        this.setState({selectedSuspect: data});
+        this.setState({ selectedSuspect: data });
     }
 
 
     handleEndInterrogationClick = (e) => {
         // Update the state to reflect that nobody is being interrogated
-        this.setState({selectedSuspect: -1});
+        this.setState({ selectedSuspect: -1 });
     }
 
 
@@ -56,14 +57,16 @@ class Characters extends Component {
 
         return (
             <div className="Characters-list">
-                {this.state.characters.map(character =>
-                    <Character key={character.id} characterData={character} murdererData={this.state.murderer}
-                               weaponData={this.state.weapons} locationData={this.state.locations}
-                               renderType="full" selectedSuspect={this.state.selectedSuspect}
-                               handleSuspectClick={this.handleSuspectClick}
-                               handleEndInterrogation={this.handleEndInterrogationClick}
-                               handleAccusationClick={this.handleAccusationClick}/>
-                )}
+                <ErrorBoundary>
+                    {this.state.characters.map(character =>
+                        <Character key={character.id} characterData={character} murdererData={this.state.murderer}
+                            weaponData={this.state.weapons} locationData={this.state.locations}
+                            renderType="full" selectedSuspect={this.state.selectedSuspect}
+                            handleSuspectClick={this.handleSuspectClick}
+                            handleEndInterrogation={this.handleEndInterrogationClick}
+                            handleAccusationClick={this.handleAccusationClick} />
+                    )}
+                </ErrorBoundary>
             </div>
         )
     }
