@@ -11,15 +11,22 @@ class CharacterQuestions extends Component {
         super(props);
         this.props = props;
 
-        const clickedState = [];
-        for (let i = 0; i++; i < this.props.questions.length) {
-            clickedState.push(false);
-        }
+        // Set up the clicked state of each of the questions
+        let clickedState = [];
+        if (this.props.clickedState) { clickedState = this.props.clickedState } else {
+            for (let i = 0; i++; i < this.props.questions.length) {
+                clickedState.push(false);
+            }
+        };
+
+        // Set the allowed and asked number of questions
+        const allowedNum = this.props.allowed ? this.props.allowed : 3;
+        const askedNum = this.props.asked ? this.props.asked : 0;
 
         this.state = {
             clicked: clickedState,
-            allowed: 3,
-            asked: 0
+            allowed: allowedNum,
+            asked: askedNum
         };
     }
 

@@ -7,6 +7,7 @@ import Adapter from "enzyme-adapter-react-16";
 
 
 describe("CharacterAlibi", () => {
+    const should = require('chai').should();
     let props;
     let testArr;
     let mountedCharacterAlibi;
@@ -40,10 +41,9 @@ describe("CharacterAlibi", () => {
     for (let i = 0; i < 15; i++) {
         it("contains no fewer than one and no more than three facts", () => {
             const divs = characterAlibi().find(".Character-alibifact");
-            expect(divs.length).toBeGreaterThanOrEqual(1);
-            expect(divs.length).toBeLessThanOrEqual(3);
-        }
-        )
+            divs.length.should.be.at.least(1);
+            divs.length.should.be.at.most(3);
+        })
     };
 
     testArr = [{
@@ -58,20 +58,20 @@ describe("CharacterAlibi", () => {
         selectedFacts: ["town", "suspect", "location"],
         results: ["I was in the", "I was with", "I was at the"]
     }];
-    
+
     for (let test in testArr) {
         it("gives the correct responses for each fact type", () => {
             // Check that the correct number of facts is rendered for the
             // number of fact selections provided
             props.selectedFacts = testArr[test].selectedFacts;
             const divs = characterAlibi().find(".Character-alibifact");
-            expect(divs.length).toBe(testArr[test].selectedFacts.length);
+            divs.length.should.equal(testArr[test].selectedFacts.length);
             // Check that the beginning of each fact statement matches the
             // start expected for each type requested
             for (let i = 0; i < testArr[test].results.length; i++) {
                 const child = divs.get(i).props.children;
                 const expected = testArr[test].results[i];
-                expect(child.includes(expected)).toBe(true);
+                (child.includes(expected)).should.equal(true);
             }
         })
     }
