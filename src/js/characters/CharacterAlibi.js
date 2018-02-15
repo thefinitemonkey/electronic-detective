@@ -11,7 +11,9 @@ class CharacterAlibi extends Component {
         super(props);
         this.props = props;
 
-        this.state = {alibi: this.createAlibi()};
+        const config = this.props.selectedFacts ? this.props.selectedFacts : [];
+
+        this.state = { alibi: this.createAlibi(config) };
     }
 
 
@@ -20,7 +22,7 @@ class CharacterAlibi extends Component {
     }
 
 
-    createAlibi = () => {
+    createAlibi = (config) => {
         // Create array of the list of possible alibi facts to provide
         const arrFacts = ["side", "town", "location", "suspect", "suspect"];
 
@@ -28,11 +30,15 @@ class CharacterAlibi extends Component {
         const numFacts = this.getRandomInt(3);
 
         // Build a secondary array of the facts that will be shared in the alibi
-        const arrSelectedFacts = [];
-        for (let i = 0; i < numFacts + 1; i++) {
-            const factPos = this.getRandomInt(numFacts);
-            arrSelectedFacts.push(arrFacts[factPos]);
-            arrFacts.splice(factPos, 1);
+        let arrSelectedFacts = [];
+        if (config.length > 0) {
+            arrSelectedFacts = config;
+        } else {
+            for (let i = 0; i < numFacts + 1; i++) {
+                const factPos = this.getRandomInt(numFacts);
+                arrSelectedFacts.push(arrFacts[factPos]);
+                arrFacts.splice(factPos, 1);
+            }
         }
 
         // Create a duplicate of the attendees that we'll be able to work with
@@ -60,7 +66,7 @@ class CharacterAlibi extends Component {
                     });
                     break;
                 case "town":
-                    alibiArr.push({ id: pos, fact: `I was ${this.props.characterData.location.address.town}` });
+                    alibiArr.push({ id: pos, fact: `I was in the ${this.props.characterData.location.address.town} area` });
                     break;
                 case "location":
                     alibiArr.push({ id: pos, fact: `I was at the ${this.props.characterData.location.name}` });
