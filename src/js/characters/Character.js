@@ -17,7 +17,7 @@ class Character extends Component {
         const newState = Object.assign({}, props);
         this.state = newState;
 
-        this.imgPath = "\\images\\characters\\";
+        this.imgPath = "./images/characters/";
     }
 
 

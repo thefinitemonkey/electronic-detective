@@ -58,7 +58,7 @@ class GameManager extends Component {
 
     mapJsonPromises = (jsonFile) => {
         return (
-            fetch(`/json/${jsonFile.name}`)
+            fetch(`./json/${jsonFile.name}`)
                 .then((response) => {
                     return (response.json())
                 })
@@ -362,7 +362,7 @@ class GameManager extends Component {
                         {this.renderGameState()}
                     </div>
                     <div>
-                        You'll want to print off a <a target="_blank" href="../../images/Case_Fact_Sheet.jpeg">case
+                        You'll want to print off a <a target="_blank" href="./images/Case_Fact_Sheet.jpeg">case
                     sheet</a>
                     </div>
                 </ErrorBoundary>
