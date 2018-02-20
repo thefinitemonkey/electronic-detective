@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 
+import Main from "./routes/Main";
 import Characters from "./characters/Characters";
 import Character from "./characters/Character";
 import Location from "./locations/Location";
@@ -20,7 +21,8 @@ class GameManager extends Component {
             murderer: {},
             scene: {},
             weapon: {},
-            players: [{}]
+            players: [{}],
+            displayGame: false
         };
 
         this.gameReady = false;
@@ -298,8 +300,10 @@ class GameManager extends Component {
 
 
     renderGameState = () => {
-        if (!this.state.foundMurderer) return null;
+        if (!this.state.displayGame) return null;
 
+        // This section will display all the location data for the game setup. 
+        // Shows once the murderer has been successfully identified.
         return (
             <div>
                 <h2>This is the city</h2>
@@ -313,23 +317,6 @@ class GameManager extends Component {
     }
 
     render = () => {
-        {
-            // Find a character at a weapon location with the same gender as the murderer
-            // For testing purposes only
-            /*
-            let location;
-            for (location of this.state.locations) {
-                if (location.weapon.type === ".38") break;
-            }
-            let char;
-            if (location) {
-                char = this.state.murderer.gender === "M" ?
-                    location.attendees.men[0] :
-                    location.attendees.women[0];
-            }
-            */
-        }
-
         if (!this.gameReady) {
             return (
                 <div>Loading...</div>
@@ -344,21 +331,12 @@ class GameManager extends Component {
                         <h2>Find my killer!</h2>
                         <Character characterData={this.state.victim} characterType="victim" renderType="full" />
 
-                        <h2>We are the suspects</h2>
-                        <Characters charactersData={this.state.characters} murdererData={this.state.murderer}
+                        <Main charactersData={this.state.characters} murdererData={this.state.murderer}
                             weaponsData={this.state.weapons} locationsData={this.state.locations}
                             handleAccusationClick={this.handleAccusationClick} />
 
-                        {
-                            /*
-                            <Character characterData={char} murdererData={this.state.murderer}
-                                       weaponData={this.state.weapons} locationData={this.state.locations}
-                                       renderType="questions" />
-                            */
 
-                            // This section will display all the location data for the game setup. Not to be seen
-                            // during regular gameplay. Just for development purposes.
-                        }
+
                         {this.renderGameState()}
                     </div>
                     <div>
