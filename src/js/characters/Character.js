@@ -82,7 +82,7 @@ class Character extends Component {
     handleSuspectClick = (e, data) => {
         // Update the change in state to Characters
         e.preventDefault();
-        this.setState({ allowedQuestions: 3 });
+        this.setState({ allowedQuestions: this.props.allowedQuestions });
         this.props.handleSuspectClick(e, data);
     }
 
@@ -90,9 +90,7 @@ class Character extends Component {
     handleEndInterrogationClick = (e) => {
         // Update the change in state to Characters
         e.preventDefault();
-        this.setState({ renderType: "full" });
-        // Reset the answer to an undefined response
-        this.setState({answer: undefined});
+        this.setState({ renderType: "full", answer: undefined });
 
         this.props.handleEndInterrogation(e);
     }

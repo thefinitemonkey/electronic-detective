@@ -64,7 +64,7 @@ class Characters extends Component {
                             renderType="full" selectedSuspect={this.state.selectedSuspect}
                             handleSuspectClick={this.handleSuspectClick}
                             handleEndInterrogation={this.handleEndInterrogationClick}
-                            handleAccusationClick={this.handleAccusationClick} />
+                            handleAccusationClick={this.handleAccusationClick} allowedQuestions={3} />
                     )}
                 </ErrorBoundary>
             </div>

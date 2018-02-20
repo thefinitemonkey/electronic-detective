@@ -1,7 +1,6 @@
 class CharacterAnswerLogic {
 
     static checkEastSide = (obj, subject, response) => {
-        console.log(obj);
         // Check whether the suspect or murderer was on the East side of town and display the
         // appropriate response for the question
         const side = subject === "suspect" ?
