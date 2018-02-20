@@ -1,6 +1,7 @@
 class CharacterAnswerLogic {
 
     static checkEastSide = (obj, subject, response) => {
+        console.log(obj);
         // Check whether the suspect or murderer was on the East side of town and display the
         // appropriate response for the question
         const side = subject === "suspect" ?
@@ -9,7 +10,7 @@ class CharacterAnswerLogic {
 
         const display = side === "East" ? response.affirmative : response.negative;
 
-        return({answer: display});
+        return ({ answer: display });
     };
 
 
@@ -17,7 +18,7 @@ class CharacterAnswerLogic {
         // Check whether the murderer is male and display the appropriate response
         const display = obj.murdererData.gender === "M" ? response.affirmative : response.negative;
 
-        return({answer: display});
+        return ({ answer: display });
     };
 
 
@@ -29,7 +30,7 @@ class CharacterAnswerLogic {
             display = response.affirmative + obj.murdererData.location.address.town :
             display = response.affirmative + obj.characterData.location.address.town;
 
-        return({answer: display});
+        return ({ answer: display });
     };
 
 
@@ -38,7 +39,7 @@ class CharacterAnswerLogic {
         const display = obj.characterData.weapon.type === ".38" ?
             response.affirmative : response.negative;
 
-        return({answer: display});
+        return ({ answer: display });
     };
 
 
@@ -50,7 +51,7 @@ class CharacterAnswerLogic {
         }
 
         const display = response.affirmative + weapon.location.name;
-        return({answer: display});
+        return ({ answer: display });
     };
 
 
@@ -62,7 +63,7 @@ class CharacterAnswerLogic {
         }
 
         const display = response.affirmative + weapon.location.name;
-        return({answer: display});
+        return ({ answer: display });
     };
 
 
@@ -74,28 +75,28 @@ class CharacterAnswerLogic {
         }
 
         const display = response.affirmative + location.name;
-        return({answer: display});
+        return ({ answer: display });
     };
 
 
     static checkPlaceNames = (obj, subject, response) => {
-        // Check if the murderer was at location A, B, or C and respond appropriately
+        // Check if the subject was at location A, B, or C and respond appropriately
         const locID = subject === "murderer" ?
             obj.murdererData.location.id :
             obj.characterData.location.id;
 
         const display = (locID === "A" || locID === "B" || locID === "C") ?
             response.affirmative : response.negative;
-        return({answer: display});
+        return ({ answer: display });
     };
 
 
     static checkWeaponLocation = (obj, subject, response) => {
         // Check whether the character was at a location with a weapon
         const display = obj.characterData.location.weapon.type === null ?
-            response.negative : response.positive;
+            response.negative : response.affirmative;
 
-        return({answer: display});
+        return ({ answer: display });
     };
 
 
@@ -103,8 +104,7 @@ class CharacterAnswerLogic {
         // This one is trickier. Only people who were at a location with a weapon can answer.
         if (obj.characterData.location.weapon.type === null ||
             obj.characterData.location.weapon.type !== subject) {
-            this.setState({ answer: response.unknown });
-            return;
+            return ({ answer: response.unknown });
         }
 
         // Get the weapon for the character's location
@@ -113,19 +113,20 @@ class CharacterAnswerLogic {
         // If the character is the same gender as the murderer then they have to give a truthful answer
         if (obj.characterData.gender === obj.murdererData.gender) {
             const display = weapon.print % 2 === 1 ? response.affirmative : response.negative;
-            return({answer: display});
-            return;
+            return ({ answer: display });
         }
 
         // If the character is not the same gender as the murderer then they might lie. It's a coin toss.
         const lie = this.getRandomInt(2);
         const display = lie ? response.negative : response.affirmative;
-        return({answer: display});
+        return ({ answer: display });
     };
 
 
     getRandomInt = (max) => {
         return Math.floor(Math.random() * Math.floor(max));
     }
-    
+
 }
+
+export default CharacterAnswerLogic;
