@@ -7,6 +7,7 @@ import Characters from "./characters/Characters";
 import Character from "./characters/Character";
 import Location from "./locations/Location";
 import ErrorBoundary from "./ErrorBoundary";
+import { Link } from 'react-router-dom';
 import "../css/GameManager.css";
 
 class GameManager extends Component {
@@ -96,14 +97,21 @@ class GameManager extends Component {
         this.setState({ questions: jsonData.questions });
     }
 
+
     createCaseSheet = (jsonData) => {
-        this.caseSheetTemplate = jsonData.casesheet;
+        this.caseSheetTemplate = jsonData;
+        const sheet = Object.assign({}, this.caseSheetTemplate);
+        sheet.name = "Doug";
+        const playerList = [sheet];
+        this.setState({players: playerList});
     }
 
 
     getRandomInt = (max) => {
         return Math.floor(Math.random() * Math.floor(max));
     }
+
+
 
 
     createMayhem = () => {
@@ -299,6 +307,15 @@ class GameManager extends Component {
     }
 
 
+    handleClueSelection = (e, prop, data) => {
+        // Get a duplicate of the list of players that we can work with
+        const playerList = Object.assign({}, this.state.players);
+        // Update the gender selection and set the new state
+        playerList[0].clueSelections[prop] = data;
+        this.setState({players: playerList});
+    }
+
+
     renderGameState = () => {
         if (!this.state.displayGame) return null;
 
@@ -331,9 +348,11 @@ class GameManager extends Component {
                         <h2>Find my killer!</h2>
                         <Character characterData={this.state.victim} characterType="victim" renderType="full" />
 
-                        <Main charactersData={this.state.characters} murdererData={this.state.murderer}
+                        <Link to='/'>Home</Link> <Link to='/suspects'>Suspects</Link> <Link to='/sheet'>Sheet</Link>
+                        <Main playerData={this.state.players[0]} charactersData={this.state.characters} murdererData={this.state.murderer}
                             weaponsData={this.state.weapons} locationsData={this.state.locations}
-                            handleAccusationClick={this.handleAccusationClick} />
+                            handleAccusationClick={this.handleAccusationClick} 
+                            handleClueSelection={this.handleClueSelection} />
 
 
 
