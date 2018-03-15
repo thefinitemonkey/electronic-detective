@@ -1,0 +1,8 @@
+{
+  "1": { "side": "East", "town": "Uptown" },
+  "2": { "side": "East", "town": "Midtown" },
+  "3": { "side": "East", "town": "Downtown" },
+  "4": { "side": "West", "town": "Uptown" },
+  "5": { "side": "West", "town": "Midtown" },
+  "6": { "side": "West", "town": "Downtown" }
+}

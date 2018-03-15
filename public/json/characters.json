@@ -1,491 +1,281 @@
-{"characters": [
-	{
-		"id": 1,
-		"odd": true,
-		"name": "Lenny Little",
-		"gender": "M",
-		"occupation": "Bartender",
-		"relationshipID": 11,
-		"relationshipStatus": "Married",
-		"spouse": "Ivy Little",
-		"images": {
-			"portrait": "01-Portrait.jpg",
-			"profile": "01-Profile.jpg"
-		},
-		"location": {
-			"name": "",
-			"side": "",
-			"town": ""
-		},
-		"status": "",
-		"weapon": {
-			"type": null
-		},
-		"availableQuestions": [1, 2, 9, 13, 14]
-	},
+{
+  "1": {
+    "odd": true,
+    "name": "Lenny Little",
+    "gender": "M",
+    "occupation": "Bartender",
+    "relationshipID": 11,
+    "relationshipStatus": "Married",
+    "images": {
+      "portrait": "01-Portrait.jpg",
+      "profile": "01-Profile.jpg"
+    },
+    "availableQuestions": [1, 2, 9, 13, 14]
+  },
 
-	{
-		"id": 2,
-		"odd": false,
-		"name": "Al Farook",
-		"gender": "M",
-		"occupation": "Tycoon",
-		"relationshipID": 0,
-		"relationshipStatus": "Playboy",
-		"images": {
-			"portrait": "02-Portrait.jpg",
-			"profile": "02-Profile.jpg"
-		},
-		"location": {
-			"name": "",
-			"side": "",
-			"town": ""
-		},
-		"status": "",
-		"weapon": {
-			"type": null
-		},
-		"availableQuestions": [2, 3, 9, 13, 14]
-	},
+  "2": {
+    "odd": false,
+    "name": "Al Farook",
+    "gender": "M",
+    "occupation": "Tycoon",
+    "relationshipID": 0,
+    "relationshipStatus": "Playboy",
+    "images": {
+      "portrait": "02-Portrait.jpg",
+      "profile": "02-Profile.jpg"
+    },
+    "availableQuestions": [2, 3, 9, 13, 14]
+  },
 
-	{
-		"id": 3,
-		"odd": true,
-		"name": "Pepe Perez",
-		"gender": "M",
-		"occupation": "Flamenco Dancer",
-		"relationshipID": 13,
-		"relationshipStatus": "Married",
-		"spouse": "Piper Perez",
-		"images": {
-			"portrait": "03-Portrait.jpg",
-			"profile": "03-Profile.jpg"
-		},
-		"location": {
-			"name": "",
-			"side": "",
-			"town": ""
-		},
-		"status": "",
-		"weapon": {
-			"type": null
-		},
-		"availableQuestions": [3, 4, 5, 13, 14]
-	},
+  "3": {
+    "odd": true,
+    "name": "Pepe Perez",
+    "gender": "M",
+    "occupation": "Flamenco Dancer",
+    "relationshipID": 13,
+    "relationshipStatus": "Married",
+    "images": {
+      "portrait": "03-Portrait.jpg",
+      "profile": "03-Profile.jpg"
+    },
+    "availableQuestions": [3, 4, 5, 13, 14]
+  },
 
-	{
-		"id": 4,
-		"odd": false,
-		"name": "Tony Racheti",
-		"gender": "M",
-		"occupation": "Promoter",
-		"relationshipID": 14,
-		"relationshipStatus": "Married",
-		"spouse": "Dina Racheti",
-		"images": {
-			"portrait": "04-Portrait.jpg",
-			"profile": "04-Profile.jpg"
-		},
-		"location": {
-			"name": "",
-			"side": "",
-			"town": ""
-		},
-		"status": "",
-		"weapon": {
-			"type": null
-		},
-		"availableQuestions": [4, 5, 9, 13, 14]
-	},
+  "4": {
+    "odd": false,
+    "name": "Tony Racheti",
+    "gender": "M",
+    "occupation": "Promoter",
+    "relationshipID": 14,
+    "relationshipStatus": "Married",
+    "images": {
+      "portrait": "04-Portrait.jpg",
+      "profile": "04-Profile.jpg"
+    },
+    "availableQuestions": [4, 5, 9, 13, 14]
+  },
 
-	{
-		"id": 5,
-		"odd": true,
-		"name": "Mickey O'Malley",
-		"gender": "M",
-		"occupation": "Retired Cop",
-		"relationshipID": 0,
-		"relationshipStatus": "Single",
-		"images": {
-			"portrait": "05-Portrait.jpg",
-			"profile": "05-Profile.jpg"
-		},
-		"location": {
-			"name": "",
-			"side": "",
-			"town": ""
-		},
-		"status": "",
-		"weapon": {
-			"type": null
-		},
-		"availableQuestions": [1, 4, 9, 13, 14]
-	},
+  "5": {
+    "odd": true,
+    "name": "Mickey O'Malley",
+    "gender": "M",
+    "occupation": "Retired Cop",
+    "relationshipID": 0,
+    "relationshipStatus": "Single",
+    "images": {
+      "portrait": "05-Portrait.jpg",
+      "profile": "05-Profile.jpg"
+    },
+    "availableQuestions": [1, 4, 9, 13, 14]
+  },
 
-	{
-		"id": 6,
-		"odd": false,
-		"name": "Max Fineflugle",
-		"gender": "M",
-		"occupation": "Producer",
-		"relationshipID": 16,
-		"relationshipStatus": "Married",
-		"spouse": "Joan Fineflugle",
-		"images": {
-			"portrait": "06-Portrait.jpg",
-			"profile": "06-Profile.jpg"
-		},
-		"location": {
-			"name": "",
-			"side": "",
-			"town": ""
-		},
-		"status": "",
-		"weapon": {
-			"type": null
-		},
-		"availableQuestions": [5, 6, 12, 13, 14]
-	},
+  "6": {
+    "odd": false,
+    "name": "Max Fineflugle",
+    "gender": "M",
+    "occupation": "Producer",
+    "relationshipID": 16,
+    "relationshipStatus": "Married",
+    "images": {
+      "portrait": "06-Portrait.jpg",
+      "profile": "06-Profile.jpg"
+    },
+    "availableQuestions": [5, 6, 12, 13, 14]
+  },
 
-	{
-		"id": 7,
-		"odd": true,
-		"name": "Ripp Rapp",
-		"gender": "M",
-		"occupation": "Dockworker",
-		"relationshipID": 0,
-		"relationshipStatus": "Single",
-		"images": {
-			"portrait": "07-Portrait.jpg",
-			"profile": "07-Profile.jpg"
-		},
-		"location": {
-			"name": "",
-			"side": "",
-			"town": ""
-		},
-		"status": "",
-		"weapon": {
-			"type": null
-		},
-		"availableQuestions": [2, 5, 12, 13, 14]
-	},
+  "7": {
+    "odd": true,
+    "name": "Ripp Rapp",
+    "gender": "M",
+    "occupation": "Dockworker",
+    "relationshipID": 0,
+    "relationshipStatus": "Single",
+    "images": {
+      "portrait": "07-Portrait.jpg",
+      "profile": "07-Profile.jpg"
+    },
+    "availableQuestions": [2, 5, 12, 13, 14]
+  },
 
-	{
-		"id": 8,
-		"odd": false,
-		"name": "Buster Bailey",
-		"gender": "M",
-		"occupation": "Basketball Player",
-		"relationshipID": 0,
-		"relationshipStatus": "Single",
-		"images": {
-			"portrait": "08-Portrait.jpg",
-			"profile": "08-Profile.jpg"
-		},
-		"location": {
-			"name": "",
-			"side": "",
-			"town": ""
-		},
-		"status": "",
-		"weapon": {
-			"type": null
-		},
-		"availableQuestions": [3, 5, 12, 13, 14]
-	},
+  "8": {
+    "odd": false,
+    "name": "Buster Bailey",
+    "gender": "M",
+    "occupation": "Basketball Player",
+    "relationshipID": 0,
+    "relationshipStatus": "Single",
+    "images": {
+      "portrait": "08-Portrait.jpg",
+      "profile": "08-Profile.jpg"
+    },
+    "availableQuestions": [3, 5, 12, 13, 14]
+  },
 
-	{
-		"id": 9,
-		"odd": true,
-		"name": "Rocky Roll",
-		"gender": "M",
-		"occupation": "Musician",
-		"relationshipID": 19,
-		"relationshipStatus": "Married",
-		"spouse": "Candy Roll",
-		"images": {
-			"portrait": "09-Portrait.jpg",
-			"profile": "09-Profile.jpg"
-		},
-		"location": {
-			"name": "",
-			"side": "",
-			"town": ""
-		},
-		"status": "",
-		"weapon": {
-			"type": null
-		},
-		"availableQuestions": [1, 5, 12, 13, 14]
-	},
+  "9": {
+    "odd": true,
+    "name": "Rocky Roll",
+    "gender": "M",
+    "occupation": "Musician",
+    "relationshipID": 19,
+    "relationshipStatus": "Married",
+    "images": {
+      "portrait": "09-Portrait.jpg",
+      "profile": "09-Profile.jpg"
+    },
+    "availableQuestions": [1, 5, 12, 13, 14]
+  },
 
-	{
-		"id": 10,
-		"odd": false,
-		"name": "Ling Tong",
-		"gender": "M",
-		"occupation": "Restaurant Owner",
-		"relationshipID": 0,
-		"relationshipStatus": "Bachelor",
-		"images": {
-			"portrait": "10-Portrait.jpg",
-			"profile": "10-Profile.jpg"
-		},
-		"location": {
-			"name": "",
-			"side": "",
-			"town": ""
-		},
-		"status": "",
-		"weapon": {
-			"type": null
-		},
-		"availableQuestions": [7, 8, 12, 13, 14]
-	},
+  "10": {
+    "odd": false,
+    "name": "Ling Tong",
+    "gender": "M",
+    "occupation": "Restaurant Owner",
+    "relationshipID": 0,
+    "relationshipStatus": "Bachelor",
+    "images": {
+      "portrait": "10-Portrait.jpg",
+      "profile": "10-Profile.jpg"
+    },
+    "availableQuestions": [7, 8, 12, 13, 14]
+  },
 
-	{
-		"id": 11,
-		"odd": true,
-		"name": "Ivy Little",
-		"gender": "F",
-		"occupation": "Landlady",
-		"relationshipID": 1,
-		"relationshipStatus": "Married",
-		"spouse": "Lenny Little",
-		"images": {
-			"portrait": "11-Portrait.jpg",
-			"profile": "11-Profile.jpg"
-		},
-		"location": {
-			"name": "",
-			"side": "",
-			"town": ""
-		},
-		"status": "",
-		"weapon": {
-			"type": null
-		},
-		"availableQuestions": [6, 7, 11, 13, 14]
-	},
+  "11": {
+    "odd": true,
+    "name": "Ivy Little",
+    "gender": "F",
+    "occupation": "Landlady",
+    "relationshipID": 1,
+    "relationshipStatus": "Married",
+    "images": {
+      "portrait": "11-Portrait.jpg",
+      "profile": "11-Profile.jpg"
+    },
+    "availableQuestions": [6, 7, 11, 13, 14]
+  },
 
-	{
-		"id": 12,
-		"odd": false,
-		"name": "Lucy Tumble",
-		"gender": "F",
-		"occupation": "Secretary",
-		"relationshipID": 0,
-		"relationshipStatus": "Still looking",
-		"images": {
-			"portrait": "12-Portrait.jpg",
-			"profile": "12-Profile.jpg"
-		},
-		"location": {
-			"name": "",
-			"side": "",
-			"town": ""
-		},
-		"status": "",
-		"weapon": {
-			"type": null
-		},
-		"availableQuestions": [2, 6, 11, 13, 14]
-	},
+  "12": {
+    "odd": false,
+    "name": "Lucy Tumble",
+    "gender": "F",
+    "occupation": "Secretary",
+    "relationshipID": 0,
+    "relationshipStatus": "Still looking",
+    "images": {
+      "portrait": "12-Portrait.jpg",
+      "profile": "12-Profile.jpg"
+    },
+    "availableQuestions": [2, 6, 11, 13, 14]
+  },
 
-	{
-		"id": 13,
-		"odd": true,
-		"name": "Piper Perez",
-		"gender": "F",
-		"occupation": "Latin Singer",
-		"relationshipID": 3,
-		"relationshipStatus": "Married",
-		"spouse": "Pepe Perez",
-		"images": {
-			"portrait": "13-Portrait.jpg",
-			"profile": "13-Profile.jpg"
-		},
-		"location": {
-			"name": "",
-			"side": "",
-			"town": ""
-		},
-		"status": "",
-		"weapon": {
-			"type": null
-		},
-		"availableQuestions": [3, 7, 11, 13, 14]
-	},
+  "13": {
+    "odd": true,
+    "name": "Piper Perez",
+    "gender": "F",
+    "occupation": "Latin Singer",
+    "relationshipID": 3,
+    "relationshipStatus": "Married",
+    "images": {
+      "portrait": "13-Portrait.jpg",
+      "profile": "13-Profile.jpg"
+    },
+    "availableQuestions": [3, 7, 11, 13, 14]
+  },
 
-	{
-		"id": 14,
-		"odd": false,
-		"name": "Dina Racheti",
-		"gender": "F",
-		"occupation": "Socialite",
-		"relationshipID": 4,
-		"relationshipStatus": "Married",
-		"spouse": "Tony Racheti",
-		"images": {
-			"portrait": "14-Portrait.jpg",
-			"profile": "14-Profile.jpg"
-		},
-		"location": {
-			"name": "",
-			"side": "",
-			"town": ""
-		},
-		"status": "",
-		"weapon": {
-			"type": null
-		},
-		"availableQuestions": [1, 6, 11, 13, 14]
-	},
+  "14": {
+    "odd": false,
+    "name": "Dina Racheti",
+    "gender": "F",
+    "occupation": "Socialite",
+    "relationshipID": 4,
+    "relationshipStatus": "Married",
+    "images": {
+      "portrait": "14-Portrait.jpg",
+      "profile": "14-Profile.jpg"
+    },
+    "availableQuestions": [1, 6, 11, 13, 14]
+  },
 
-	{
-		"id": 15,
-		"odd": true,
-		"name": "Eileen Stellar",
-		"gender": "F",
-		"occupation": "Actress",
-		"relationshipID": 0,
-		"relationshipStatus": "Eligible",
-		"images": {
-			"portrait": "15-Portrait.jpg",
-			"profile": "15-Profile.jpg"
-		},
-		"location": {
-			"name": "",
-			"side": "",
-			"town": ""
-		},
-		"status": "",
-		"weapon": {
-			"type": null
-		},
-		"availableQuestions": [4, 7, 11, 13, 14]
-	},
+  "15": {
+    "odd": true,
+    "name": "Eileen Stellar",
+    "gender": "F",
+    "occupation": "Actress",
+    "relationshipID": 0,
+    "relationshipStatus": "Eligible",
+    "images": {
+      "portrait": "15-Portrait.jpg",
+      "profile": "15-Profile.jpg"
+    },
+    "availableQuestions": [4, 7, 11, 13, 14]
+  },
 
-	{
-		"id": 16,
-		"odd": false,
-		"name": "Joan Fineflugle",
-		"gender": "F",
-		"occupation": "Accountant",
-		"relationshipID": 6,
-		"relationshipStatus": "Married",
-		"spouse": "Max Fineflugle",
-		"images": {
-			"portrait": "16-Portrait.jpg",
-			"profile": "16-Profile.jpg"
-		},
-		"location": {
-			"name": "",
-			"side": "",
-			"town": ""
-		},
-		"status": "",
-		"weapon": {
-			"type": null
-		},
-		"availableQuestions": [6, 8, 10, 13, 14]
-	},
+  "16": {
+    "odd": false,
+    "name": "Joan Fineflugle",
+    "gender": "F",
+    "occupation": "Accountant",
+    "relationshipID": 6,
+    "relationshipStatus": "Married",
+    "images": {
+      "portrait": "16-Portrait.jpg",
+      "profile": "16-Profile.jpg"
+    },
+    "availableQuestions": [6, 8, 10, 13, 14]
+  },
 
-	{
-		"id": 17,
-		"odd": true,
-		"name": "Rose Pettle",
-		"gender": "F",
-		"occupation": "Gossip Columnist",
-		"relationshipID": 0,
-		"relationshipStatus": "Unattached",
-		"images": {
-			"portrait": "17-Portrait.jpg",
-			"profile": "17-Profile.jpg"
-		},
-		"location": {
-			"name": "",
-			"side": "",
-			"town": ""
-		},
-		"status": "",
-		"weapon": {
-			"type": null
-		},
-		"availableQuestions": [2, 7, 10, 13, 14]
-	},
+  "17": {
+    "odd": true,
+    "name": "Rose Pettle",
+    "gender": "F",
+    "occupation": "Gossip Columnist",
+    "relationshipID": 0,
+    "relationshipStatus": "Unattached",
+    "images": {
+      "portrait": "17-Portrait.jpg",
+      "profile": "17-Profile.jpg"
+    },
+    "availableQuestions": [2, 7, 10, 13, 14]
+  },
 
-	{
-		"id": 18,
-		"odd": false,
-		"name": "Doris Dill",
-		"gender": "F",
-		"occupation": "Lady Newscaster",
-		"relationshipID": 0,
-		"relationshipStatus": "Not looking",
-		"images": {
-			"portrait": "18-Portrait.jpg",
-			"profile": "18-Profile.jpg"
-		},
-		"location": {
-			"name": "",
-			"side": "",
-			"town": ""
-		},
-		"status": "",
-		"weapon": {
-			"type":null
-		},
-		"availableQuestions": [1, 8, 10, 13, 14]
-	},
+  "18": {
+    "odd": false,
+    "name": "Doris Dill",
+    "gender": "F",
+    "occupation": "Lady Newscaster",
+    "relationshipID": 0,
+    "relationshipStatus": "Not looking",
+    "images": {
+      "portrait": "18-Portrait.jpg",
+      "profile": "18-Profile.jpg"
+    },
+    "availableQuestions": [1, 8, 10, 13, 14]
+  },
 
-	{
-		"id": 19,
-		"odd": true,
-		"name": "Candy Roll",
-		"gender": "F",
-		"occupation": "Groupie",
-		"relationshipID": 9,
-		"relationshipStatus": "Married",
-		"spouse": "Rocky Roll",
-		"images": {
-			"portrait": "19-Portrait.jpg",
-			"profile": "19-Profile.jpg"
-		},
-		"location": {
-			"name": "",
-			"side": "",
-			"town": ""
-		},
-		"status": "",
-		"weapon": {
-			"type": null
-		},
-		"availableQuestions": [3, 8, 10, 13, 14]
-	},
+  "19": {
+    "odd": true,
+    "name": "Candy Roll",
+    "gender": "F",
+    "occupation": "Groupie",
+    "relationshipID": 9,
+    "relationshipStatus": "Married",
+    "images": {
+      "portrait": "19-Portrait.jpg",
+      "profile": "19-Profile.jpg"
+    },
+    "availableQuestions": [3, 8, 10, 13, 14]
+  },
 
-	{
-		"id": 20,
-		"odd": false,
-		"name": "Sing Wong",
-		"gender": "F",
-		"occupation": "Waitress",
-		"relationshipID": 0,
-		"relationshipStatus": "Single",
-		"images": {
-			"portrait": "20-Portrait.jpg",
-			"profile": "20-Profile.jpg"
-		},
-		"location": {
-			"name": "",
-			"side": "",
-			"town": ""
-		},
-		"status": "",
-		"weapon": {
-			"type": null
-		},
-		"availableQuestions": [4, 8, 10, 13, 14]
-	}	
-]}
+  "20": {
+    "odd": false,
+    "name": "Sing Wong",
+    "gender": "F",
+    "occupation": "Waitress",
+    "relationshipID": 0,
+    "relationshipStatus": "Single",
+    "images": {
+      "portrait": "20-Portrait.jpg",
+      "profile": "20-Profile.jpg"
+    },
+    "availableQuestions": [4, 8, 10, 13, 14]
+  }
+}

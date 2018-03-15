@@ -1,91 +1,25 @@
-{"locations": [
-	{
-		"id": "A",
-		"name": "Art Show",
-		"address": {
-			"side": "",
-			"town": ""
-		},
-		"scene": false,
-		"weapon": {
-			"type": null,
-			"print": null
-		},
-		"attendees": {"men":[], "women":[]}
-	},
+{
+  "A": {
+    "name": "Art Show"
+  },
 
-	{
-		"id": "B",
-		"name": "Box at Theatre",
-		"address": {
-			"side": "",
-			"town": ""
-		},
-		"scene": false,
-		"weapon": {
-			"type": null,
-			"print": null
-		},
-		"attendees": {"men":[], "women":[]}
-	},
+  "B": {
+    "name": "Box at Theatre"
+  },
 
-	{
-		"id": "C",
-		"name": "Card Party",
-		"address": {
-			"side": "",
-			"town": ""
-		},
-		"scene": false,
-		"weapon": {
-			"type": null,
-			"print": null
-		},
-		"attendees": {"men":[], "women":[]}
-	},
+  "C": {
+    "name": "Card Party"
+  },
 
-	{
-		"id": "D",
-		"name": "Docks",
-		"address": {
-			"side": "",
-			"town": ""
-		},
-		"scene": false,
-		"weapon": {
-			"type": null,
-			"print": null
-		},
-		"attendees": {"men":[], "women":[]}
-	},
+  "D": {
+    "name": "Docks"
+  },
 
-	{
-		"id": "E",
-		"name": "Embassy",
-		"address": {
-			"side": "",
-			"town": ""
-		},
-		"scene": false,
-		"weapon": {
-			"type": null,
-			"print": null
-		},
-		"attendees": {"men":[], "women":[]}
-	},
+  "E": {
+    "name": "Embassy"
+  },
 
-	{
-		"id": "F",
-		"name": "Factory",
-		"address": {
-			"side": "",
-			"town": ""
-		},
-		"scene": false,
-		"weapon": {
-			"type": null,
-			"print": null
-		},
-		"attendees": {"men":[], "women":[]}
-	}	
-]}
+  "F": {
+    "name": "Factory"
+  }
+}
