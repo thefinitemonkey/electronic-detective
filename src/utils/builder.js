@@ -103,6 +103,7 @@ export function buildGame(setupData, numPlayers) {
     const newSheet = Object.assign({}, setupData.sheet);
     sheetsObj[i] = newSheet;
   }
+  sheetsObj["numPlayers"] = numPlayers;
 
   // Construct the final game state object
   return (gameObj = {

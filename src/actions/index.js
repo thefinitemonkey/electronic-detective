@@ -15,7 +15,7 @@ export const receiveGetSetupData = setupData => {
     }
 }
 
-export const buildGame = (setupData, numPlayers) => dispatch => {
+export const buildGame = (setupData, numPlayers = 1) => dispatch => {
     dispatch(finalizeBuildGame(Builder.buildGame(setupData, numPlayers)));
 }
 

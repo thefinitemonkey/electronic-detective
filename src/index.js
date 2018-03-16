@@ -1,10 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import './css/index.css';
-//mport App from './js/App';
-import GameManager from './js/GameManager';
-//import registerServiceWorker from './registerServiceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import store from "./store/store.js";
 
-ReactDOM.render(<BrowserRouter><GameManager /></BrowserRouter>, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store()}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
 //registerServiceWorker();
