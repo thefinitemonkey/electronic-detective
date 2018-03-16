@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import rootReducer from "../reducers/root_reducer";
+import game from "../reducers/game";
 
 
 const logger = store => next => action => {
@@ -13,6 +13,6 @@ const logger = store => next => action => {
 }
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = () => createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, logger)));
+const store = () => createStore(game, composeEnhancers(applyMiddleware(thunk, logger)));
 
 export default store;

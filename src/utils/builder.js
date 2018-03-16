@@ -1,29 +1,32 @@
 // Game builder for taking in setup data and number of players
 // to generate a game solution state
 
-getRandomInt = max => {
+function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 };
 
-objToArray = obj => {
+function objToArray(obj) {
   // Convert the keys in the object into an array
   const keys = Object.keys(obj);
   const array = [];
+  let newObj;
   keys.forEach(key => {
-    const newObj = obj[key];
+    newObj = obj[key];
     newObj["id"] = key;
     array.push(newObj);
   });
 
-  return newObj;
+  return array;
 };
 
 export function buildGame(setupData, numPlayers) {
   // First need to pick a victim, and a murderer
   const charactersArr = objToArray(setupData.characters);
-  const victim = characterArr[getRandomInt(charactersArr.length)].id;
-  charactersArr.splice(victim, 1);
-  const murderer = charactersArr[getRandomInt(charactersArr.length)].id;
+  const victimIndex = getRandomInt(charactersArr.length);
+  const victim = charactersArr[victimIndex].id;
+  charactersArr.splice(victimIndex, 1);
+  const murdererIndex = getRandomInt(charactersArr.length);
+  const murderer = charactersArr[murdererIndex].id;
 
   // Every location gets an address
   const locationsArr = objToArray(setupData.locations);
@@ -31,12 +34,13 @@ export function buildGame(setupData, numPlayers) {
   locationsArr.forEach(location => {
     const address = getRandomInt(addressesArr.length);
     location.address = addressesArr[address];
-    addresses.splice(address, 1);
+    addressesArr.splice(address, 1);
   });
 
   // One of the locations is the scene of the crime
-  const scene = locationsArr[getRandomInt(locationsArr.length)].id;
-  locationsArr.splice(scene, 1);
+  const sceneIndex = getRandomInt(locationsArr.length);
+  const sceneObj = locationsArr[sceneIndex];
+  locationsArr.splice(sceneIndex, 1);
 
   // Pick the weapon for the crime
   const weaponsArr = objToArray(setupData.weapons);
@@ -70,11 +74,13 @@ export function buildGame(setupData, numPlayers) {
   // Randomize the locations order before putting people
   // in each of them so as to not always have the
   // empty spot at the last location in the list
-  randLocationsArr = [];
+  const randLocationsArr = [];
   const numLocs = locationsArr.length;
   for (let i = 0; i < numLocs; i++) {
     const index = getRandomInt(locationsArr.length);
-    randLocationsArr.push(locationsArr[index]);
+    // Have to replicate the location object so we don't
+    // mutate the setup data
+    randLocationsArr.push({...locationsArr[index]});
     locationsArr.splice(index, 1);
   }
   // Each location gets occupied
@@ -89,6 +95,9 @@ export function buildGame(setupData, numPlayers) {
     });
     location.occupants = occupants;
   });
+  // Put the scene of the crime back into the list of locations
+  randLocationsArr.push(sceneObj);
+  
   // Turn our locations from an array to an object again
   const newLocationsObj = {};
   randLocationsArr.forEach(location => {
@@ -106,11 +115,11 @@ export function buildGame(setupData, numPlayers) {
   sheetsObj["numPlayers"] = numPlayers;
 
   // Construct the final game state object
-  return (gameObj = {
+  return {
     sheets: sheetsObj,
-    locations: randLocationsArr,
+    locations: newLocationsObj,
     victim,
     murderer,
     weapon
-  });
+  };
 }

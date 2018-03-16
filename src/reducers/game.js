@@ -14,9 +14,9 @@ const game = (state = { setupData: {}, gameData: {} }, action) => {
 
   switch (action.type) {
     case RECEIVE_GET_SETUP_DATA:
-      return { ...state, ...setupData };
+      return { ...state, setupData };
     case BUILD_GAME:
-      return { ...state, ...gameData };
+      return { ...state, gameData };
     default:
       return state;
   }

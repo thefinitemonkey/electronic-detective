@@ -10,20 +10,44 @@ export function getSetupData() {
   const weapons = fetch("/json/weapons.json");
   const addresses = fetch("/json/addresses.json");
 
-  const setupData = { sheet: {}, characters: {}, locations: {}, questions: {}, weapons: {}, addresses: {} };
+  const setupData = {
+    sheet: {},
+    characters: {},
+    locations: {},
+    questions: {},
+    weapons: {},
+    addresses: {}
+  };
 
-  Promise.all([sheet, characters, locations, questions, weapons, addresses])
+  return Promise.all([
+    sheet,
+    characters,
+    locations,
+    questions,
+    weapons,
+    addresses
+  ])
     .then(data => {
-      setupData.sheet = JSON.parse(data[0]);
-      setupData.characters = JSON.parse(data[1]);
-      setupData.locations = JSON.parse(data[2]);
-      setupData.questions = JSON.parse(data[3]);
-      setupData.weapons = JSON.parse(data[4]);
-      setupData.addresses = JSON.parse(data[5]);
+      return Promise.all([
+        data[0].json(),
+        data[1].json(),
+        data[2].json(),
+        data[3].json(),
+        data[4].json(),
+        data[5].json()
+      ]);
+    })
+    .then(jsonData => {
+      setupData.sheet = jsonData[0];
+      setupData.characters = jsonData[1];
+      setupData.locations = jsonData[2];
+      setupData.questions = jsonData[3];
+      setupData.weapons = jsonData[4];
+      setupData.addresses = jsonData[5];
+
+      return setupData;
     })
     .catch(error => {
       console.log("error loading setup data", error);
     });
-
-  return setupData;
 }

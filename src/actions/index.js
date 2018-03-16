@@ -1,11 +1,13 @@
-import * as Api from "../api";
+import * as Api from "../api/Api";
 import * as Builder from "../utils/builder";
 
-export const RECEIVE_GET_SETUP_DATA;
-export const BUILD_GAME;
+export const RECEIVE_GET_SETUP_DATA = "RECEIVE_GET_SETUP_DATA";
+export const BUILD_GAME = "BUILD_GAME";
 
 export const getSetupData = () => dispatch => {
-    Api.getSetupData().then(data => {dispatch(receiveGetSetupData(data))});
+    Api.getSetupData().then(data => {
+        dispatch(receiveGetSetupData(data));
+    });
 }
 
 export const receiveGetSetupData = setupData => {
