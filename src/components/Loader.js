@@ -6,12 +6,14 @@ import CircularProgress from "material-ui/CircularProgress";
 class Loader extends PureComponent {
   state = {
     loading: true,
-    numPlayers: 1
+    numPlayers: 1,
+    switchDisplay: null
   };
 
   componentDidMount = () => {
     // Need to get all the setup data before we can go anywhere
     // with the game
+    this.setState({switchDisplay: this.props.switchDisplay});
     this.props.getSetupData();
   };
 
@@ -23,14 +25,18 @@ class Loader extends PureComponent {
     if (this.state.loading) {
       this.setState({ loading: false });
       this.props.buildGame(this.props.game.setupData, this.state.numPlayers);
+      this.state.switchDisplay && this.state.switchDisplay("players");
     }
   };
 
   render = () => {
     return (
+      <div>
+        <div>Loading</div>
         <div>
-            <CircularProgress size={60} thickness={7} />
+          <CircularProgress size={60} thickness={7} />
         </div>
+      </div>
     );
   };
 }

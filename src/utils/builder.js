@@ -40,6 +40,7 @@ export function buildGame(setupData, numPlayers) {
   // One of the locations is the scene of the crime
   const sceneIndex = getRandomInt(locationsArr.length);
   const sceneObj = locationsArr[sceneIndex];
+  const sceneId = sceneObj.id;
   locationsArr.splice(sceneIndex, 1);
 
   // Pick the weapon for the crime
@@ -118,6 +119,7 @@ export function buildGame(setupData, numPlayers) {
   return {
     sheets: sheetsObj,
     locations: newLocationsObj,
+    scene: sceneId,
     victim,
     murderer,
     weapon
