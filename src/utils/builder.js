@@ -19,7 +19,8 @@ function objToArray(obj) {
   return array;
 };
 
-export function buildGame(setupData, numPlayers) {
+export function buildGame(setupData, players) {
+  const numPlayers = players.length;
   // First need to pick a victim, and a murderer
   const charactersArr = objToArray(setupData.characters);
   const victimIndex = getRandomInt(charactersArr.length);
@@ -110,7 +111,8 @@ export function buildGame(setupData, numPlayers) {
   // Create the number of case sheets for the number of players
   const sheetsObj = {};
   for (let i = 0; i < numPlayers; i++) {
-    const newSheet = Object.assign({}, setupData.sheet);
+    const nameObj = {name: players[i]};
+    const newSheet = {...setupData.sheet, ...nameObj};
     sheetsObj[i] = newSheet;
   }
   sheetsObj["numPlayers"] = numPlayers;

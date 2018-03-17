@@ -3,6 +3,7 @@ import * as Builder from "../utils/builder";
 
 export const RECEIVE_GET_SETUP_DATA = "RECEIVE_GET_SETUP_DATA";
 export const BUILD_GAME = "BUILD_GAME";
+export const CHANGE_GAME_SCREEN = "CHANGE_GAME_SCREEN";
 
 export const getSetupData = () => dispatch => {
     Api.getSetupData().then(data => {
@@ -17,13 +18,20 @@ export const receiveGetSetupData = setupData => {
     }
 }
 
-export const buildGame = (setupData, numPlayers = 1) => dispatch => {
-    dispatch(finalizeBuildGame(Builder.buildGame(setupData, numPlayers)));
+export const buildGame = (setupData, players = []) => dispatch => {
+    dispatch(finalizeBuildGame(Builder.buildGame(setupData, players)));
 }
 
 export const finalizeBuildGame = gameData => {
     return{
         type: BUILD_GAME,
         gameData
+    }
+}
+
+export const changeGameScreen = screen => {
+    return {
+        type: CHANGE_GAME_SCREEN,
+        screen
     }
 }

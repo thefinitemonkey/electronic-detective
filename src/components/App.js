@@ -1,17 +1,19 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Loader from "./Loader";
 import Players from "./Players";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import { AppBar } from "material-ui";
 
 class App extends Component {
-  state = { screen: "loading" };
-
-  switchDisplay = screen => {
-    this.setState({ screen });
-  };
+  componentWillReceiveProps = props => {
+    console.log("app got props", props);
+    this.props = props;
+  }
 
   render = () => {
-    const screen = this.state.screen;
+    const screen = this.props.game.screen;
+    console.log("screen", screen);
     let renderItem;
 
     switch (screen) {
@@ -33,4 +35,9 @@ class App extends Component {
   };
 }
 
-export default App;
+function mapStateToProps(game) {
+  console.log("game", game);
+  return { game };
+}
+
+export default connect(mapStateToProps)(App);

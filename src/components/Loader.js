@@ -1,19 +1,18 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
-import { getSetupData, buildGame } from "../actions/index";
+import { getSetupData, changeGameScreen } from "../actions/index";
 import CircularProgress from "material-ui/CircularProgress";
 
 class Loader extends PureComponent {
   state = {
     loading: true,
-    numPlayers: 1,
-    switchDisplay: null
+    numPlayers: 1
   };
 
   componentDidMount = () => {
     // Need to get all the setup data before we can go anywhere
     // with the game
-    this.setState({switchDisplay: this.props.switchDisplay});
+    console.log("getting setup date", this.props);
     this.props.getSetupData();
   };
 
@@ -24,8 +23,7 @@ class Loader extends PureComponent {
     // set up a game (all the setup data has finished loading)
     if (this.state.loading) {
       this.setState({ loading: false });
-      this.props.buildGame(this.props.game.setupData, this.state.numPlayers);
-      this.state.switchDisplay && this.state.switchDisplay("players");
+      this.props.changeGameScreen("players");
     }
   };
 
@@ -48,8 +46,7 @@ function mapStateToProps(game) {
 function mapDispatchToProps(dispatch) {
   return {
     getSetupData: () => dispatch(getSetupData()),
-    buildGame: (setupData, numPlayers) =>
-      dispatch(buildGame(setupData, numPlayers))
+    changeGameScreen: screen => dispatch(changeGameScreen(screen))
   };
 }
 
