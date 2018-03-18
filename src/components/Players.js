@@ -5,7 +5,11 @@ import TextField from "material-ui/TextField";
 import { buildGame, changeGameScreen } from "../actions/index";
 
 class Players extends PureComponent {
-  state = { players: [] };
+  state = {
+    players: [],
+    numPlayers: 1,
+    addEnabled: true
+  };
 
   buildGame = () => {
     // If there are no players, then no game
@@ -13,6 +17,10 @@ class Players extends PureComponent {
 
     // Build the game state for the players
     this.props.buildGame(this.props.game.setupData, this.state.players);
+  };
+
+  addPlayer = () => {
+
   };
 
   render = () => {
