@@ -23,6 +23,13 @@ class Players extends PureComponent {
 
   };
 
+  updateNameEntry = (player, name) => {
+    const players = this.state.players.slice(0);
+    players[player] = name;
+
+    this.setState({players})
+  }
+
   render = () => {
     return (
       <div>
