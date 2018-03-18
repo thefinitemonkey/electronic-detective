@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Loader from "./Loader";
 import Players from "./Players";
+import GameStart from "./GameStart";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { AppBar } from "material-ui";
 
 class App extends Component {
   componentWillReceiveProps = props => {
     this.props = props;
-  }
+  };
 
   render = () => {
     const screen = this.props.game.screen;
@@ -16,10 +17,13 @@ class App extends Component {
 
     switch (screen) {
       case "loading":
-        renderItem = <Loader switchDisplay={this.switchDisplay} />;
+        renderItem = <Loader />;
         break;
       case "players":
-        renderItem = <Players switchDisplay={this.switchDisplay} />;
+        renderItem = <Players />;
+        break;
+      case "gamestart":
+        renderItem = <GameStart />;
         break;
       default:
         renderItem = null;

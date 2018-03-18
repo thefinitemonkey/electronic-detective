@@ -37,6 +37,7 @@ class Players extends PureComponent {
 
     // Build the game state for the players
     this.props.buildGame(this.props.game.setupData, this.state.players);
+    this.props.changeGameScreen("gamestart");
   };
 
   render = () => {
