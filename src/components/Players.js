@@ -6,11 +6,32 @@ import { buildGame, changeGameScreen } from "../actions/index";
 
 class Players extends PureComponent {
   state = {
-    players: [],
+    players: [""],
     addEnabled: true
   };
 
-  buildGame = () => {
+  addPlayer = () => {
+    const players = this.state.players.slice(0);
+    players.push("");
+
+    this.setState({ players });
+  };
+
+  removePlayer = player => {
+    const players = this.state.players.slice(0);
+    players.splice(player, 1);
+
+    this.setState({ players });
+  };
+
+  updateNameEntry = (name, player) => {
+    const players = this.state.players.slice(0);
+    players[player] = name;
+
+    this.setState({ players });
+  };
+
+  startGame = () => {
     // If there are no players, then no game
     if (this.state.players.length === 0) return;
 
@@ -18,32 +39,42 @@ class Players extends PureComponent {
     this.props.buildGame(this.props.game.setupData, this.state.players);
   };
 
-  addPlayer = () => {
-
-  };
-
-  removePlayer = (player) => {
-    const players = this.state.players.slice(0);
-    players.splice(player, 0);
-
-    this.setState.players({players});
-  }
-
-  updateNameEntry = (player, name) => {
-    const players = this.state.players.slice(0);
-    players[player] = name;
-
-    this.setState({players})
-  }
-
   render = () => {
     return (
       <div>
+        {this.state.players.map((name, player) => (
+          <div key={player}>
+            <TextField
+              value={name}
+              onChange={e => {
+                this.updateNameEntry(e.target.value, player);
+              }}
+              hintText="Player Name"
+            />
+            <RaisedButton
+              onClick={() => {
+                this.removePlayer(player);
+              }}
+              label="-"
+              style={style}
+            />
+          </div>
+        ))}
         <div>
-          <TextField hintText="Player Name" />
+          <RaisedButton
+            disabled={this.state.players.length > 3}
+            onClick={this.addPlayer}
+            label="+"
+            style={style}
+          />
         </div>
         <div>
-          <RaisedButton label="+" style={style} />
+          <RaisedButton
+            onClick={this.startGame}
+            label="Start Game"
+            style={style}
+            primary={true}
+          />
         </div>
       </div>
     );

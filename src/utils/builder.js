@@ -3,7 +3,7 @@
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
-};
+}
 
 function objToArray(obj) {
   // Convert the keys in the object into an array
@@ -17,7 +17,7 @@ function objToArray(obj) {
   });
 
   return array;
-};
+}
 
 export function buildGame(setupData, players) {
   const numPlayers = players.length;
@@ -82,7 +82,7 @@ export function buildGame(setupData, players) {
     const index = getRandomInt(locationsArr.length);
     // Have to replicate the location object so we don't
     // mutate the setup data
-    randLocationsArr.push({...locationsArr[index]});
+    randLocationsArr.push({ ...locationsArr[index] });
     locationsArr.splice(index, 1);
   }
   // Each location gets occupied
@@ -99,7 +99,7 @@ export function buildGame(setupData, players) {
   });
   // Put the scene of the crime back into the list of locations
   randLocationsArr.push(sceneObj);
-  
+
   // Turn our locations from an array to an object again
   const newLocationsObj = {};
   randLocationsArr.forEach(location => {
@@ -111,8 +111,8 @@ export function buildGame(setupData, players) {
   // Create the number of case sheets for the number of players
   const sheetsObj = {};
   for (let i = 0; i < numPlayers; i++) {
-    const nameObj = {name: players[i]};
-    const newSheet = {...setupData.sheet, ...nameObj};
+    const nameObj = { name: players[i], victim, scene: sceneId };
+    const newSheet = { ...setupData.sheet, ...nameObj };
     sheetsObj[i] = newSheet;
   }
   sheetsObj["numPlayers"] = numPlayers;
