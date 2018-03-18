@@ -7,7 +7,6 @@ import { buildGame, changeGameScreen } from "../actions/index";
 class Players extends PureComponent {
   state = {
     players: [],
-    numPlayers: 1,
     addEnabled: true
   };
 
@@ -22,6 +21,13 @@ class Players extends PureComponent {
   addPlayer = () => {
 
   };
+
+  removePlayer = (player) => {
+    const players = this.state.players.slice(0);
+    players.splice(player, 0);
+
+    this.setState.players({players});
+  }
 
   updateNameEntry = (player, name) => {
     const players = this.state.players.slice(0);
