@@ -7,13 +7,11 @@ import { AppBar } from "material-ui";
 
 class App extends Component {
   componentWillReceiveProps = props => {
-    console.log("app got props", props);
     this.props = props;
   }
 
   render = () => {
     const screen = this.props.game.screen;
-    console.log("screen", screen);
     let renderItem;
 
     switch (screen) {
@@ -36,7 +34,6 @@ class App extends Component {
 }
 
 function mapStateToProps(game) {
-  console.log("game", game);
   return { game };
 }
 

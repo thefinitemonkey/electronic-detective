@@ -12,13 +12,11 @@ class Loader extends PureComponent {
   componentDidMount = () => {
     // Need to get all the setup data before we can go anywhere
     // with the game
-    console.log("getting setup date", this.props);
     this.props.getSetupData();
   };
 
   componentWillReceiveProps = props => {
     this.props = props;
-    console.log("updated loader props", props);
     // Updated props and a loading state means we're ready to
     // set up a game (all the setup data has finished loading)
     if (this.state.loading) {

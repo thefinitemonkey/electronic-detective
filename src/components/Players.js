@@ -51,13 +51,15 @@ class Players extends PureComponent {
               }}
               hintText="Player Name"
             />
-            <RaisedButton
-              onClick={() => {
-                this.removePlayer(player);
-              }}
-              label="-"
-              style={style}
-            />
+            {player > 0 ? (
+              <RaisedButton
+                onClick={() => {
+                  this.removePlayer(player);
+                }}
+                label="-"
+                style={style}
+              />
+            ) : null}
           </div>
         ))}
         <div>
