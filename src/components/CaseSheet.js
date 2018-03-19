@@ -5,11 +5,20 @@ import { RadioButton, RadioButtonGroup } from "material-ui/RadioButton";
 import { connect } from "react-redux";
 import { deepCopy } from "../utils/builder";
 import { updatePlayerClues } from "../actions/index";
+import Location from "./Location";
 
 class CaseSheet extends PureComponent {
-  state = {
-    playerId: this.props.game.playerId
-  };
+  constructor(props) {
+    super(props);
+    this.props = props;
+
+    const playerId = this.props.game.playerId;
+    const locationKeys = Object.keys(
+      this.props.game.gameData.sheets[playerId].locations
+    );
+
+    this.state = { playerId, locationKeys };
+  }
 
   componentWillReceiveProps = props => {
     this.props = props;
@@ -36,18 +45,18 @@ class CaseSheet extends PureComponent {
 
     return (
       <div>
-        {sheet.name}'s Case Sheet
+        {sheet.name}{`'s Case Sheet`}
         <div>
-          The Facts
+          {`The Facts`}
           <div>
-            Victim: {setupData.characters[gameData.victim].name} (#{
+            {`Victim: `}{setupData.characters[gameData.victim].name} (#{
               gameData.victim
             })
           </div>
-          <div>Found At: {setupData.locations[gameData.scene].name}</div>
+          <div>{`Found At: `}{setupData.locations[gameData.scene].name}</div>
           <div>
             <div>
-              Sex of the murderer:
+              {`Sex of the murderer:`}
               <div>
                 <RadioButtonGroup
                   name="murdererSex"
@@ -62,7 +71,7 @@ class CaseSheet extends PureComponent {
               </div>
             </div>
             <div>
-              Where the murderer went:
+              {`Where the murderer went:`}
               <div>
                 <RadioButtonGroup
                   name="murdererSide"
@@ -90,7 +99,7 @@ class CaseSheet extends PureComponent {
               </div>
             </div>
             <div>
-              Weapon used in murder:
+              {`Weapon used in murder:`}
               <div>
                 <RadioButtonGroup
                   name="murdererWeapon"
@@ -140,6 +149,14 @@ class CaseSheet extends PureComponent {
               </div>
             </div>
           </div>
+        </div>
+        <div>
+          {`Who was where?`}
+          {this.state.locationKeys.map(key => 
+            <div key={key}>
+              <Location locationId={key} />
+            </div>
+          )}
         </div>
       </div>
     );

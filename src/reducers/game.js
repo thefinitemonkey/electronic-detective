@@ -32,8 +32,10 @@ const game = (
       return { ...state, playerId };
     case UPDATE_PLAYER_CLUES: {
       const gameData = { ...state.gameData };
-      gameData.sheets[playerId] = sheet;
-      return { ...state, gameData };
+      const sheets = { ...gameData.sheets };
+      sheets[playerId] = sheet;
+      const newGameData = { ...gameData, sheets };
+      return { ...state, gameData:newGameData };
     }
     default:
       return state;
