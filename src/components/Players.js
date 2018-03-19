@@ -11,6 +11,7 @@ class Players extends PureComponent {
   };
 
   addPlayer = () => {
+    // Add a new player with an empty name to the list
     const players = this.state.players.slice(0);
     players.push("");
 
@@ -18,6 +19,7 @@ class Players extends PureComponent {
   };
 
   removePlayer = player => {
+    // Remove the specified player index from the array
     const players = this.state.players.slice(0);
     players.splice(player, 1);
 
@@ -25,6 +27,8 @@ class Players extends PureComponent {
   };
 
   updateNameEntry = (name, player) => {
+    // Update the text at the specified player index
+    // in the array
     const players = this.state.players.slice(0);
     players[player] = name;
 
