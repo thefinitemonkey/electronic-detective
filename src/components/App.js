@@ -7,6 +7,7 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { AppBar } from "material-ui";
 
 class App extends Component {
+  // update props
   componentWillReceiveProps = props => {
     this.props = props;
   };
