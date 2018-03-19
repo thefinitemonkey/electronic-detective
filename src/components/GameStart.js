@@ -1,16 +1,28 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import RaisedButton from "material-ui/RaisedButton";
-import { changeGameScreen } from "../actions/index";
+import { changeGameScreen, setPlayerTurn } from "../actions/index";
 
 class GameStart extends PureComponent {
+  componentWillReceiveProps = (props) => {
+    console.log("props", props);
+    this.props = props;
+    if (props.game.player !== null) this.props.changeGameScreen("interrogation");
+  }
+
+  setPlayerTurn = player => {
+    this.props.setPlayerTurn(player);
+  }
+
   render = () => {
-    const victimId = this.props.game.gameData.victim;
-    const victim = this.props.game.setupData.characters[victimId];
-    const scene = this.props.game.setupData.locations[
-      this.props.game.gameData.scene
-    ].name;
+    const setupData = this.props.game.setupData;
+    const gameData = this.props.game.gameData;
+
+    const victimId = gameData.victim;
+    const victim = setupData.characters[victimId];
+    const scene = setupData.locations[gameData.scene].name;
     const imgSource = `/images/characters/${victim.images.portrait}`;
+    const sheets = gameData.sheets;
 
     return (
       <div>
@@ -22,8 +34,9 @@ class GameStart extends PureComponent {
         </div>
         <div>
           <RaisedButton
-            label={`Start ${this.props.game.gameData.sheets[0].name}'s turn`}
+            label={`Start ${sheets[0].name}'s turn`}
             primary={true}
+            onClick={() => this.setPlayerTurn(0)}
           />
         </div>
       </div>
@@ -31,15 +44,14 @@ class GameStart extends PureComponent {
   };
 }
 
-const style = { margin: 12 };
-
 function mapStateToProps(game) {
   return { game };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    changeGameScreen: screen => dispatch(changeGameScreen(screen))
+    changeGameScreen: screen => dispatch(changeGameScreen(screen)),
+    setPlayerTurn: player => dispatch(setPlayerTurn(player))
   };
 }
 

@@ -1,7 +1,8 @@
 import {
   RECEIVE_GET_SETUP_DATA,
   BUILD_GAME,
-  CHANGE_GAME_SCREEN
+  CHANGE_GAME_SCREEN,
+  SET_PLAYER_TURN
 } from "../actions/index.js";
 
 /* 
@@ -13,8 +14,11 @@ Populated categories looks like
               gameData: {murderer: int, victim: int, weapon: int, locations: {...}, sheets: {...} } } }
 */
 
-const game = (state = { setupData: {}, gameData: {}, screen: "loading" }, action) => {
-  const { setupData, gameData, screen } = action;
+const game = (
+  state = { setupData: {}, gameData: {}, screen: "loading", player: null },
+  action
+) => {
+  const { setupData, gameData, screen, player } = action;
 
   switch (action.type) {
     case RECEIVE_GET_SETUP_DATA:
@@ -23,6 +27,8 @@ const game = (state = { setupData: {}, gameData: {}, screen: "loading" }, action
       return { ...state, gameData };
     case CHANGE_GAME_SCREEN:
       return { ...state, screen };
+    case SET_PLAYER_TURN:
+      return { ...state, player };
     default:
       return state;
   }

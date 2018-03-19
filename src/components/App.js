@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Loader from "./Loader";
 import Players from "./Players";
 import GameStart from "./GameStart";
+import Interrogation from "./Interrogation";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { AppBar } from "material-ui";
 
@@ -24,6 +25,9 @@ class App extends Component {
         break;
       case "gamestart":
         renderItem = <GameStart />;
+        break;
+      case "interrogation":
+        renderItem = <Interrogation />;
         break;
       default:
         renderItem = null;
