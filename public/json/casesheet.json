@@ -8,8 +8,8 @@
       "side": "",
       "town": ""
     },
-    "weapon": {
-      "type": ""
+    "weapons": {
+      "used": ""
     },
     "locations": {}
   },

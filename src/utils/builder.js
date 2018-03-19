@@ -122,7 +122,14 @@ export function buildGame(setupData, players) {
   const sheetsObj = {};
   for (let i = 0; i < numPlayers; i++) {
     const nameObj = { name: players[i], victim, scene: sceneId };
-    const newSheet = { ...setupData.sheet, ...nameObj, locations: setupData.locations };
+    console.log("setupData.weapons", setupData.weapons);
+    const weapons = { ...setupData.sheet.clueSelections.weapons, ...setupData.weapons };
+    const newSheet = {
+      ...setupData.sheet,
+      ...nameObj,
+      locations: setupData.locations
+    };
+    newSheet.clueSelections.weapons = weapons;
     sheetsObj[i] = newSheet;
   }
   sheetsObj["numPlayers"] = numPlayers;
