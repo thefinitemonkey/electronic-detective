@@ -7,7 +7,7 @@ class GameStart extends PureComponent {
   componentWillReceiveProps = (props) => {
     console.log("props", props);
     this.props = props;
-    if (props.game.player !== null) this.props.changeGameScreen("interrogation");
+    if (props.game.playerId !== null) this.props.changeGameScreen("interrogation");
   }
 
   setPlayerTurn = player => {
@@ -27,7 +27,7 @@ class GameStart extends PureComponent {
     return (
       <div>
         <div>
-          <img src={imgSource} />
+          <img src={imgSource} alt={`Victim`} />
         </div>
         <div>
           {victim.name} (#{victimId}) was murdered at the {scene}!

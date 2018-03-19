@@ -5,7 +5,7 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
-function deepCopy(obj) {
+export function deepCopy(obj) {
   let output, v, key;
   output = Array.isArray(obj) ? [] : {};
   for (key in obj) {
