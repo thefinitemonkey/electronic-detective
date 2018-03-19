@@ -52,7 +52,9 @@ class CaseSheet extends PureComponent {
                 <RadioButtonGroup
                   name="murdererSex"
                   valueSelected={sheet.clueSelections.sex}
-                  onChange={e => this.updateClueSelection(["sex"], e.target.value)}
+                  onChange={e =>
+                    this.updateClueSelection(["sex"], e.target.value)
+                  }
                 >
                   <RadioButton value="male" label="Male" />
                   <RadioButton value="female" label="Female" />
@@ -65,7 +67,9 @@ class CaseSheet extends PureComponent {
                 <RadioButtonGroup
                   name="murdererSide"
                   valueSelected={sheet.clueSelections.hiding.side}
-                  onChange={e => this.updateClueSelection(["hiding", "side"], e.target.value)}
+                  onChange={e =>
+                    this.updateClueSelection(["hiding", "side"], e.target.value)
+                  }
                 >
                   <RadioButton value="west" label="West" />
                   <RadioButton value="east" label="East" />
@@ -75,7 +79,9 @@ class CaseSheet extends PureComponent {
                 <RadioButtonGroup
                   name="murdererTown"
                   valueSelected={sheet.clueSelections.hiding.town}
-                  onChange={e => this.updateClueSelection(["hiding", "town"], e.target.value)}
+                  onChange={e =>
+                    this.updateClueSelection(["hiding", "town"], e.target.value)
+                  }
                 >
                   <RadioButton value="uptown" label="Uptown" />
                   <RadioButton value="midtown" label="Midtown" />
@@ -89,10 +95,47 @@ class CaseSheet extends PureComponent {
                 <RadioButtonGroup
                   name="murdererWeapon"
                   valueSelected={sheet.clueSelections.weapons.used}
-                  onChange={e => this.updateClueSelection(["weapons", "used"], e.target.value)}
+                  onChange={e =>
+                    this.updateClueSelection(
+                      ["weapons", "used"],
+                      e.target.value
+                    )
+                  }
                 >
                   <RadioButton value=".38" label=".38" />
                   <RadioButton value=".45" label=".45" />
+                </RadioButtonGroup>
+              </div>
+              <div>
+                <RadioButtonGroup
+                  name="38Prints"
+                  valueSelected={
+                    sheet.clueSelections.weapons[".38"].fingerprint
+                  }
+                  onChange={e =>
+                    this.updateClueSelection(
+                      ["weapons", ".38", "fingerprint"],
+                      e.target.value
+                    )
+                  }
+                >
+                  <RadioButton value="odd" label="Odd" />
+                  <RadioButton value="even" label="Even" />
+                </RadioButtonGroup>
+                <RadioButtonGroup
+                  name="45Prints"
+                  valueSelected={
+                    sheet.clueSelections.weapons[".45"].fingerprint
+                  }
+                  onChange={e =>
+                    this.updateClueSelection(
+                      ["weapons", ".45", "fingerprint"],
+                      e.target.value
+                    )
+                  }
+                >
+                  <RadioButton value="odd" label="Odd" />
+                  <RadioButton value="even" label="Even" />
                 </RadioButtonGroup>
               </div>
             </div>

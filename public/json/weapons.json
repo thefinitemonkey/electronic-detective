@@ -1,4 +1,4 @@
 {
-  "1": { "type": ".45", "fingerprint": "" },
-  "2": { "type": ".38", "fingerprint": "" }
+  ".45": { "type": ".45", "fingerprint": "" },
+  ".38": { "type": ".38", "fingerprint": "" }
 }
