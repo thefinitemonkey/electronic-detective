@@ -108,6 +108,8 @@ export function buildGame(setupData, players) {
     newLocationsObj[id] = location;
   });
 
+  // TODO: Add locations to the sheets so their data can be filled in
+  // (i.e. each location with empty occupants from the setupData)
   // Create the number of case sheets for the number of players
   const sheetsObj = {};
   for (let i = 0; i < numPlayers; i++) {
