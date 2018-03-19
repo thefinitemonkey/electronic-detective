@@ -23,6 +23,22 @@ class CaseSheet extends PureComponent {
     this.props.updatePlayerClues(this.state.playerId, newSheet);
   };
 
+  updateHidingSideSelection = selection => {
+    const newSheet = deepCopy(
+        this.props.game.gameData.sheets[this.props.game.playerId]
+      );
+      newSheet.clueSelections.hiding.side = selection;
+      this.props.updatePlayerClues(this.state.playerId, newSheet);
+  }
+
+  updateHidingTownSelection = selection => {
+    const newSheet = deepCopy(
+        this.props.game.gameData.sheets[this.props.game.playerId]
+      );
+      newSheet.clueSelections.hiding.town = selection;
+      this.props.updatePlayerClues(this.state.playerId, newSheet);
+  }
+
   render = () => {
     const gameData = this.props.game.gameData;
     const setupData = this.props.game.setupData;
@@ -58,6 +74,45 @@ class CaseSheet extends PureComponent {
                   />
                 </RadioButtonGroup>
               </div>
+            </div>
+            <div>
+                Where the murderer went:
+                <div>
+                <RadioButtonGroup
+                  name="murdererSide"
+                  valueSelected={sheet.clueSelections.hiding.side}
+                  onChange={e => this.updateHidingSideSelection(e.target.value)}
+                  >
+                  <RadioButton
+                    value="west"
+                    label="West"
+                  />
+                  <RadioButton
+                    value="east"
+                    label="East"
+                  />
+                </RadioButtonGroup>
+                </div>
+                <div>
+                <RadioButtonGroup
+                  name="murdererTown"
+                  valueSelected={sheet.clueSelections.hiding.town}
+                  onChange={e => this.updateHidingTownSelection(e.target.value)}
+                  >
+                  <RadioButton
+                    value="uptown"
+                    label="Uptown"
+                  />
+                  <RadioButton
+                    value="midtown"
+                    label="Midtown"
+                  />
+                  <RadioButton
+                    value="downtown"
+                    label="Downtown"
+                  />
+                </RadioButtonGroup>
+                </div>
             </div>
           </div>
         </div>
