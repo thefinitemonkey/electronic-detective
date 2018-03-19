@@ -12,32 +12,22 @@ class CaseSheet extends PureComponent {
   };
 
   componentWillReceiveProps = props => {
-      this.props = props;
-  }
-
-  updateGenderSelection = selection => {
-    const newSheet = deepCopy(
-      this.props.game.gameData.sheets[this.props.game.playerId]
-    );
-    newSheet.clueSelections.sex = selection;
-    this.props.updatePlayerClues(this.state.playerId, newSheet);
+    this.props = props;
   };
 
-  updateHidingSideSelection = selection => {
-    const newSheet = deepCopy(
-        this.props.game.gameData.sheets[this.props.game.playerId]
-      );
-      newSheet.clueSelections.hiding.side = selection;
-      this.props.updatePlayerClues(this.state.playerId, newSheet);
-  }
-
-  updateHidingTownSelection = selection => {
-    const newSheet = deepCopy(
-        this.props.game.gameData.sheets[this.props.game.playerId]
-      );
-      newSheet.clueSelections.hiding.town = selection;
-      this.props.updatePlayerClues(this.state.playerId, newSheet);
-  }
+  updateClueSelection = (keysPath, selection) => {
+    // Update the selection data for the path specified in the clueSelections
+    let newSheet = deepCopy(
+      this.props.game.gameData.sheets[this.props.game.playerId]
+    );
+    let sheetKeyObj = newSheet.clueSelections;
+    while (keysPath.length > 1) {
+      sheetKeyObj = sheetKeyObj[keysPath[0]];
+      keysPath.splice(0, 1);
+    }
+    sheetKeyObj[keysPath[0]] = selection;
+    this.props.updatePlayerClues(this.state.playerId, newSheet);
+  };
 
   render = () => {
     const gameData = this.props.game.gameData;
@@ -62,57 +52,49 @@ class CaseSheet extends PureComponent {
                 <RadioButtonGroup
                   name="murdererSex"
                   valueSelected={sheet.clueSelections.sex}
-                  onChange={e => this.updateGenderSelection(e.target.value)}
-                  >
-                  <RadioButton
-                    value="male"
-                    label="Male"
-                  />
-                  <RadioButton
-                    value="female"
-                    label="Female"
-                  />
+                  onChange={e => this.updateClueSelection(["sex"], e.target.value)}
+                >
+                  <RadioButton value="male" label="Male" />
+                  <RadioButton value="female" label="Female" />
                 </RadioButtonGroup>
               </div>
             </div>
             <div>
-                Where the murderer went:
-                <div>
+              Where the murderer went:
+              <div>
                 <RadioButtonGroup
                   name="murdererSide"
                   valueSelected={sheet.clueSelections.hiding.side}
-                  onChange={e => this.updateHidingSideSelection(e.target.value)}
-                  >
-                  <RadioButton
-                    value="west"
-                    label="West"
-                  />
-                  <RadioButton
-                    value="east"
-                    label="East"
-                  />
+                  onChange={e => this.updateClueSelection(["hiding", "side"], e.target.value)}
+                >
+                  <RadioButton value="west" label="West" />
+                  <RadioButton value="east" label="East" />
                 </RadioButtonGroup>
-                </div>
-                <div>
+              </div>
+              <div>
                 <RadioButtonGroup
                   name="murdererTown"
                   valueSelected={sheet.clueSelections.hiding.town}
-                  onChange={e => this.updateHidingTownSelection(e.target.value)}
-                  >
-                  <RadioButton
-                    value="uptown"
-                    label="Uptown"
-                  />
-                  <RadioButton
-                    value="midtown"
-                    label="Midtown"
-                  />
-                  <RadioButton
-                    value="downtown"
-                    label="Downtown"
-                  />
+                  onChange={e => this.updateClueSelection(["hiding", "town"], e.target.value)}
+                >
+                  <RadioButton value="uptown" label="Uptown" />
+                  <RadioButton value="midtown" label="Midtown" />
+                  <RadioButton value="downtown" label="Downtown" />
                 </RadioButtonGroup>
-                </div>
+              </div>
+            </div>
+            <div>
+              Weapon used in murder:
+              <div>
+                <RadioButtonGroup
+                  name="murdererWeapon"
+                  valueSelected={sheet.clueSelections.weapons.used}
+                  onChange={e => this.updateClueSelection(["weapons", "used"], e.target.value)}
+                >
+                  <RadioButton value=".38" label=".38" />
+                  <RadioButton value=".45" label=".45" />
+                </RadioButtonGroup>
+              </div>
             </div>
           </div>
         </div>
