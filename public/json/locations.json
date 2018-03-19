@@ -1,25 +1,37 @@
 {
   "A": {
-    "name": "Art Show"
+    "name": "Art Show",
+    "address": { "side": "", "town": "" },
+    "occupants": []
   },
 
   "B": {
-    "name": "Box at Theatre"
+    "name": "Box at Theatre",
+    "address": { "side": "", "town": "" },
+    "occupants": []
   },
 
   "C": {
-    "name": "Card Party"
+    "name": "Card Party",
+    "address": { "side": "", "town": "" },
+    "occupants": []
   },
 
   "D": {
-    "name": "Docks"
+    "name": "Docks",
+    "address": { "side": "", "town": "" },
+    "occupants": []
   },
 
   "E": {
-    "name": "Embassy"
+    "name": "Embassy",
+    "address": { "side": "", "town": "" },
+    "occupants": []
   },
 
   "F": {
-    "name": "Factory"
+    "name": "Factory",
+    "address": { "side": "", "town": "" },
+    "occupants": []
   }
 }

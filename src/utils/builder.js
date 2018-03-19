@@ -5,6 +5,16 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
+function deepCopy(obj) {
+  let output, v, key;
+  output = Array.isArray(obj) ? [] : {};
+  for (key in obj) {
+    v = obj[key];
+    output[key] = typeof v === "object" ? deepCopy(v) : v;
+  }
+  return output;
+}
+
 function objToArray(obj) {
   // Convert the keys in the object into an array
   const keys = Object.keys(obj);
@@ -30,7 +40,7 @@ export function buildGame(setupData, players) {
   const murderer = charactersArr[murdererIndex].id;
 
   // Every location gets an address
-  const locationsArr = objToArray(setupData.locations);
+  const locationsArr = objToArray(deepCopy(setupData.locations));
   const addressesArr = objToArray(setupData.addresses);
   locationsArr.forEach(location => {
     const address = getRandomInt(addressesArr.length);
@@ -114,7 +124,7 @@ export function buildGame(setupData, players) {
   const sheetsObj = {};
   for (let i = 0; i < numPlayers; i++) {
     const nameObj = { name: players[i], victim, scene: sceneId };
-    const newSheet = { ...setupData.sheet, ...nameObj };
+    const newSheet = { ...setupData.sheet, ...nameObj, locations: setupData.locations };
     sheetsObj[i] = newSheet;
   }
   sheetsObj["numPlayers"] = numPlayers;
