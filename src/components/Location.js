@@ -38,7 +38,6 @@ class Location extends PureComponent {
       <div>
         <div>{this.props.locationId}</div>
         <div>{location.name}</div>
-        <div>Who was where</div>
         <div>
           <table>
             <thead>
