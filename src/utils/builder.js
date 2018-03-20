@@ -114,13 +114,14 @@ export function buildGame(setupData, players) {
   weaponsArr.forEach(tossWeapon => {
     // For the murder weapon, prints have to match murderer, otherwise
     // prints are opposite
-    if (tossWeapon.id === weapon) {
-      tossWeapon.fingerprint = murdererOdd ? "odd" : "even";
+    const newWeapon = deepCopy(tossWeapon);
+    if (newWeapon.id === weapon) {
+      newWeapon.fingerprint = murdererOdd ? "odd" : "even";
     } else {
-      tossWeapon.fingerprint = murdererOdd ? "even" : "odd";
+      newWeapon.fingerprint = murdererOdd ? "even" : "odd";
     }
     const randIndex = getRandomInt(randWeaponLocs.length);
-    randWeaponLocs[randIndex].weapon = tossWeapon;
+    randWeaponLocs[randIndex].weapon = newWeapon;
     randWeaponLocs.splice(randIndex, 1);
   });
   // Put the scene of the crime back into the list of locations
