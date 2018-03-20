@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import Facts from "./Facts";
 import Location from "./Location";
+import Statements from "./Statements";
 
 class CaseSheet extends PureComponent {
   constructor(props) {
@@ -27,18 +28,23 @@ class CaseSheet extends PureComponent {
 
     return (
       <div>
-        {sheet.name}{`'s Case Sheet`}
+        {sheet.name}
+        {`'s Case Sheet`}
         <div>
           {`The Facts`}
-            <Facts />
+          <Facts />
         </div>
         <div>
           {`Who was where?`}
-          {this.state.locationKeys.map(key => 
+          {this.state.locationKeys.map(key => (
             <div key={key}>
               <Location locationId={key} />
             </div>
-          )}
+          ))}
+        </div>
+        <div>
+          {`Suspect statements`}
+          <Statements />
         </div>
       </div>
     );
