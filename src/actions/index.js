@@ -6,6 +6,7 @@ export const BUILD_GAME = "BUILD_GAME";
 export const CHANGE_GAME_SCREEN = "CHANGE_GAME_SCREEN";
 export const SET_PLAYER_TURN = "SET_PLAYER_TURN";
 export const UPDATE_PLAYER_CLUES = "UPDATE_PLAYER_CLUES";
+export const UPDATE_SUSPECT_STATEMENT = "UPDATE_SUSPECT_STATEMENT";
 
 export const getSetupData = () => dispatch => {
   Api.getSetupData().then(data => {
@@ -50,5 +51,16 @@ export const updatePlayerClues = (playerId, sheet) => {
     type: UPDATE_PLAYER_CLUES,
     playerId,
     sheet
+  };
+};
+
+export const updateSuspectStatement = (playerId, suspectId, statement) => {
+  return {
+    type: UPDATE_SUSPECT_STATEMENT,
+    playerId,
+    data: {
+      suspectId,
+      statement
+    }
   };
 };

@@ -2,17 +2,14 @@ import React, { PureComponent } from "react";
 import TextField from "material-ui/TextField";
 import { connect } from "react-redux";
 import { deepCopy } from "../utils/builder";
-import { updatePlayerClues } from "../actions/index";
+import { updateSuspectStatement } from "../actions/index";
 
 class Statements extends PureComponent {
-  updatePlayerClues = (playerId, suspectId, value) => {
-    const newSheet = deepCopy(this.props.game.gameData.sheets[playerId]);
-    newSheet.suspectStatements[suspectId] = value;
-    this.props.updatePlayerClues(playerId, newSheet);
+  updateSuspectStatement = (playerId, suspectId, value) => {
+    this.props.updateSuspectStatement(playerId, suspectId, value);
   };
 
   render = () => {
-    console.log("props", this.props);
     const playerId = this.props.game.playerId;
     const sheet = this.props.game.gameData.sheets[playerId];
 
@@ -26,7 +23,7 @@ class Statements extends PureComponent {
                 hintText={`${suspect.name}'s statement`}
                 value={sheet.suspectStatements[suspect.id] || ""}
                 onChange={e =>
-                  this.updatePlayerClues(playerId, suspect.id, e.target.value)
+                  this.updateSuspectStatement(playerId, suspect.id, e.target.value)
                 }
               />
             </div>
@@ -52,8 +49,8 @@ function mapStateToProps(game) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    updatePlayerClues: (playerId, sheet) =>
-      dispatch(updatePlayerClues(playerId, sheet))
+    updateSuspectStatement: (playerId, suspectId, statement) =>
+      dispatch(updateSuspectStatement(playerId, suspectId, statement))
   };
 }
 
