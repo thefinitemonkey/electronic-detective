@@ -1,6 +1,5 @@
 import React, { PureComponent } from "react";
 import RaisedButton from "material-ui/RaisedButton";
-import TextField from "material-ui/TextField";
 import { RadioButton, RadioButtonGroup } from "material-ui/RadioButton";
 import { connect } from "react-redux";
 import { deepCopy } from "../utils/builder";

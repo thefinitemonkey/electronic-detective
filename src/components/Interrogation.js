@@ -1,6 +1,5 @@
 import React, { PureComponent } from "react";
 import RaisedButton from "material-ui/RaisedButton";
-import TextField from "material-ui/TextField";
 import { Tabs, Tab } from "material-ui/Tabs";
 import { connect } from "react-redux";
 import CaseSheet from "./CaseSheet";
