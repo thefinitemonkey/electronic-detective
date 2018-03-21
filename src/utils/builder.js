@@ -139,14 +139,28 @@ export function buildGame(setupData, players) {
   const sheetsObj = {};
   for (let i = 0; i < numPlayers; i++) {
     const nameObj = { name: players[i], victim, scene: sceneId };
+    const charKeys = Object.keys(setupData.characters);
+    console.log("charKeys", charKeys);
+    const charStatements = {};
+    charKeys.forEach(key => {
+      key === victim
+        ? (charStatements[key] = "I was murdered")
+        : (charStatements[key] = "");
+    });
     const weapons = {
       ...setupData.sheet.clueSelections.weapons,
       ...setupData.weapons
     };
+    const locations = deepCopy(setupData.locations);
+    const locKeys = Object.keys(locations);
+    locKeys.forEach(key => {
+      locations[key].occupants = ["","","",""];
+    })
     const newSheet = {
       ...setupData.sheet,
       ...nameObj,
-      locations: setupData.locations
+      locations,
+      suspectStatements: charStatements
     };
     newSheet.clueSelections.weapons = weapons;
     sheetsObj[i] = newSheet;

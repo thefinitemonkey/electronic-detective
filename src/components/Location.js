@@ -2,13 +2,11 @@ import React, { PureComponent } from "react";
 import TextField from "material-ui/TextField";
 import { connect } from "react-redux";
 import { deepCopy } from "../utils/builder";
-import { updatePlayerClues } from "../actions/index";
+import { updatePlayerClues, updateLocationOccupant } from "../actions/index";
 
 class Location extends PureComponent {
-  updateOccupant = (playerId, index, value) => {
-    const newSheet = deepCopy(this.props.game.gameData.sheets[playerId]);
-    newSheet.locations[this.props.locationId].occupants[index] = value;
-    this.props.updatePlayerClues(playerId, newSheet);
+  updateOccupant = (playerId, locationId, index, value) => {
+    this.props.updateLocationOccupant(playerId, locationId, index, value);
   };
 
   updateAddress = (playerId, part, value) => {
@@ -18,10 +16,10 @@ class Location extends PureComponent {
   };
 
   updateWeapon = (playerId, value) => {
-      const newSheet = deepCopy(this.props.game.gameData.sheets[playerId]);
-      newSheet.locations[this.props.locationId].weapon = value;
-      this.props.updatePlayerClues(playerId, newSheet);
-  }
+    const newSheet = deepCopy(this.props.game.gameData.sheets[playerId]);
+    newSheet.locations[this.props.locationId].weapon = value;
+    this.props.updatePlayerClues(playerId, newSheet);
+  };
 
   componentWillReceiveProps = props => {
     this.props = props;
@@ -53,7 +51,12 @@ class Location extends PureComponent {
                     id={`${this.props.locationId}-men-0`}
                     value={location.occupants[0] || ""}
                     onChange={e =>
-                      this.updateOccupant(playerId, 0, e.target.value)
+                      this.updateOccupant(
+                        playerId,
+                        this.props.locationId,
+                        0,
+                        e.target.value
+                      )
                     }
                   />
                 </td>
@@ -63,7 +66,12 @@ class Location extends PureComponent {
                     id={`${this.props.locationId}-women-2`}
                     value={location.occupants[2] || ""}
                     onChange={e =>
-                      this.updateOccupant(playerId, 2, e.target.value)
+                      this.updateOccupant(
+                        playerId,
+                        this.props.locationId,
+                        2,
+                        e.target.value
+                      )
                     }
                   />
                 </td>
@@ -75,7 +83,12 @@ class Location extends PureComponent {
                     id={`${this.props.locationId}-men-1`}
                     value={location.occupants[1] || ""}
                     onChange={e =>
-                      this.updateOccupant(playerId, 1, e.target.value)
+                      this.updateOccupant(
+                        playerId,
+                        this.props.locationId,
+                        1,
+                        e.target.value
+                      )
                     }
                   />
                 </td>
@@ -85,7 +98,12 @@ class Location extends PureComponent {
                     id={`${this.props.locationId}-women-3`}
                     value={location.occupants[3] || ""}
                     onChange={e =>
-                      this.updateOccupant(playerId, 3, e.target.value)
+                      this.updateOccupant(
+                        playerId,
+                        this.props.locationId,
+                        3,
+                        e.target.value
+                      )
                     }
                   />
                 </td>
@@ -137,7 +155,9 @@ function mapStateToProps(game) {
 function mapDispatchToProps(dispatch) {
   return {
     updatePlayerClues: (playerId, sheet) =>
-      dispatch(updatePlayerClues(playerId, sheet))
+      dispatch(updatePlayerClues(playerId, sheet)),
+    updateLocationOccupant: (playerId, locationId, index, value) =>
+      dispatch(updateLocationOccupant(playerId, locationId, index, value))
   };
 }
 

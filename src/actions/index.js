@@ -7,6 +7,9 @@ export const CHANGE_GAME_SCREEN = "CHANGE_GAME_SCREEN";
 export const SET_PLAYER_TURN = "SET_PLAYER_TURN";
 export const UPDATE_PLAYER_CLUES = "UPDATE_PLAYER_CLUES";
 export const UPDATE_SUSPECT_STATEMENT = "UPDATE_SUSPECT_STATEMENT";
+export const UPDATE_LOCATION_OCCUPANT = "UPDATE_LOCATION_OCCUPANT";
+export const UPDATE_LOCATION_ADDRESS = "UPDATE_LOCATION_ADDRESS";
+export const UPDATE_LOCATION_WEAPON = "UPDATE_LOCATION_WEAPON";
 
 export const getSetupData = () => dispatch => {
   Api.getSetupData().then(data => {
@@ -61,6 +64,44 @@ export const updateSuspectStatement = (playerId, suspectId, statement) => {
     data: {
       suspectId,
       statement
+    }
+  };
+};
+
+export const updateLocationOccupant = (
+  playerId,
+  locationId,
+  arrayIndex,
+  value
+) => {
+  return {
+    type: UPDATE_LOCATION_OCCUPANT,
+    playerId,
+    data: {
+      locationId,
+      arrayIndex,
+      value
+    }
+  };
+};
+
+export const updateLocationAddress = (playerId, locationId, part, value) => {
+  return {
+    type: UPDATE_LOCATION_ADDRESS,
+    playerId,
+    data: {
+      part,
+      value
+    }
+  };
+};
+
+export const updateLocationWeapon = (playerId, locationId, value) => {
+  return {
+    type: UPDATE_LOCATION_WEAPON,
+    playerId,
+    data: {
+      value
     }
   };
 };

@@ -1,34 +1,59 @@
 import React, { PureComponent } from "react";
 import TextField from "material-ui/TextField";
 import { connect } from "react-redux";
-import { deepCopy } from "../utils/builder";
 import { updateSuspectStatement } from "../actions/index";
 
 class Statements extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.props = props;
+
+    this.timeout = null;
+    this.state = {
+      currentEdit: null,
+      statements: this.props.game.gameData.sheets[this.props.game.playerId]
+        .suspectStatements
+    };
+  }
+
   updateSuspectStatement = (playerId, suspectId, value) => {
-    this.props.updateSuspectStatement(playerId, suspectId, value);
+    //this.props.updateSuspectStatement(playerId, suspectId, value);
+    const newStatements = {...this.state.statements};
+    newStatements[suspectId] = value;
+    this.setState({statements: newStatements});
   };
+
+  renderStatementField = (disabled, hint, value, onChange) => {};
 
   render = () => {
     const playerId = this.props.game.playerId;
     const sheet = this.props.game.gameData.sheets[playerId];
+    const victim = this.props.game.gameData.sheets[playerId].victim;
 
     return (
       <div>
-        {this.props.suspects.map(suspect => (
-          <div key={`suspect-${suspect.id}`}>
-            <div>{`${suspect.name} (#${suspect.id})`}</div>
-            <div>
-              <TextField
-                hintText={`${suspect.name}'s statement`}
-                value={sheet.suspectStatements[suspect.id] || ""}
-                onChange={e =>
-                  this.updateSuspectStatement(playerId, suspect.id, e.target.value)
-                }
-              />
+        {this.props.suspects.map(suspect => {
+            console.log("ping statement");
+          return (
+            <div key={`suspect-${suspect.id}`}>
+              <div>{`${suspect.name} (#${suspect.id})`}</div>
+              <div>
+                <TextField
+                  disabled={victim === suspect.id ? true : false}
+                  hintText={`${suspect.name}'s statement`}
+                  value={this.state.statements[suspect.id]}
+                  onChange={e =>
+                    this.updateSuspectStatement(
+                      playerId,
+                      suspect.id,
+                      e.target.value
+                    )
+                  }
+                />
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     );
   };
