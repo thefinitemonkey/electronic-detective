@@ -3,6 +3,7 @@ import TextField from "material-ui/TextField";
 import { connect } from "react-redux";
 import { deepCopy } from "../utils/builder";
 import { updatePlayerClues, updateLocationOccupant } from "../actions/index";
+import OccupantField from "./OccupantField";
 
 class Location extends PureComponent {
   updateOccupant = (playerId, locationId, index, value) => {
@@ -26,7 +27,7 @@ class Location extends PureComponent {
   };
 
   render = () => {
-      console.log("ping location update");
+    console.log("ping location update");
     const gameData = this.props.game.gameData;
     const setupData = this.props.game.setupData;
     const playerId = this.props.game.playerId;
@@ -47,65 +48,33 @@ class Location extends PureComponent {
             <tbody>
               <tr>
                 <td>
-                  <TextField
-                    hintText="Suspect"
-                    id={`${this.props.locationId}-men-0`}
-                    value={location.occupants[0] || ""}
-                    onChange={e =>
-                      this.updateOccupant(
-                        playerId,
-                        this.props.locationId,
-                        0,
-                        e.target.value
-                      )
-                    }
+                  <OccupantField
+                    fieldId={`${this.props.locationId}-men-0`}
+                    locationId={this.props.locationId}
+                    occupantIndex={0}
                   />
                 </td>
                 <td>
-                  <TextField
-                    hintText="Suspect"
-                    id={`${this.props.locationId}-women-2`}
-                    value={location.occupants[2] || ""}
-                    onChange={e =>
-                      this.updateOccupant(
-                        playerId,
-                        this.props.locationId,
-                        2,
-                        e.target.value
-                      )
-                    }
+                  <OccupantField
+                    fieldId={`${this.props.locationId}-women-2`}
+                    locationId={this.props.locationId}
+                    occupantIndex={2}
                   />
                 </td>
               </tr>
               <tr>
                 <td>
-                  <TextField
-                    hintText="Suspect"
-                    id={`${this.props.locationId}-men-1`}
-                    value={location.occupants[1] || ""}
-                    onChange={e =>
-                      this.updateOccupant(
-                        playerId,
-                        this.props.locationId,
-                        1,
-                        e.target.value
-                      )
-                    }
+                  <OccupantField
+                    fieldId={`${this.props.locationId}-men-1`}
+                    locationId={this.props.locationId}
+                    occupantIndex={1}
                   />
                 </td>
                 <td>
-                  <TextField
-                    hintText="Suspect"
-                    id={`${this.props.locationId}-women-3`}
-                    value={location.occupants[3] || ""}
-                    onChange={e =>
-                      this.updateOccupant(
-                        playerId,
-                        this.props.locationId,
-                        3,
-                        e.target.value
-                      )
-                    }
+                  <OccupantField
+                    fieldId={`${this.props.locationId}-women-3`}
+                    locationId={this.props.locationId}
+                    occupantIndex={3}
                   />
                 </td>
               </tr>
