@@ -7,6 +7,16 @@ import OccupantField from "./OccupantField";
 import AddressField from "./AddressField";
 
 class Location extends PureComponent {
+  state = {
+    weapon: this.props.game.gameData.sheets[this.props.game.playerId].locations[
+      this.props.locationId
+    ].weapon
+  };
+
+  updateState = weapon => {
+    this.setState({ weapon });
+  };
+
   updateWeapon = (playerId, value) => {
     const newSheet = deepCopy(this.props.game.gameData.sheets[playerId]);
     newSheet.locations[this.props.locationId].weapon = value;
@@ -95,8 +105,9 @@ class Location extends PureComponent {
           <TextField
             hintText="Type"
             id={`${this.props.locationId}-weapon`}
-            value={location.weapon || ""}
-            onChange={e => this.updateWeapon(playerId, e.target.value)}
+            value={this.state.weapon}
+            onChange = {e=> this.updateState(e.target.value)}
+            onBlur={e => this.updateWeapon(playerId, e.target.value)}
           />
         </div>
       </div>

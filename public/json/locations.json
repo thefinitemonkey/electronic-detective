@@ -2,36 +2,42 @@
   "A": {
     "name": "Art Show",
     "address": { "side": "", "town": "" },
-    "occupants": []
+    "occupants": [],
+    "weapon": ""
   },
 
   "B": {
     "name": "Box at Theatre",
     "address": { "side": "", "town": "" },
-    "occupants": []
+    "occupants": [],
+    "weapon": ""
   },
 
   "C": {
     "name": "Card Party",
     "address": { "side": "", "town": "" },
-    "occupants": []
+    "occupants": [],
+    "weapon": ""
   },
 
   "D": {
     "name": "Docks",
     "address": { "side": "", "town": "" },
-    "occupants": []
+    "occupants": [],
+    "weapon": ""
   },
 
   "E": {
     "name": "Embassy",
     "address": { "side": "", "town": "" },
-    "occupants": []
+    "occupants": [],
+    "weapon": ""
   },
 
   "F": {
     "name": "Factory",
     "address": { "side": "", "town": "" },
-    "occupants": []
+    "occupants": [],
+    "weapon": ""
   }
 }
