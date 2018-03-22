@@ -26,6 +26,7 @@ class Location extends PureComponent {
   };
 
   render = () => {
+      console.log("ping location update");
     const gameData = this.props.game.gameData;
     const setupData = this.props.game.setupData;
     const playerId = this.props.game.playerId;

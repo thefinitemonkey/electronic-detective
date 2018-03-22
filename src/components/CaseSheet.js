@@ -17,10 +17,6 @@ class CaseSheet extends PureComponent {
     this.state = { playerId, locationKeys };
   }
 
-  componentWillReceiveProps = props => {
-    this.props = props;
-  };
-
   render = () => {
     const gameData = this.props.game.gameData;
     const setupData = this.props.game.setupData;
