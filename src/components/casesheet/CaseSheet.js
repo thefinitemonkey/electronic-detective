@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import Facts from "./Facts";
 import Location from "./Location";
 import Statements from "./Statements";
+import {css} from "react-emotion";
+import {h1, h2, h3} from "../../utils/globalcss";
 
 class CaseSheet extends PureComponent {
   constructor(props) {
@@ -24,14 +26,14 @@ class CaseSheet extends PureComponent {
 
     return (
       <div>
-        {sheet.name}
-        {`'s Case Sheet`}
+        <h2 className={h2}>{sheet.name}
+        {`'s Case Sheet`}</h2>
         <div>
-          {`The Facts`}
+          <h3 className={h3}>{`The Facts`}</h3>
           <Facts />
         </div>
         <div>
-          {`Who was where?`}
+          <h3 className={h3}>{`Who was where?`}</h3>
           {this.state.locationKeys.map(key => (
             <div key={key}>
               <Location locationId={key} />
@@ -39,7 +41,7 @@ class CaseSheet extends PureComponent {
           ))}
         </div>
         <div>
-          {`Suspect statements`}
+          <h3 className={h3}>{`Suspect statements`}</h3>
           <Statements />
         </div>
       </div>

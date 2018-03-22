@@ -4,11 +4,13 @@ import { Tabs, Tab } from "material-ui/Tabs";
 import { connect } from "react-redux";
 import CaseSheet from "./casesheet/CaseSheet";
 import Suspects from "./Suspects";
+import {h1} from "../utils/globalcss";
 
 class Interrogation extends PureComponent {
   render = () => {
     return (
       <div>
+        <h1 className={h1}>Interrogation</h1>
         <Tabs>
           <Tab label={`Case Sheet`}>
             <CaseSheet />

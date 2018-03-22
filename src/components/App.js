@@ -5,6 +5,7 @@ import Players from "./Players";
 import GameStart from "./GameStart";
 import Interrogation from "./Interrogation";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import { body } from "../utils/globalcss";
 
 class App extends Component {
   shouldComponentUpdate = props => {
