@@ -90,6 +90,7 @@ export const updateLocationAddress = (playerId, locationId, part, value) => {
     type: UPDATE_LOCATION_ADDRESS,
     playerId,
     data: {
+      locationId,
       part,
       value
     }

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { deepCopy } from "../utils/builder";
 import { updatePlayerClues } from "../actions/index";
 import OccupantField from "./OccupantField";
+import AddressField from "./AddressField";
 
 class Location extends PureComponent {
   updateAddress = (playerId, part, value) => {
@@ -80,23 +81,19 @@ class Location extends PureComponent {
         <div>
           <div>Address</div>
           <div>
-            <TextField
-              hintText="Side of town"
-              id={`${this.props.locationdId}-side`}
-              value={location.address.side || ""}
-              onChange={e =>
-                this.updateAddress(playerId, "side", e.target.value)
-              }
+            <AddressField
+              hint="Side of town"
+              locationId={this.props.locationId}
+              area={"side"}
+              fieldId={`${this.props.locationdId}-side`}
             />
           </div>
           <div>
-            <TextField
-              hintText="Part of town"
-              id={`${this.props.locationdId}-town`}
-              value={location.address.town || ""}
-              onChange={e =>
-                this.updateAddress(playerId, "town", e.target.value)
-              }
+            <AddressField
+              hint="Part of town"
+              locationId={this.props.locationId}
+              area={"town"}
+              fieldId={`${this.props.locationdId}-town`}
             />
           </div>
         </div>

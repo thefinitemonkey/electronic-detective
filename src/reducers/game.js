@@ -5,7 +5,8 @@ import {
   SET_PLAYER_TURN,
   UPDATE_PLAYER_CLUES,
   UPDATE_SUSPECT_STATEMENT,
-  UPDATE_LOCATION_OCCUPANT
+  UPDATE_LOCATION_OCCUPANT,
+  UPDATE_LOCATION_ADDRESS
 } from "../actions/index.js";
 import { R_OK } from "constants";
 
@@ -54,7 +55,10 @@ const game = (
       const statements = sheet.suspectStatements;
       const revisedSuspectStatements = { ...statements };
       revisedSuspectStatements[data.suspectId] = data.statement;
-      const revisedSheet = { ...sheet, suspectStatements: revisedSuspectStatements };
+      const revisedSheet = {
+        ...sheet,
+        suspectStatements: revisedSuspectStatements
+      };
       const revisedSheets = { ...sheets };
       revisedSheets[playerId] = revisedSheet;
       const revisedGameData = { ...gameData, sheets: revisedSheets };
@@ -76,6 +80,31 @@ const game = (
       const newOccupants = location.occupants.slice(0);
       newOccupants.splice(data.arrayIndex, 1, data.value);
       const revisedLocation = { ...location, occupants: newOccupants };
+      const revisedLocations = { ...locations };
+      revisedLocations[data.locationId] = revisedLocation;
+      const revisedSheet = { ...sheet, locations: revisedLocations };
+      const revisedSheets = { ...sheets };
+      revisedSheets[playerId] = revisedSheet;
+      const revisedGameData = { ...gameData, sheets: revisedSheets };
+      return { ...state, gameData: revisedGameData };
+    }
+    case UPDATE_LOCATION_ADDRESS: {
+      if (
+        !data ||
+        data.locationId === null ||
+        data.area === null ||
+        data.value === null
+      )
+        return state;
+
+      const gameData = state.gameData;
+      const sheets = gameData.sheets;
+      const sheet = sheets[playerId];
+      const locations = sheet.locations;
+      const location = locations[data.locationId];
+      const revisedAddress = { ...location.address };
+      revisedAddress[data.part] = data.value;
+      const revisedLocation = { ...location, address: revisedAddress };
       const revisedLocations = { ...locations };
       revisedLocations[data.locationId] = revisedLocation;
       const revisedSheet = { ...sheet, locations: revisedLocations };
