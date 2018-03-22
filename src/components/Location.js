@@ -7,12 +7,6 @@ import OccupantField from "./OccupantField";
 import AddressField from "./AddressField";
 
 class Location extends PureComponent {
-  updateAddress = (playerId, part, value) => {
-    const newSheet = deepCopy(this.props.game.gameData.sheets[playerId]);
-    newSheet.locations[this.props.locationId].address[part] = value;
-    this.props.updatePlayerClues(playerId, newSheet);
-  };
-
   updateWeapon = (playerId, value) => {
     const newSheet = deepCopy(this.props.game.gameData.sheets[playerId]);
     newSheet.locations[this.props.locationId].weapon = value;
@@ -24,7 +18,6 @@ class Location extends PureComponent {
   };
 
   render = () => {
-    console.log("ping location update");
     const gameData = this.props.game.gameData;
     const setupData = this.props.game.setupData;
     const playerId = this.props.game.playerId;

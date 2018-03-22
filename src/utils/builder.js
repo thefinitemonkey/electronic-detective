@@ -140,7 +140,6 @@ export function buildGame(setupData, players) {
   for (let i = 0; i < numPlayers; i++) {
     const nameObj = { name: players[i], victim, scene: sceneId };
     const charKeys = Object.keys(setupData.characters);
-    console.log("charKeys", charKeys);
     const charStatements = {};
     charKeys.forEach(key => {
       key === victim

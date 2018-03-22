@@ -24,7 +24,6 @@ class Statement extends PureComponent {
     const sheet = this.props.game.gameData.sheets[playerId];
     const victim = this.props.game.gameData.sheets[playerId].victim;
     const suspect = this.props.suspect;
-    console.log("ping statement");
 
     return (
       <div>

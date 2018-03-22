@@ -41,7 +41,6 @@ class Facts extends PureComponent {
     const gameData = this.props.game.gameData;
     const setupData = this.props.game.setupData;
     const sheet = gameData.sheets[this.state.playerId];
-    console.log("ping facts update");
 
     return (
       <div>

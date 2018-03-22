@@ -9,7 +9,6 @@ class Statements extends PureComponent {
     const playerId = this.props.game.playerId;
     const sheet = this.props.game.gameData.sheets[playerId];
     const victim = this.props.game.gameData.sheets[playerId].victim;
-    console.log("ping mapping statements");
 
     return (
       <div>

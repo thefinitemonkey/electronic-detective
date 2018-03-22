@@ -28,7 +28,6 @@ class App extends Component {
         renderItem = <GameStart />;
         break;
       case "interrogation":
-        console.log("switching to interrogation");
         renderItem = <Interrogation />;
         break;
       default:
