@@ -2,14 +2,10 @@ import React, { PureComponent } from "react";
 import TextField from "material-ui/TextField";
 import { connect } from "react-redux";
 import { deepCopy } from "../utils/builder";
-import { updatePlayerClues, updateLocationOccupant } from "../actions/index";
+import { updatePlayerClues } from "../actions/index";
 import OccupantField from "./OccupantField";
 
 class Location extends PureComponent {
-  updateOccupant = (playerId, locationId, index, value) => {
-    this.props.updateLocationOccupant(playerId, locationId, index, value);
-  };
-
   updateAddress = (playerId, part, value) => {
     const newSheet = deepCopy(this.props.game.gameData.sheets[playerId]);
     newSheet.locations[this.props.locationId].address[part] = value;
@@ -125,9 +121,7 @@ function mapStateToProps(game) {
 function mapDispatchToProps(dispatch) {
   return {
     updatePlayerClues: (playerId, sheet) =>
-      dispatch(updatePlayerClues(playerId, sheet)),
-    updateLocationOccupant: (playerId, locationId, index, value) =>
-      dispatch(updateLocationOccupant(playerId, locationId, index, value))
+      dispatch(updatePlayerClues(playerId, sheet))
   };
 }
 

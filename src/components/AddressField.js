@@ -5,16 +5,22 @@ import { updateLocationOccupant } from "../actions/index";
 
 class Location extends PureComponent {
   state = {
-    occupant: this.props.game.gameData.sheets[this.props.game.playerId]
-      .locations[this.props.locationId].occupants[this.props.occupantIndex]
+    address:
+      this.props.area === "side"
+        ? this.props.game.gameData.sheets[this.props.game.playerId].locations[
+            this.props.locationId
+          ].address.side
+        : this.props.game.gameData.sheets[this.props.game.playerId].locations[
+            this.props.locationId
+          ].address.part
   };
 
   updateState = value => {
     this.setState({ occupant: value });
   };
 
-  updateOccupant = (playerId, locationId, index, value) => {
-    this.props.updateLocationOccupant(playerId, locationId, index, value);
+  updateAddress = (playerId, locationId, part, value) => {
+    this.props.updateLocationOccupant(playerId, locationId, part, value);
   };
 
   render = () => {
@@ -26,18 +32,11 @@ class Location extends PureComponent {
     return (
       <div>
         <TextField
-          hintText="Suspect"
+          hintText={this.props.hint}
           id={this.props.fieldId}
-          value={this.state.occupant}
+          value={this.state.address}
           onChange={e => this.updateState(e.target.value)}
-          onBlur={e =>
-            this.updateOccupant(
-              playerId,
-              this.props.locationId,
-              this.props.occupantIndex,
-              e.target.value
-            )
-          }
+          onBlur={e => this.updateAddress(playerId, this.props.locationId, this.props.area, e.target.value)}
         />
       </div>
     );
