@@ -2,8 +2,8 @@ import React, { PureComponent } from "react";
 import RaisedButton from "material-ui/RaisedButton";
 import { RadioButton, RadioButtonGroup } from "material-ui/RadioButton";
 import { connect } from "react-redux";
-import { deepCopy } from "../utils/builder";
-import { updatePlayerClues } from "../actions/index";
+import { deepCopy } from "../../utils/builder";
+import { updatePlayerClues } from "../../actions/index";
 import Location from "./Location";
 
 class Facts extends PureComponent {

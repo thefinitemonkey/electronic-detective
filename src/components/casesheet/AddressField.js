@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import TextField from "material-ui/TextField";
 import { connect } from "react-redux";
-import { updateLocationAddress } from "../actions/index";
+import { updateLocationAddress } from "../../actions/index";
 
 class Location extends PureComponent {
   state = {

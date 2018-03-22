@@ -1,8 +1,8 @@
 import React, { PureComponent } from "react";
 import TextField from "material-ui/TextField";
 import { connect } from "react-redux";
-import { deepCopy } from "../utils/builder";
-import { updatePlayerClues } from "../actions/index";
+import { deepCopy } from "../../utils/builder";
+import { updatePlayerClues } from "../../actions/index";
 import OccupantField from "./OccupantField";
 import AddressField from "./AddressField";
 

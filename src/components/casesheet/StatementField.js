@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import TextField from "material-ui/TextField";
 import { connect } from "react-redux";
-import { updateSuspectStatement } from "../actions/index";
+import { updateSuspectStatement } from "../../actions/index";
 
 class Statement extends PureComponent {
   state = {
