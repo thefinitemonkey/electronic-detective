@@ -2,6 +2,15 @@ import React, { PureComponent } from "react";
 import TextField from "material-ui/TextField";
 import { connect } from "react-redux";
 import { updateSuspectStatement } from "../../actions/index";
+import { css } from "react-emotion";
+import {
+  body,
+  bodyStrong,
+  bodyCondensed,
+  h1,
+  h2,
+  h3
+} from "../../utils/globalcss";
 
 class Statement extends PureComponent {
   state = {
@@ -26,11 +35,11 @@ class Statement extends PureComponent {
     const suspect = this.props.suspect;
 
     return (
-      <div>
+      <div className={statementItem} >
         <div key={`suspect-${suspect.id}`}>
-          <div>{`${suspect.name} (#${suspect.id})`}</div>
+          <div className={bodyCondensed} >{`${suspect.name} (#${suspect.id})`}</div>
           <div>
-            <TextField
+            <TextField style={{fontSize: "12px", width: "100%"}}
               disabled={victim === suspect.id ? true : false}
               hintText={`${suspect.name}'s statement`}
               value={this.state.statement}
@@ -49,6 +58,13 @@ class Statement extends PureComponent {
     );
   };
 }
+
+const statementItem=css`
+  margin: 0px 25px 50px 25px;
+  flex: 1;
+  min-width: 150px;
+  max-width: 200px;
+`
 
 function mapStateToProps(game) {
   return { game };

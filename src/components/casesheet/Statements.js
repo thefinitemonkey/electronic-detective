@@ -3,6 +3,7 @@ import TextField from "material-ui/TextField";
 import { connect } from "react-redux";
 import { updateSuspectStatement } from "../../actions/index";
 import StatementField from "./StatementField";
+import { css } from "react-emotion";
 
 class Statements extends PureComponent {
   render = () => {
@@ -11,7 +12,7 @@ class Statements extends PureComponent {
     const victim = this.props.game.gameData.sheets[playerId].victim;
 
     return (
-      <div>
+      <div className={statementsList} >
         {this.props.suspects.map(suspect => 
           <StatementField key={suspect.id} suspect={suspect} />
         )}
@@ -19,6 +20,12 @@ class Statements extends PureComponent {
     );
   };
 }
+
+const statementsList = css`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+`
 
 function mapStateToProps(game) {
   const setupData = game.setupData;
