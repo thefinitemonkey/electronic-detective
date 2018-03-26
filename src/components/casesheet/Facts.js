@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { deepCopy } from "../../utils/builder";
 import { updatePlayerClues } from "../../actions/index";
 import Location from "./Location";
+import { css } from "react-emotion";
+import { body, bodyStrong, h1, h2, h3 } from "../../utils/globalcss";
 
 class Facts extends PureComponent {
   constructor(props) {
@@ -44,99 +46,187 @@ class Facts extends PureComponent {
 
     return (
       <div>
-        <div>
-          {`Victim: `}
-          {setupData.characters[gameData.victim].name} (#{gameData.victim})
+        <div className={[clueSection, victimInfo].join(" ")}>
+          <div className={[body, victimInfoHeading].join(" ")}>
+            <span className={bodyStrong}>{`Victim: `}</span>
+            {setupData.characters[gameData.victim].name} (#{gameData.victim})
+          </div>
+          <div className={body}>
+            <span className={bodyStrong}>{`Found At: `}</span>
+            {setupData.locations[gameData.scene].name}
+          </div>
         </div>
-        <div>
-          {`Found At: `}
-          {setupData.locations[gameData.scene].name}
-        </div>
-        <div>
-          <div>
-            {`Sex of the murderer:`}
-            <div>
+        <div className={body}>
+          <div className={[clueSection, victimInfo].join(" ")}>
+            <div
+              className={[bodyStrong, radioHeading].join(" ")}
+            >{`Sex of the murderer:`}</div>
+            <div className={radioGroupDiv}>
               <RadioButtonGroup
+                className={[radioGroup, victimInfo].join(" ")}
                 name="murdererSex"
                 valueSelected={sheet.clueSelections.sex}
                 onChange={e =>
                   this.updateClueSelection(["sex"], e.target.value)
                 }
               >
-                <RadioButton value="male" label="Male" />
-                <RadioButton value="female" label="Female" />
+                <RadioButton
+                  value="male"
+                  label="Male"
+                  className={radioButton}
+                  style={{ width: "33%" }}
+                />
+                <RadioButton
+                  value="female"
+                  label="Female"
+                  className={[radioButton, radioButtonLastChild].join(" ")}
+                  style={{ width: "33%" }}
+                />
               </RadioButtonGroup>
             </div>
           </div>
           <div>
-            {`Where the murderer went:`}
-            <div>
-              <RadioButtonGroup
-                name="murdererSide"
-                valueSelected={sheet.clueSelections.hiding.side}
-                onChange={e =>
-                  this.updateClueSelection(["hiding", "side"], e.target.value)
-                }
-              >
-                <RadioButton value="west" label="West" />
-                <RadioButton value="east" label="East" />
-              </RadioButtonGroup>
-            </div>
-            <div>
-              <RadioButtonGroup
-                name="murdererTown"
-                valueSelected={sheet.clueSelections.hiding.town}
-                onChange={e =>
-                  this.updateClueSelection(["hiding", "town"], e.target.value)
-                }
-              >
-                <RadioButton value="uptown" label="Uptown" />
-                <RadioButton value="midtown" label="Midtown" />
-                <RadioButton value="downtown" label="Downtown" />
-              </RadioButtonGroup>
+            <div className={[clueSection, victimInfo].join(" ")}>
+              <div className={[bodyStrong, radioHeading].join(" ")}>
+                {`Where the murderer went:`}
+              </div>
+              <div className={radioGroupDiv}>
+                <div>
+                  <RadioButtonGroup
+                    className={[radioGroup, victimInfo].join(" ")}
+                    name="murdererSide"
+                    valueSelected={sheet.clueSelections.hiding.side}
+                    onChange={e =>
+                      this.updateClueSelection(
+                        ["hiding", "side"],
+                        e.target.value
+                      )
+                    }
+                  >
+                    <RadioButton
+                      value="west"
+                      label="West"
+                      style={{ width: "33%" }}
+                      className={radioButton}
+                    />
+                    <RadioButton
+                      value="east"
+                      label="East"
+                      style={{ width: "33%" }}
+                      className={[radioButton, radioButtonLastChild].join(" ")}
+                    />
+                  </RadioButtonGroup>
+                </div>
+                <div>
+                  <RadioButtonGroup
+                    className={[radioGroup, victimInfo].join(" ")}
+                    name="murdererTown"
+                    valueSelected={sheet.clueSelections.hiding.town}
+                    onChange={e =>
+                      this.updateClueSelection(
+                        ["hiding", "town"],
+                        e.target.value
+                      )
+                    }
+                  >
+                    <RadioButton
+                      value="uptown"
+                      label="Uptown"
+                      className={radioButton}
+                      style={{ width: "33%" }}
+                    />
+                    <RadioButton
+                      value="midtown"
+                      label="Midtown"
+                      className={radioButton}
+                      style={{ width: "33%" }}
+                    />
+                    <RadioButton
+                      value="downtown"
+                      label="Downtown"
+                      className={[radioButton, radioButtonLastChild].join(" ")}
+                      style={{ width: "33%" }}
+                    />
+                  </RadioButtonGroup>
+                </div>{" "}
+              </div>
             </div>
           </div>
-          <div>
-            {`Weapon used in murder:`}
-            <div>
+          <div className={[clueSection, victimInfo].join(" ")}>
+            <div className={[bodyStrong, radioHeading].join(" ")}>
+              {`Weapon used in murder:`}
+            </div>
+            <div className={radioGroupDiv}>
               <RadioButtonGroup
+                className={[radioGroup, victimInfo].join(" ")}
                 name="murdererWeapon"
                 valueSelected={sheet.clueSelections.weapons.used}
                 onChange={e =>
                   this.updateClueSelection(["weapons", "used"], e.target.value)
                 }
               >
-                <RadioButton value=".38" label=".38" />
-                <RadioButton value=".45" label=".45" />
+                <RadioButton
+                  value=".38"
+                  label=".38"
+                  className={radioButton}
+                  style={{width: "33%"}}
+                />
+                <RadioButton
+                  value=".45"
+                  label=".45"
+                  className={radioButton}
+                  style={{width: "33%"}}
+                />
               </RadioButtonGroup>
-            </div>
-            <div>
-              <RadioButtonGroup
-                name="38Prints"
-                valueSelected={sheet.clueSelections.weapons[".38"].fingerprint}
-                onChange={e =>
-                  this.updateClueSelection(
-                    ["weapons", ".38", "fingerprint"],
-                    e.target.value
-                  )
-                }
-              >
-                <RadioButton value="odd" label="Odd" />
-                <RadioButton value="even" label="Even" />
-              </RadioButtonGroup>
-              <RadioButtonGroup
-                name="45Prints"
-                valueSelected={sheet.clueSelections.weapons[".45"].fingerprint}
-                onChange={e =>
-                  this.updateClueSelection(
-                    ["weapons", ".45", "fingerprint"],
-                    e.target.value
-                  )
-                }
-              >
-                <RadioButton value="odd" label="Odd" />
-                <RadioButton value="even" label="Even" />
-              </RadioButtonGroup>
+
+              <div className={victimInfo}>
+                <div className={[fingerprintGroup, threeColumn].join(" ")}>
+                  <RadioButtonGroup
+                    name="38Prints"
+                    valueSelected={
+                      sheet.clueSelections.weapons[".38"].fingerprint
+                    }
+                    onChange={e =>
+                      this.updateClueSelection(
+                        ["weapons", ".38", "fingerprint"],
+                        e.target.value
+                      )
+                    }
+                  >
+                    <RadioButton
+                      value="odd"
+                      label="Odd"
+                    />
+                    <RadioButton
+                      value="even"
+                      label="Even"
+                    />
+                  </RadioButtonGroup>
+                </div>
+                <div className={[fingerprintGroup, threeColumn].join(" ")}>
+                  <RadioButtonGroup
+                    name="45Prints"
+                    valueSelected={
+                      sheet.clueSelections.weapons[".45"].fingerprint
+                    }
+                    onChange={e =>
+                      this.updateClueSelection(
+                        ["weapons", ".45", "fingerprint"],
+                        e.target.value
+                      )
+                    }
+                  >
+                    <RadioButton
+                      value="odd"
+                      label="Odd"
+                    />
+                    <RadioButton
+                      value="even"
+                      label="Even"
+                    />
+                  </RadioButtonGroup>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -144,6 +234,57 @@ class Facts extends PureComponent {
     );
   };
 }
+
+const clueSection = css`
+  margin-bottom: 15px;
+`;
+
+const victimInfo = css`
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+`;
+
+const victimInfoHeading = css`
+  margin-right: 15px;
+`;
+
+const radioHeading = css`
+  flex: 0.3;
+`;
+
+const radioGroupDiv = css`
+  flex: 0.6;
+`;
+
+const radioGroup = css`
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+`;
+
+const radioButton = css`
+  //margin-right: 20px;
+  margin-bottom: 15px;
+  flex: 1 1 auto;
+`;
+
+const radioButtonLastChild = css`
+  margin-right: 0;
+`;
+
+const fingerprintGroup = css`
+  flex: 1;
+`;
+
+const twoColumn = css`
+  width: 50%;
+`
+
+const threeColumn = css`
+  width: 33%;
+  display: table;
+`
 
 function mapStateToProps(game) {
   return { game };

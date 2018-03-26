@@ -5,6 +5,15 @@ import { deepCopy } from "../../utils/builder";
 import { updatePlayerClues } from "../../actions/index";
 import OccupantField from "./OccupantField";
 import AddressField from "./AddressField";
+import { css } from "react-emotion";
+import {
+  body,
+  bodyStrong,
+  bodyCondensed,
+  h1,
+  h2,
+  h3
+} from "../../utils/globalcss";
 
 class Location extends PureComponent {
   state = {
@@ -35,26 +44,26 @@ class Location extends PureComponent {
 
     return (
       <div>
-        <div>{this.props.locationId}</div>
-        <div>{location.name}</div>
+        <div className={bodyStrong}>{this.props.locationId}</div>
+        <div className={bodyCondensed}>{location.name}</div>
         <div>
-          <table>
+          <table className={occupantTable} >
             <thead>
               <tr>
-                <th>Men</th>
-                <th>Women</th>
+                <th className={bodyStrong}>Men</th>
+                <th className={bodyStrong}>Women</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
+              <tr className={occupantRow}>
+                <td className={occupantCol}>
                   <OccupantField
                     fieldId={`${this.props.locationId}-men-0`}
                     locationId={this.props.locationId}
                     occupantIndex={0}
                   />
                 </td>
-                <td>
+                <td className={occupantCol}>
                   <OccupantField
                     fieldId={`${this.props.locationId}-women-2`}
                     locationId={this.props.locationId}
@@ -62,15 +71,15 @@ class Location extends PureComponent {
                   />
                 </td>
               </tr>
-              <tr>
-                <td>
+              <tr className={occupantRow}>
+                <td className={occupantCol}>
                   <OccupantField
                     fieldId={`${this.props.locationId}-men-1`}
                     locationId={this.props.locationId}
                     occupantIndex={1}
                   />
                 </td>
-                <td>
+                <td className={occupantCol}>
                   <OccupantField
                     fieldId={`${this.props.locationId}-women-3`}
                     locationId={this.props.locationId}
@@ -82,7 +91,7 @@ class Location extends PureComponent {
           </table>
         </div>
         <div>
-          <div>Address</div>
+          <div className={bodyStrong}>Address</div>
           <div>
             <AddressField
               hint="Side of town"
@@ -100,13 +109,14 @@ class Location extends PureComponent {
             />
           </div>
         </div>
-        <div>Weapon location</div>
+        <div className={bodyStrong}>Weapon location</div>
         <div>
           <TextField
+            style={{ fontSize: "12px", width: "100%" }}
             hintText="Type"
             id={`${this.props.locationId}-weapon`}
             value={this.state.weapon}
-            onChange = {e=> this.updateState(e.target.value)}
+            onChange={e => this.updateState(e.target.value)}
             onBlur={e => this.updateWeapon(playerId, e.target.value)}
           />
         </div>
@@ -114,6 +124,18 @@ class Location extends PureComponent {
     );
   };
 }
+
+const occupantTable = css`
+  border-spacing: 7px 0px;
+`
+
+const occupantRow = css`
+  width: 100%;
+`;
+
+const occupantCol = css`
+  width: 50%;
+`;
 
 function mapStateToProps(game) {
   return { game };

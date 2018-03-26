@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import Facts from "./Facts";
 import Location from "./Location";
 import Statements from "./Statements";
-import {css} from "react-emotion";
-import {h1, h2, h3} from "../../utils/globalcss";
+import { css } from "react-emotion";
+import { h1, h2, h3 } from "../../utils/globalcss";
 
 class CaseSheet extends PureComponent {
   constructor(props) {
@@ -26,19 +26,23 @@ class CaseSheet extends PureComponent {
 
     return (
       <div>
-        <h2 className={h2}>{sheet.name}
-        {`'s Case Sheet`}</h2>
+        <h2 className={h2}>
+          {sheet.name}
+          {`'s Case Sheet`}
+        </h2>
         <div>
           <h3 className={h3}>{`The Facts`}</h3>
           <Facts />
         </div>
         <div>
           <h3 className={h3}>{`Who was where?`}</h3>
-          {this.state.locationKeys.map(key => (
-            <div key={key}>
-              <Location locationId={key} />
-            </div>
-          ))}
+          <div className={locationList}>
+            {this.state.locationKeys.map(key => (
+              <div key={key} className={location}>
+                <Location locationId={key} />
+              </div>
+            ))}
+          </div>
         </div>
         <div>
           <h3 className={h3}>{`Suspect statements`}</h3>
@@ -48,6 +52,19 @@ class CaseSheet extends PureComponent {
     );
   };
 }
+
+const locationList = css`
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+`;
+
+const location = css`
+  flex: 1;
+  margin: 50px;
+  max-width: 200px;
+  min-width: 150px;
+`;
 
 function mapStateToProps(game) {
   return { game };

@@ -25,7 +25,7 @@ class Location extends PureComponent {
 
     return (
       <div>
-        <TextField
+        <TextField style={{width:"100%", fontSize:"12px"}}
           hintText="Suspect"
           id={this.props.fieldId}
           value={this.state.occupant}
