@@ -61,7 +61,7 @@ const locationList = css`
 
 const location = css`
   flex: 1;
-  margin: 50px;
+  margin: 0 25px 50px 25px;
   max-width: 200px;
   min-width: 150px;
 `;
