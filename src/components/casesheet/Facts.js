@@ -74,13 +74,13 @@ class Facts extends PureComponent {
                   value="male"
                   label="Male"
                   className={radioButton}
-                  style={{ width: "33%" }}
+                  style={{ maxWidth: "33%" }}
                 />
                 <RadioButton
                   value="female"
                   label="Female"
                   className={[radioButton, radioButtonLastChild].join(" ")}
-                  style={{ width: "33%" }}
+                  style={{ maxWidth: "33%" }}
                 />
               </RadioButtonGroup>
             </div>
@@ -106,13 +106,13 @@ class Facts extends PureComponent {
                     <RadioButton
                       value="west"
                       label="West"
-                      style={{ width: "33%" }}
+                      style={{ maxWidth: "33%" }}
                       className={radioButton}
                     />
                     <RadioButton
                       value="east"
                       label="East"
-                      style={{ width: "33%" }}
+                      style={{ maxWidth: "33%" }}
                       className={[radioButton, radioButtonLastChild].join(" ")}
                     />
                   </RadioButtonGroup>
@@ -133,19 +133,19 @@ class Facts extends PureComponent {
                       value="uptown"
                       label="Uptown"
                       className={radioButton}
-                      style={{ width: "33%" }}
+                      style={{ maxWidth: "33%" }}
                     />
                     <RadioButton
                       value="midtown"
                       label="Midtown"
                       className={radioButton}
-                      style={{ width: "33%" }}
+                      style={{ maxWidth: "33%" }}
                     />
                     <RadioButton
                       value="downtown"
                       label="Downtown"
                       className={[radioButton, radioButtonLastChild].join(" ")}
-                      style={{ width: "33%" }}
+                      style={{ maxWidth: "33%" }}
                     />
                   </RadioButtonGroup>
                 </div>{" "}
@@ -169,13 +169,13 @@ class Facts extends PureComponent {
                   value=".38"
                   label=".38"
                   className={radioButton}
-                  style={{width: "33%"}}
+                  style={{maxWidth: "33%"}}
                 />
                 <RadioButton
                   value=".45"
                   label=".45"
                   className={radioButton}
-                  style={{width: "33%"}}
+                  style={{maxWidth: "33%"}}
                 />
               </RadioButtonGroup>
 
@@ -278,11 +278,11 @@ const fingerprintGroup = css`
 `;
 
 const twoColumn = css`
-  width: 50%;
+  max-width: 50%;
 `
 
 const threeColumn = css`
-  width: 33%;
+  max-width: 33%;
   display: table;
 `
 

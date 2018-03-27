@@ -1,12 +1,13 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import SuspectListItem from "./SuspectListItem";
+import { css } from "emotion";
 
 class SuspectList extends PureComponent {
   render = () => {
     const victim = this.props.game.gameData.victim;
     return (
-      <div>
+      <div className={suspectList} >
         {this.props.suspects.map(suspect => {
           const isVictim = victim === suspect.id;
           return (
@@ -14,6 +15,7 @@ class SuspectList extends PureComponent {
               key={suspect.id}
               suspectId={suspect.id}
               victim={isVictim}
+              interrogateSuspect={this.props.interrogateSuspect}
             />
           );
         })}
@@ -21,6 +23,12 @@ class SuspectList extends PureComponent {
     );
   };
 }
+
+const suspectList = css`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`;
 
 function mapStateToProps(game) {
   const suspects = [];
