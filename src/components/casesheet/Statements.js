@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import TextField from "material-ui/TextField";
 import { connect } from "react-redux";
 import { updateSuspectStatement } from "../../actions/index";
-import StatementField from "./StatementField";
+import StatementField from "../common/StatementField";
 import { css } from "react-emotion";
 
 class Statements extends PureComponent {

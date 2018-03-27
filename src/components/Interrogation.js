@@ -3,8 +3,8 @@ import RaisedButton from "material-ui/RaisedButton";
 import { Tabs, Tab } from "material-ui/Tabs";
 import { connect } from "react-redux";
 import CaseSheet from "./casesheet/CaseSheet";
-import Suspects from "./Suspects";
-import {h1} from "../utils/globalcss";
+import Suspects from "./suspects/Suspects";
+import { h1 } from "../utils/globalcss";
 
 class Interrogation extends PureComponent {
   render = () => {
