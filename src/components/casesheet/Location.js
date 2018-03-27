@@ -43,11 +43,11 @@ class Location extends PureComponent {
     const location = gameData.sheets[playerId].locations[this.props.locationId];
 
     return (
-      <div>
+      <div className={relativePosition} >
         <div className={bodyStrong}>{this.props.locationId}</div>
         <div className={bodyCondensed}>{location.name}</div>
         <div>
-          <table className={occupantTable} >
+          <table className={occupantTable}>
             <thead>
               <tr>
                 <th className={bodyStrong}>Men</th>
@@ -120,14 +120,31 @@ class Location extends PureComponent {
             onBlur={e => this.updateWeapon(playerId, e.target.value)}
           />
         </div>
+        {this.props.game.gameData.scene === this.props.locationId && (
+          <div className={crimeScene} />
+        )}
       </div>
     );
   };
 }
 
+const relativePosition = css`
+  position: relative;
+`
+
+const crimeScene = css`
+  background-image: url("./images/policetape.png");
+  background-size: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+`;
+
 const occupantTable = css`
   border-spacing: 7px 0px;
-`
+`;
 
 const occupantRow = css`
   width: 100%;
