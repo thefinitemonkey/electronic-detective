@@ -16,12 +16,7 @@ class Suspects extends PureComponent {
   renderSuspectList = () => {
     return (
       <div>
-        <div>
-          <h2 className={h2}>Suspects</h2>
-        </div>
-        <div>
-          <SuspectList interrogateSuspect={this.interrogateSuspect} />
-        </div>
+        <SuspectList interrogateSuspect={this.interrogateSuspect} />
       </div>
     );
   };
@@ -29,16 +24,7 @@ class Suspects extends PureComponent {
   renderInterrogation = () => {
     return (
       <div>
-        <div>
-          <h2 className={h2}>{`Interrogation of ${
-            this.props.game.setupData.characters[
-              this.state.interrogationSuspect
-            ].name
-          }`}</h2>
-          <div>
-            <Interrogation suspectId={this.state.interrogationSuspect} />
-          </div>
-        </div>
+        <Interrogation suspectId={this.state.interrogationSuspect} />
       </div>
     );
   };

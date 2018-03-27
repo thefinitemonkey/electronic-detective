@@ -2,23 +2,29 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import SuspectListItem from "./SuspectListItem";
 import { css } from "emotion";
+import { h2 } from "../../utils/globalcss";
 
 class SuspectList extends PureComponent {
   render = () => {
     const victim = this.props.game.gameData.victim;
     return (
-      <div className={suspectList} >
-        {this.props.suspects.map(suspect => {
-          const isVictim = victim === suspect.id;
-          return (
-            <SuspectListItem
-              key={suspect.id}
-              suspectId={suspect.id}
-              victim={isVictim}
-              interrogateSuspect={this.props.interrogateSuspect}
-            />
-          );
-        })}
+      <div>
+        <div>
+          <h2 className={h2}>Suspects</h2>
+        </div>
+        <div className={suspectList}>
+          {this.props.suspects.map(suspect => {
+            const isVictim = victim === suspect.id;
+            return (
+              <SuspectListItem
+                key={suspect.id}
+                suspectId={suspect.id}
+                victim={isVictim}
+                interrogateSuspect={this.props.interrogateSuspect}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   };
