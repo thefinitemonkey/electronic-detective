@@ -16,25 +16,29 @@ class Interrogation extends PureComponent {
         <h2 className={h2}>{`${this.state.questionsRemaining} Question${
           this.state.questionsRemaining > 1 ? `s` : ``
         } Left`}</h2>
-        <div>
-          <div className={characterImages} >
-            <div>
-              <img
-                className={characterImage}
-                src={`./images/characters/${character.images.portrait}`}
-                alt={`${character.name} portrait`}
-              />
+        <div className={infoBlock}>
+          <div>
+            <div className={characterImages}>
+              <div>
+                <img
+                  className={characterImage}
+                  src={`./images/characters/${character.images.portrait}`}
+                  alt={`${character.name} portrait`}
+                />
+              </div>
+              <div>
+                <img
+                  className={characterImage}
+                  src={`./images/characters/${character.images.profile}`}
+                  alt={`${character.name} profile`}
+                />
+              </div>
             </div>
-            <div>
-              <img
-                className={characterImage}
-                src={`./images/characters/${character.images.profile}`}
-                alt={`${character.name} profile`}
-              />
-            </div>
+            <div className={bodyStrong}>{character.name}</div>
           </div>
-          <div className={bodyStrong} >
-            {character.name}
+          <div>
+              <h3 className={[h3, statementHeader].join(" ")}>Statement</h3>
+              <div></div>
           </div>
         </div>
       </div>
@@ -51,7 +55,17 @@ const characterImages = css`
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 5px;
+  margin-right: 20px;
 `;
+
+const infoBlock = css`
+    display: flex;
+    flex-wrap: wrap;
+`
+
+const statementHeader = css`
+    margin-top: 0;
+`
 
 function mapStateToProps(game) {
   return { game };
