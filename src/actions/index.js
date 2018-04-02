@@ -10,6 +10,7 @@ export const UPDATE_SUSPECT_STATEMENT = "UPDATE_SUSPECT_STATEMENT";
 export const UPDATE_LOCATION_OCCUPANT = "UPDATE_LOCATION_OCCUPANT";
 export const UPDATE_LOCATION_ADDRESS = "UPDATE_LOCATION_ADDRESS";
 export const UPDATE_LOCATION_WEAPON = "UPDATE_LOCATION_WEAPON";
+export const CREATE_SUSPECT_ALIBI = "CREATE_SUSPECT_ALIBI";
 
 export const getSetupData = () => dispatch => {
   Api.getSetupData().then(data => {
@@ -103,6 +104,92 @@ export const updateLocationWeapon = (playerId, locationId, value) => {
     playerId,
     data: {
       value
+    }
+  };
+};
+
+export const createAlibi = (
+  playerId,
+  suspectId,
+  gameData,
+  setupData,
+  characterLocations
+) => {
+  // Create array of the list of possible alibi facts to provide
+  const arrFacts = ["side", "town", "location", "suspect", "suspect"];
+
+  // Get a random number of facts (zero-based)
+  const numFacts = Builder.getRandomInt(3);
+
+  // Build a secondary array of the facts that will be shared in the alibi
+  let arrSelectedFacts = [];
+  for (let i = 0; i < numFacts + 1; i++) {
+    const factPos = Builder.getRandomInt(arrFacts.length);
+    arrSelectedFacts.push(arrFacts[factPos]);
+    arrFacts.splice(factPos, 1);
+  }
+
+  // Create a duplicate of the attendees that we'll be able to work with
+  const attendeeArr = [];
+  const suspectLocation = characterLocations[suspectId];
+  console.log("suspectLocation", suspectLocation);
+  const location = gameData.locations[suspectLocation];
+  console.log("location", location);
+  location.occupants.forEach(occupant => {
+    if (occupant !== suspectId) attendeeArr.push(occupant);
+  });
+  console.log("Attendees", attendeeArr);
+
+  // Create an array for holding the facts that will be shared in the alibi
+  const alibiArr = [];
+  let pos = 0;
+  arrSelectedFacts.forEach((fact, pos) => {
+    switch (fact) {
+      case "side":
+        alibiArr.push({
+          id: pos,
+          fact: `I was on the ${
+            gameData.locations[suspectLocation].address.side
+          } side`
+        });
+        break;
+      case "town":
+        alibiArr.push({
+          id: pos,
+          fact: `I was in the ${
+            gameData.locations[suspectLocation].address.town
+          } area`
+        });
+        break;
+      case "location":
+        alibiArr.push({
+          id: pos,
+          fact: `I was at the ${gameData.locations[suspectLocation].name}`
+        });
+        break;
+      case "suspect":
+        const attendeeNum = Builder.getRandomInt(attendeeArr.length);
+        alibiArr.push({
+          id: pos,
+          fact: `I was with ${
+            setupData.characters[attendeeArr[attendeeNum]].name
+          }`
+        });
+        attendeeArr.splice(attendeeNum, 1);
+        break;
+      default: {
+      }
+    }
+  });
+
+  console.log("Alibi created", alibiArr);
+
+  return {
+    type: CREATE_SUSPECT_ALIBI,
+    playerId,
+    data: {
+      suspectId,
+      alibiArr
     }
   };
 };

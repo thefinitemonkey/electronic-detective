@@ -6,7 +6,8 @@ import {
   UPDATE_PLAYER_CLUES,
   UPDATE_SUSPECT_STATEMENT,
   UPDATE_LOCATION_OCCUPANT,
-  UPDATE_LOCATION_ADDRESS
+  UPDATE_LOCATION_ADDRESS,
+  CREATE_SUSPECT_ALIBI
 } from "../actions/index.js";
 import { R_OK } from "constants";
 
@@ -112,6 +113,19 @@ const game = (
       revisedSheets[playerId] = revisedSheet;
       const revisedGameData = { ...gameData, sheets: revisedSheets };
       return { ...state, gameData: revisedGameData };
+    }
+    case CREATE_SUSPECT_ALIBI: {
+      console.log("Create alibi", data);
+      if (!data || data.suspecId === null || data.alibiArr === null)
+        return state;
+
+      const gameData = state.gameData;
+      const alibis = gameData.alibis || {};
+      const alibi = {};
+      alibi[data.suspectId] = data.alibiArr;
+      const newAlibis = { ...alibis, ...alibi };
+      const newGameData = { ...gameData, alibis: newAlibis };
+      return { ...state, gameData: newGameData };
     }
     default:
       return state;

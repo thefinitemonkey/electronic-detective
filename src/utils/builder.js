@@ -1,7 +1,7 @@
 // Game builder for taking in setup data and number of players
 // to generate a game solution state
 
-function getRandomInt(max) {
+export function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
@@ -173,6 +173,7 @@ export function buildGame(setupData, players) {
     scene: sceneId,
     victim,
     murderer,
-    weapon
+    weapon,
+    alibis: {}
   };
 }
