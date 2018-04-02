@@ -132,13 +132,10 @@ export const createAlibi = (
   // Create a duplicate of the attendees that we'll be able to work with
   const attendeeArr = [];
   const suspectLocation = characterLocations[suspectId];
-  console.log("suspectLocation", suspectLocation);
   const location = gameData.locations[suspectLocation];
-  console.log("location", location);
   location.occupants.forEach(occupant => {
     if (occupant !== suspectId) attendeeArr.push(occupant);
   });
-  console.log("Attendees", attendeeArr);
 
   // Create an array for holding the facts that will be shared in the alibi
   const alibiArr = [];
