@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { css } from "react-emotion";
 import { body, bodyStrong, bodyCondensed } from "../../utils/globalcss";
+import AnswerLogic from "./AnswerLogic";
 
 class Questions extends PureComponent {
   state = {
@@ -9,8 +10,9 @@ class Questions extends PureComponent {
     questionsRemaining: this.props.questionsRemaining
   };
 
-  handleQuestionClick = (e, index, answerFunction, responseText) => {
+  handleQuestionClick = (e, index, question) => {
     e.preventDefault();
+    
   };
 
   render = () => {
@@ -33,8 +35,7 @@ class Questions extends PureComponent {
                 this.handleQuestionClick(
                   e,
                   index,
-                  question.answerFunction,
-                  question.responseText
+                  question
                 )
               }
             >{`${question.question}`}</a>
