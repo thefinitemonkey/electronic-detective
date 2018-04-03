@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { css } from "react-emotion";
 import { h2, h3, body, bodyStrong, bodyCondensed } from "../../utils/globalcss";
 import Alibi from "./Alibi";
+import Questions from "./Questions";
 
 class Interrogation extends PureComponent {
   state = { questionsRemaining: 3 };
@@ -41,6 +42,10 @@ class Interrogation extends PureComponent {
               <h3 className={[h3, statementHeader].join(" ")}>Initial Statement</h3>
               <div><Alibi suspectId={this.props.suspectId} /></div>
           </div>
+        </div>
+        <div>
+          <h3 className={[h3, statementHeader].join(" ")}>Available Questions</h3>
+          <div><Questions suspectId={this.props.suspectId} /></div>
         </div>
       </div>
     );
