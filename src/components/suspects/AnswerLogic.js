@@ -57,7 +57,7 @@ class AnswerLogic {
     return { answer: display };
   };
 
-  checkMurdererGender = (game, subjectId, response) => {
+  static checkMurdererGender = (game, subjectId, response) => {
     // Check whether the murderer is male and display the appropriate response
     const display =
       game.setupData.characters[game.gameData.murderer].gender === "M"

@@ -12,7 +12,7 @@ class Questions extends PureComponent {
 
   handleQuestionClick = (e, index, question) => {
     e.preventDefault();
-    
+    console.log(AnswerLogic.getQuestionResponse(this.props.game, this.props.suspectId, question));
   };
 
   render = () => {
