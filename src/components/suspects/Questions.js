@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { css } from "react-emotion";
 import { body, bodyStrong, bodyCondensed } from "../../utils/globalcss";
-import AnswerLogic from "./AnswerLogic";
+import { getQuestionResponse } from "./AnswerLogic";
 
 class Questions extends PureComponent {
   state = {
@@ -12,7 +12,9 @@ class Questions extends PureComponent {
 
   handleQuestionClick = (e, index, question) => {
     e.preventDefault();
-    console.log(AnswerLogic.getQuestionResponse(this.props.game, this.props.suspectId, question));
+    console.log(
+      getQuestionResponse(this.props.game, this.props.suspectId, question)
+    );
   };
 
   render = () => {
@@ -29,15 +31,10 @@ class Questions extends PureComponent {
       <div>
         {questions.map((question, index) => (
           <div key={index} className={questionDiv}>
-            <a className={[body, questionLink].join(" ")}
+            <a
+              className={[body, questionLink].join(" ")}
               href={`answer-question-${index}`}
-              onClick={e =>
-                this.handleQuestionClick(
-                  e,
-                  index,
-                  question
-                )
-              }
+              onClick={e => this.handleQuestionClick(e, index, question)}
             >{`${question.question}`}</a>
           </div>
         ))}
@@ -47,13 +44,13 @@ class Questions extends PureComponent {
 }
 
 const questionLink = css`
-    text-decoration: none;
-    color: blue;
-`
+  text-decoration: none;
+  color: blue;
+`;
 
 const questionDiv = css`
-    margin-bottom: 20px;
-`
+  margin-bottom: 20px;
+`;
 
 function mapStateToProps(game) {
   return { game };
