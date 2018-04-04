@@ -1,20 +1,37 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { css } from "react-emotion";
-import { body, bodyStrong, bodyCondensed } from "../../utils/globalcss";
+import { body } from "../../utils/globalcss";
 import { getQuestionResponse } from "./AnswerLogic";
 
 class Questions extends PureComponent {
   state = {
-    questionsAsked: [],
+    questionsAnswered: {},
     questionsRemaining: this.props.questionsRemaining
   };
 
   handleQuestionClick = (e, index, question) => {
     e.preventDefault();
-    console.log(
-      getQuestionResponse(this.props.game, this.props.suspectId, question)
+    // Get the answer to the question
+    const objAnswer = getQuestionResponse(
+      this.props.game,
+      this.props.suspectId,
+      question
     );
+    // Bubble the click up to the parent
+    this.props.handleQuestionClick();
+
+    // Set the state with the new answer information
+    const newAnswer = {};
+    newAnswer[index] = objAnswer.answer;
+    const newQuestionsAnswered = {
+      ...this.state.questionsAnswered,
+      ...newAnswer
+    };
+    this.setState({
+      questionsAnswered: newQuestionsAnswered,
+      questionsRemaining: this.state.questionsRemaining - 1
+    });
   };
 
   render = () => {

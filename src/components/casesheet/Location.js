@@ -7,12 +7,8 @@ import OccupantField from "./OccupantField";
 import AddressField from "./AddressField";
 import { css } from "react-emotion";
 import {
-  body,
   bodyStrong,
   bodyCondensed,
-  h1,
-  h2,
-  h3
 } from "../../utils/globalcss";
 
 class Location extends PureComponent {
@@ -38,7 +34,6 @@ class Location extends PureComponent {
 
   render = () => {
     const gameData = this.props.game.gameData;
-    const setupData = this.props.game.setupData;
     const playerId = this.props.game.playerId;
     const location = gameData.sheets[playerId].locations[this.props.locationId];
 

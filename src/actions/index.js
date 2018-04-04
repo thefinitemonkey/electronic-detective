@@ -139,7 +139,6 @@ export const createAlibi = (
 
   // Create an array for holding the facts that will be shared in the alibi
   const alibiArr = [];
-  let pos = 0;
   arrSelectedFacts.forEach((fact, pos) => {
     switch (fact) {
       case "side":

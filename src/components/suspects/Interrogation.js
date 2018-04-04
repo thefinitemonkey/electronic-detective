@@ -1,12 +1,16 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { css } from "react-emotion";
-import { h2, h3, body, bodyStrong, bodyCondensed } from "../../utils/globalcss";
+import { h2, h3, bodyStrong } from "../../utils/globalcss";
 import Alibi from "./Alibi";
 import Questions from "./Questions";
 
 class Interrogation extends PureComponent {
   state = { questionsRemaining: 3 };
+
+  handleQuestionClick = () => {
+    this.setState({ questionsRemaining: this.state.questionsRemaining - 1 });
+  };
 
   render = () => {
     const character = this.props.game.setupData.characters[
@@ -39,13 +43,24 @@ class Interrogation extends PureComponent {
             <div className={bodyStrong}>{character.name}</div>
           </div>
           <div>
-              <h3 className={[h3, statementHeader].join(" ")}>Initial Statement</h3>
-              <div><Alibi suspectId={this.props.suspectId} /></div>
+            <h3 className={[h3, statementHeader].join(" ")}>
+              Initial Statement
+            </h3>
+            <div>
+              <Alibi suspectId={this.props.suspectId} />
+            </div>
           </div>
         </div>
         <div>
-          <h3 className={[h3, statementHeader].join(" ")}>Available Questions</h3>
-          <div><Questions suspectId={this.props.suspectId} /></div>
+          <h3 className={[h3, statementHeader].join(" ")}>
+            Available Questions
+          </h3>
+          <div>
+            <Questions
+              suspectId={this.props.suspectId}
+              handleQuestionClick={this.handleQuestionClick}
+            />
+          </div>
         </div>
       </div>
     );
@@ -65,13 +80,13 @@ const characterImages = css`
 `;
 
 const infoBlock = css`
-    display: flex;
-    flex-wrap: wrap;
-`
+  display: flex;
+  flex-wrap: wrap;
+`;
 
 const statementHeader = css`
-    margin-top: 0;
-`
+  margin-top: 0;
+`;
 
 function mapStateToProps(game) {
   return { game };

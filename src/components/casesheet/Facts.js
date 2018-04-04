@@ -1,12 +1,10 @@
 import React, { PureComponent } from "react";
-import RaisedButton from "material-ui/RaisedButton";
 import { RadioButton, RadioButtonGroup } from "material-ui/RadioButton";
 import { connect } from "react-redux";
 import { deepCopy } from "../../utils/builder";
 import { updatePlayerClues } from "../../actions/index";
-import Location from "./Location";
 import { css } from "react-emotion";
-import { body, bodyStrong, h1, h2, h3 } from "../../utils/globalcss";
+import { body, bodyStrong } from "../../utils/globalcss";
 
 class Facts extends PureComponent {
   constructor(props) {
@@ -276,10 +274,6 @@ const radioButtonLastChild = css`
 const fingerprintGroup = css`
   flex: 1;
 `;
-
-const twoColumn = css`
-  max-width: 50%;
-`
 
 const threeColumn = css`
   max-width: 33%;

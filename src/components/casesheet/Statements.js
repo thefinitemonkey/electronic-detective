@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-import TextField from "material-ui/TextField";
 import { connect } from "react-redux";
 import { updateSuspectStatement } from "../../actions/index";
 import StatementField from "../common/StatementField";
@@ -7,10 +6,6 @@ import { css } from "react-emotion";
 
 class Statements extends PureComponent {
   render = () => {
-    const playerId = this.props.game.playerId;
-    const sheet = this.props.game.gameData.sheets[playerId];
-    const victim = this.props.game.gameData.sheets[playerId].victim;
-
     return (
       <div className={statementsList} >
         {this.props.suspects.map(suspect => 

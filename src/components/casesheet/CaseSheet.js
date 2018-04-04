@@ -4,7 +4,7 @@ import Facts from "./Facts";
 import Location from "./Location";
 import Statements from "./Statements";
 import { css } from "react-emotion";
-import { h1, h2, h3 } from "../../utils/globalcss";
+import { h2, h3 } from "../../utils/globalcss";
 
 class CaseSheet extends PureComponent {
   constructor(props) {
@@ -21,7 +21,6 @@ class CaseSheet extends PureComponent {
 
   render = () => {
     const gameData = this.props.game.gameData;
-    const setupData = this.props.game.setupData;
     const sheet = gameData.sheets[this.state.playerId];
 
     return (

@@ -9,7 +9,6 @@ import {
   UPDATE_LOCATION_ADDRESS,
   CREATE_SUSPECT_ALIBI
 } from "../actions/index.js";
-import { R_OK } from "constants";
 
 /* 
 The default state for the game is

@@ -28,6 +28,8 @@ export const getQuestionResponse = (game, suspectId, question) => {
       return checkWeaponLocation(game, subjectId, response);
     case "checkPrints":
       return checkPrints(game, subjectId, response, question.subject);
+    default:
+      return { answer: "" };
   }
 };
 

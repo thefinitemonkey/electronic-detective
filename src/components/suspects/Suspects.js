@@ -1,10 +1,7 @@
 import React, { PureComponent } from "react";
-import RaisedButton from "material-ui/RaisedButton";
-import TextField from "material-ui/TextField";
 import { connect } from "react-redux";
 import SuspectList from "./SuspectList";
 import Interrogation from "./Interrogation";
-import { h2 } from "../../utils/globalcss";
 
 class Suspects extends PureComponent {
   state = { display: "list", interrogationSuspect: 0 };

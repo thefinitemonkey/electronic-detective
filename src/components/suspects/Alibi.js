@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { css } from "react-emotion";
-import { body, bodyStrong, bodyCondensed } from "../../utils/globalcss";
+import { body } from "../../utils/globalcss";
 import { createAlibi } from "../../actions/index";
 
 class Alibi extends PureComponent {
@@ -49,7 +49,6 @@ function mapStateToProps(game) {
   // Create a hash map of characterId:location pairs
   const locations = game.gameData.locations;
   const characterLocations = {};
-  const locationKeys = Object.keys(locations);
   Object.keys(locations).forEach(lKey => {
     Object.keys(locations[lKey].occupants).forEach(cKey => {
       characterLocations[locations[lKey].occupants[cKey]] = lKey;

@@ -1,9 +1,7 @@
 import React, { PureComponent } from "react";
-import RaisedButton from "material-ui/RaisedButton";
-import TextField from "material-ui/TextField";
 import { connect } from "react-redux";
 import { css } from "react-emotion";
-import { h2, h3, body, bodyStrong, bodyCondensed } from "../../utils/globalcss";
+import { body, bodyStrong } from "../../utils/globalcss";
 
 class SuspectListItem extends PureComponent {
   state = { questionsVisible: false };

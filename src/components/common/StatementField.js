@@ -4,12 +4,7 @@ import { connect } from "react-redux";
 import { updateSuspectStatement } from "../../actions/index";
 import { css } from "react-emotion";
 import {
-  body,
-  bodyStrong,
-  bodyCondensed,
-  h1,
-  h2,
-  h3
+  bodyCondensed
 } from "../../utils/globalcss";
 
 class Statement extends PureComponent {
@@ -30,7 +25,6 @@ class Statement extends PureComponent {
 
   render = () => {
     const playerId = this.props.game.playerId;
-    const sheet = this.props.game.gameData.sheets[playerId];
     const victim = this.props.game.gameData.sheets[playerId].victim;
     const suspect = this.props.suspect;
 
