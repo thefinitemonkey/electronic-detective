@@ -3,12 +3,14 @@ import { connect } from "react-redux";
 import SuspectListItem from "./SuspectListItem";
 import { css } from "emotion";
 import { h2 } from "../../utils/globalcss";
+import Accusation from "./Accusation";
 
 class SuspectList extends PureComponent {
   render = () => {
     const victim = this.props.game.gameData.victim;
     return (
       <div>
+        <Accusation />
         <div>
           <h2 className={h2}>Suspects</h2>
         </div>

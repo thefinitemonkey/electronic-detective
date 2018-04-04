@@ -8,7 +8,8 @@ import {
   UPDATE_LOCATION_OCCUPANT,
   UPDATE_LOCATION_ADDRESS,
   CREATE_SUSPECT_ALIBI,
-  END_PLAYER_TURN
+  END_PLAYER_TURN,
+  ACCUSE_SUSPECT
 } from "../actions/index.js";
 
 /* 
@@ -31,6 +32,13 @@ const game = (
       let newPlayer = state.playerId + 1;
       if (newPlayer === state.gameData.sheets.numPlayers) newPlayer = 0;
       return { ...state, playerId: newPlayer, screen: "startturn" };
+    }
+    case ACCUSE_SUSPECT: {
+      if (!playerId || !data.suspectId || !data.murdererId) return state;
+      if (data.suspectId === data.murdererId) {
+        return { ...state, screen: "solved" };
+      }
+      return { ...state, screen: "unsolved" };
     }
     case RECEIVE_GET_SETUP_DATA:
       return { ...state, setupData };

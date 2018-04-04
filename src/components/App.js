@@ -34,6 +34,10 @@ class App extends Component {
       case "interrogation":
         renderItem = <Interrogation />;
         break;
+      case "solved":
+        break;
+      case "unsolved":
+        break;
       default:
         renderItem = null;
     }
