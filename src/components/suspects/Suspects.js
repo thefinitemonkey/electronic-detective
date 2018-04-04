@@ -21,7 +21,7 @@ class Suspects extends PureComponent {
   renderInterrogation = () => {
     return (
       <div>
-        <Interrogation suspectId={this.state.interrogationSuspect} />
+        <Interrogation suspectId={this.state.interrogationSuspect} handleEndTurnDisplay={this.props.handleEndTurnDisplay} />
       </div>
     );
   };

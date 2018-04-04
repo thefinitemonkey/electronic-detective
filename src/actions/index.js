@@ -11,6 +11,7 @@ export const UPDATE_LOCATION_OCCUPANT = "UPDATE_LOCATION_OCCUPANT";
 export const UPDATE_LOCATION_ADDRESS = "UPDATE_LOCATION_ADDRESS";
 export const UPDATE_LOCATION_WEAPON = "UPDATE_LOCATION_WEAPON";
 export const CREATE_SUSPECT_ALIBI = "CREATE_SUSPECT_ALIBI";
+export const END_PLAYER_TURN = "END_PLAYER_TURN";
 
 export const getSetupData = () => dispatch => {
   Api.getSetupData().then(data => {
@@ -24,6 +25,12 @@ export const receiveGetSetupData = setupData => {
     setupData
   };
 };
+
+export const endPlayerTurn = () => {
+  return {
+    type: END_PLAYER_TURN
+  }
+}
 
 export const buildGame = (setupData, players = []) => dispatch => {
   dispatch(finalizeBuildGame(Builder.buildGame(setupData, players)));

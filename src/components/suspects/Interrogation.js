@@ -19,6 +19,9 @@ class Interrogation extends PureComponent {
     ];
     const suspect = { ...character, id: this.props.suspectId }
 
+    // If we're out of questions then bubble up to display the end turn
+    if (!this.state.questionsRemaining) this.props.handleEndTurnDisplay();
+
     return (
       <div>
         <h2 className={h2}>{`${this.state.questionsRemaining} Question${
