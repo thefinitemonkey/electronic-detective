@@ -12,8 +12,8 @@ class Interrogation extends PureComponent {
   state = { displayEndTurn: false };
 
   handleEndTurn = () => {
-    this.props.endPlayerTurn();
     this.setState({ displayEndTurn: false });
+    this.props.endPlayerTurn();
   };
 
   handleEndTurnDisplay = () => {
@@ -56,7 +56,7 @@ const buttonDisplay = css`
 const endTurnDisplay = css`
   display: flex;
   justify-content: flex-end;
-  background-color: #a4c639;
+  background-color: #94b231;
   height: 60px;
   align-items: center;
   position: fixed;

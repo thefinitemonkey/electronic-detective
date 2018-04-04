@@ -10,6 +10,9 @@ class Interrogation extends PureComponent {
   state = { questionsRemaining: 3 };
 
   handleQuestionClick = () => {
+    // If we're out of questions then bubble up to display the end turn
+    if (this.state.questionsRemaining - 1 === 0) this.props.handleEndTurnDisplay();
+
     this.setState({ questionsRemaining: this.state.questionsRemaining - 1 });
   };
 
@@ -18,9 +21,6 @@ class Interrogation extends PureComponent {
       this.props.suspectId
     ];
     const suspect = { ...character, id: this.props.suspectId }
-
-    // If we're out of questions then bubble up to display the end turn
-    if (!this.state.questionsRemaining) this.props.handleEndTurnDisplay();
 
     return (
       <div>

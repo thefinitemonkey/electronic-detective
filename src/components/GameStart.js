@@ -21,7 +21,6 @@ class GameStart extends PureComponent {
     const victim = setupData.characters[victimId];
     const scene = setupData.locations[gameData.scene].name;
     const imgSource = `/images/characters/${victim.images.portrait}`;
-    const sheets = gameData.sheets;
 
     return (
       <div>
@@ -33,7 +32,7 @@ class GameStart extends PureComponent {
         </div>
         <div>
           <RaisedButton
-            label={`Start ${sheets[0].name}'s turn`}
+            label={`Start Investigation`}
             primary={true}
             onClick={() => this.setPlayerTurn(0)}
           />

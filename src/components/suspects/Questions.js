@@ -47,9 +47,6 @@ class Questions extends PureComponent {
       questions.push(this.props.game.setupData.questions[qId]);
     });
 
-    const arrAnswerKeys = Object.keys(this.state.questionsAnswered);
-    console.log("arrAnswerKeys", arrAnswerKeys);
-
     return (
       <div className={twoColumn}>
         <div className={column}>

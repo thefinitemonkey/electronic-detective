@@ -7,12 +7,13 @@ import {
   UPDATE_SUSPECT_STATEMENT,
   UPDATE_LOCATION_OCCUPANT,
   UPDATE_LOCATION_ADDRESS,
-  CREATE_SUSPECT_ALIBI
+  CREATE_SUSPECT_ALIBI,
+  END_PLAYER_TURN
 } from "../actions/index.js";
 
 /* 
 The default state for the game is
-{ setupData: {}, gameData: {} }
+{ setupData: {}, gameData: {}, screen: "loading", playerId: null }
 
 Populated categories looks like
 { setupData: {characters: {...}, locations: {...}, questions: {...}, weapons: {...}, addresses: {...}, sheet: {...},
@@ -26,6 +27,11 @@ const game = (
   const { setupData, gameData, screen, playerId, sheet, data } = action;
 
   switch (action.type) {
+    case END_PLAYER_TURN: {
+      let newPlayer = state.playerId + 1;
+      if (newPlayer === state.gameData.sheets.numPlayers) newPlayer = 0;
+      return { ...state, playerId: newPlayer, screen: "startturn" };
+    }
     case RECEIVE_GET_SETUP_DATA:
       return { ...state, setupData };
     case BUILD_GAME:
