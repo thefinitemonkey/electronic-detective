@@ -96,20 +96,25 @@ export function buildGame(setupData, players) {
     locationsArr.splice(index, 1);
   }
   // Each location gets occupied
+  let murdererLoc = "";
   randLocationsArr.forEach(location => {
     const occupants = [];
     sortChars.forEach(sortArr => {
       if (sortArr.length) {
         const index = getRandomInt(sortArr.length);
         occupants.push(sortArr[index].id);
+        if (sortArr[index].id === murderer) murdererLoc = location.id;
         sortArr.splice(index, 1);
       }
     });
     location.occupants = occupants;
   });
   // Need to pick locations to stash the weapons (weapons are never
-  // at the scene of the crime)
-  const randWeaponLocs = randLocationsArr.slice(0);
+  // at the scene of the crime or with the murderer)
+  const randWeaponLocs = randLocationsArr
+    .slice(0)
+    .filter(randWeaponLoc => randWeaponLoc.id !== murdererLoc);
+
   const murdererOdd = setupData.characters[murderer].odd;
   weaponsArr.forEach(tossWeapon => {
     // For the murder weapon, prints have to match murderer, otherwise
@@ -153,8 +158,8 @@ export function buildGame(setupData, players) {
     const locations = deepCopy(setupData.locations);
     const locKeys = Object.keys(locations);
     locKeys.forEach(key => {
-      locations[key].occupants = ["","","",""];
-    })
+      locations[key].occupants = ["", "", "", ""];
+    });
     const newSheet = {
       ...setupData.sheet,
       ...nameObj,

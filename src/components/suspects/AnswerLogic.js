@@ -93,7 +93,7 @@ const check38Location = (game, subjectId, response) => {
   // Display the location of the .38 from the collection of weapons data
   let weaponLoc = "";
   Object.entries(game.gameData.locations).forEach(locArr => {
-    if (locArr[1].weapon === ".38") {
+    if (locArr[1].weapon.type === ".38") {
       weaponLoc = locArr[0];
     }
   });
@@ -106,8 +106,9 @@ const check38Location = (game, subjectId, response) => {
 const check45Location = (game, subjectId, response) => {
   // Display the location of the .45 from the collection of weapons data
   let weaponLoc = "";
+  console.log("entries", Object.entries(game.gameData.locations));
   Object.entries(game.gameData.locations).forEach(locArr => {
-    if (locArr[1].weapon === ".45") {
+    if (locArr[1].weapon.type === ".45") {
       weaponLoc = locArr[0];
     }
   });
@@ -150,7 +151,7 @@ const checkWeaponLocation = (game, subjectId, response) => {
 
   // Check whether the character was at a location with a weapon
   const display =
-    game.gameData.locations[hashMap[subjectId]].weapon === null
+    game.gameData.locations[hashMap[subjectId]].weapon === ""
       ? response.negative
       : response.affirmative;
 
