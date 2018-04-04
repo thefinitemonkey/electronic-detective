@@ -4,6 +4,7 @@ import { css } from "react-emotion";
 import { h2, h3, bodyStrong } from "../../utils/globalcss";
 import Alibi from "./Alibi";
 import Questions from "./Questions";
+import StatementField from "../common/StatementField";
 
 class Interrogation extends PureComponent {
   state = { questionsRemaining: 3 };
@@ -16,6 +17,7 @@ class Interrogation extends PureComponent {
     const character = this.props.game.setupData.characters[
       this.props.suspectId
     ];
+    const suspect = { ...character, id: this.props.suspectId }
 
     return (
       <div>
@@ -61,6 +63,10 @@ class Interrogation extends PureComponent {
               questionsRemaining={this.state.questionsRemaining}
             />
           </div>
+        </div>
+        <div>
+          <h3 className={h3}>Suspect Notes</h3>
+          <StatementField suspect={suspect} />
         </div>
       </div>
     );
