@@ -7,6 +7,7 @@ import { getQuestionResponse } from "./AnswerLogic";
 class Questions extends PureComponent {
   state = {
     questionsAnswered: {},
+    answerOrder: [],
     questionsRemaining: this.props.questionsRemaining
   };
 
@@ -31,9 +32,12 @@ class Questions extends PureComponent {
       ...this.state.questionsAnswered,
       ...newAnswer
     };
+    const newOrder = this.state.answerOrder.slice(0);
+    newOrder.push(index);
     this.setState({
       questionsAnswered: newQuestionsAnswered,
-      questionsRemaining: this.state.questionsRemaining - 1
+      questionsRemaining: this.state.questionsRemaining - 1,
+      answerOrder: newOrder
     });
   };
 
@@ -73,7 +77,7 @@ class Questions extends PureComponent {
         <div className={column}>
           <h3 className={[h3, statementHeader].join(" ")}>Answers</h3>
 
-          {Object.keys(this.state.questionsAnswered).map(key => (
+          {this.state.answerOrder.map(key => (
             <div key={key} className={questionDiv}>
               <span className={body}>{`${
                 this.state.questionsAnswered[key]
