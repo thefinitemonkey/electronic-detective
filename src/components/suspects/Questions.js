@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { css } from "react-emotion";
-import { body } from "../../utils/globalcss";
+import { h3, body } from "../../utils/globalcss";
 import { getQuestionResponse } from "./AnswerLogic";
 
 class Questions extends PureComponent {
@@ -12,6 +12,9 @@ class Questions extends PureComponent {
 
   handleQuestionClick = (e, index, question) => {
     e.preventDefault();
+    if (this.state.questionsRemaining === 0) return;
+    if (this.state.questionsAnswered[index]) return;
+
     // Get the answer to the question
     const objAnswer = getQuestionResponse(
       this.props.game,
@@ -44,29 +47,74 @@ class Questions extends PureComponent {
       questions.push(this.props.game.setupData.questions[qId]);
     });
 
+    const arrAnswerKeys = Object.keys(this.state.questionsAnswered);
+    console.log("arrAnswerKeys", arrAnswerKeys);
+
     return (
-      <div>
-        {questions.map((question, index) => (
-          <div key={index} className={questionDiv}>
-            <a
-              className={[body, questionLink].join(" ")}
-              href={`answer-question-${index}`}
-              onClick={e => this.handleQuestionClick(e, index, question)}
-            >{`${question.question}`}</a>
-          </div>
-        ))}
+      <div className={twoColumn}>
+        <div className={column}>
+          <h3 className={[h3, statementHeader].join(" ")}>
+            Available Questions
+          </h3>
+
+          {questions.map((question, index) => (
+            <div key={index} className={questionDiv}>
+              <a
+                className={
+                  this.state.questionsRemaining > 0
+                    ? this.state.questionsAnswered[index]
+                      ? [body, disabledQuestionLink].join(" ")
+                      : [body, questionLink].join(" ")
+                    : [body, disabledQuestionLink].join(" ")
+                }
+                href={`answer-question-${index}`}
+                onClick={e => this.handleQuestionClick(e, index, question)}
+              >{`${question.question}`}</a>
+            </div>
+          ))}
+        </div>
+        <div className={column}>
+          <h3 className={[h3, statementHeader].join(" ")}>Answers</h3>
+
+          {Object.keys(this.state.questionsAnswered).map(key => (
+            <div key={key} className={questionDiv}>
+              <span className={body}>{`${
+                this.state.questionsAnswered[key]
+              }`}</span>
+            </div>
+          ))}
+        </div>
       </div>
     );
   };
 }
+
+const twoColumn = css`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+`;
+
+const column = css`
+  flex: 1;
+`;
 
 const questionLink = css`
   text-decoration: none;
   color: blue;
 `;
 
+const disabledQuestionLink = css`
+  text-decoration: line-through;
+  color: gray;
+`;
+
 const questionDiv = css`
   margin-bottom: 20px;
+`;
+
+const statementHeader = css`
+  margin-top: 0;
 `;
 
 function mapStateToProps(game) {

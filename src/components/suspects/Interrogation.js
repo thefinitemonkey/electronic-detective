@@ -20,7 +20,9 @@ class Interrogation extends PureComponent {
     return (
       <div>
         <h2 className={h2}>{`${this.state.questionsRemaining} Question${
-          this.state.questionsRemaining > 1 ? `s` : ``
+          this.state.questionsRemaining > 1
+            ? `s`
+            : this.state.questionsRemaining === 0 ? `s` : ``
         } Left`}</h2>
         <div className={infoBlock}>
           <div>
@@ -52,13 +54,11 @@ class Interrogation extends PureComponent {
           </div>
         </div>
         <div>
-          <h3 className={[h3, statementHeader].join(" ")}>
-            Available Questions
-          </h3>
           <div>
             <Questions
               suspectId={this.props.suspectId}
               handleQuestionClick={this.handleQuestionClick}
+              questionsRemaining={this.state.questionsRemaining}
             />
           </div>
         </div>
