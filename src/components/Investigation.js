@@ -8,7 +8,7 @@ import { h1 } from "../utils/globalcss";
 import { endPlayerTurn } from "../actions/index";
 import RaisedButton from "material-ui/RaisedButton";
 
-class Interrogation extends PureComponent {
+class Investigation extends PureComponent {
   state = { displayEndTurn: false };
 
   handleEndTurn = () => {
@@ -23,7 +23,9 @@ class Interrogation extends PureComponent {
   render = () => {
     return (
       <div>
-        <h1 className={h1}>Interrogation</h1>
+        <h1 className={h1}>{`${
+          this.props.game.gameData.sheets[this.props.game.playerId].name
+        }'s Investigation`}</h1>
         <Tabs>
           <Tab label={`Case Sheet`}>
             <CaseSheet />
@@ -75,4 +77,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Interrogation);
+export default connect(mapStateToProps, mapDispatchToProps)(Investigation);

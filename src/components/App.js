@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Loader from "./Loader";
 import Players from "./Players";
 import GameStart from "./GameStart";
-import Interrogation from "./Interrogation";
+import Investigation from "./Investigation";
 import StartTurn from "./StartTurn";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
@@ -32,7 +32,7 @@ class App extends Component {
         renderItem = <StartTurn />;
         break;
       case "interrogation":
-        renderItem = <Interrogation />;
+        renderItem = <Investigation />;
         break;
       case "solved":
         break;
