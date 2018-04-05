@@ -10,12 +10,13 @@ import {
   CREATE_SUSPECT_ALIBI,
   END_PLAYER_TURN,
   ACCUSE_SUSPECT,
-  RESET_GAME
+  RESET_GAME,
+  SET_GAME_DIFFICULTY
 } from "../actions/index.js";
 
 /* 
 The default state for the game is
-{ setupData: {}, gameData: {}, screen: "loading", playerId: null }
+{ setupData: {}, gameData: {}, screen: "loading", playerId: null, difficulty: 3 }
 
 Populated categories looks like
 { setupData: {characters: {...}, locations: {...}, questions: {...}, weapons: {...}, addresses: {...}, sheet: {...},
@@ -23,7 +24,7 @@ Populated categories looks like
 */
 
 const game = (
-  state = { setupData: {}, gameData: {}, screen: "loading", playerId: null },
+  state = { setupData: {}, gameData: {}, screen: "loading", playerId: null, difficulty: 3 },
   action
 ) => {
   const { setupData, gameData, screen, playerId, sheet, data } = action;
@@ -32,10 +33,15 @@ const game = (
     case RESET_GAME: {
       return { ...state, gameData: {}, screen: "loading", playerId: null };
     }
+    case SET_GAME_DIFFICULTY: {
+      if (!data.level) return state;
+      return { ...state, difficulty: data.level };
+    }
     case END_PLAYER_TURN: {
       const sheetKeys = Object.keys(state.gameData.sheets);
       const playerIndex = sheetKeys.indexOf(state.playerId.toString());
-      const newIndex = playerIndex === sheetKeys.length - 2 ? 0 : playerIndex + 1;
+      const newIndex =
+        playerIndex === sheetKeys.length - 2 ? 0 : playerIndex + 1;
       const newPlayer = sheetKeys[newIndex];
       return { ...state, playerId: newPlayer, screen: "startturn" };
     }

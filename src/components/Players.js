@@ -2,7 +2,9 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
-import { buildGame, changeGameScreen } from "../actions/index";
+import SelectField from "material-ui/SelectField";
+import MenuItem from "material-ui/MenuItem";
+import { buildGame, changeGameScreen, setGameDifficulty } from "../actions/index";
 
 class Players extends PureComponent {
   state = {
@@ -44,9 +46,20 @@ class Players extends PureComponent {
     this.props.changeGameScreen("gamestart");
   };
 
+  handleDifficultyChange = (event, index, value) => {
+    this.props.setGameDifficulty(value);
+  }
+
   render = () => {
     return (
       <div>
+        <div>
+          <SelectField floatingLabelText="Difficulty" value={this.props.game.difficulty} onChange={this.handleDifficultyChange}>
+            <MenuItem value={3} primaryText="Easy" />
+            <MenuItem value={2} primaryText="Medium" />
+            <MenuItem value={1} primaryText="Hard" />
+          </SelectField>
+        </div>
         {this.state.players.map((name, player) => (
           <div key={player}>
             <TextField
@@ -98,7 +111,8 @@ function mapDispatchToProps(dispatch) {
   return {
     buildGame: (setupData, numPlayers) =>
       dispatch(buildGame(setupData, numPlayers)),
-    changeGameScreen: screen => dispatch(changeGameScreen(screen))
+    changeGameScreen: screen => dispatch(changeGameScreen(screen)),
+    setGameDifficulty: level => dispatch(setGameDifficulty(level))
   };
 }
 

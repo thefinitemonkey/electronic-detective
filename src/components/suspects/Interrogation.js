@@ -7,7 +7,7 @@ import Questions from "./Questions";
 import StatementField from "../common/StatementField";
 
 class Interrogation extends PureComponent {
-  state = { questionsRemaining: 3 };
+  state = { questionsRemaining: this.props.game.difficulty };
 
   handleQuestionClick = () => {
     // If we're out of questions then bubble up to display the end turn

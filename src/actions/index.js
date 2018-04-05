@@ -14,12 +14,20 @@ export const CREATE_SUSPECT_ALIBI = "CREATE_SUSPECT_ALIBI";
 export const END_PLAYER_TURN = "END_PLAYER_TURN";
 export const ACCUSE_SUSPECT = "ACCUSE_SUSPECT";
 export const RESET_GAME = "RESET_GAME";
+export const SET_GAME_DIFFICULTY = "SET_GAME_DIFFICULTY";
 
 export const resetGame = () => {
   return {
     type: RESET_GAME
-  }
-}
+  };
+};
+
+export const setGameDifficulty = level => {
+  return {
+    type: SET_GAME_DIFFICULTY,
+    data: { level }
+  };
+};
 
 export const getSetupData = () => dispatch => {
   Api.getSetupData().then(data => {
