@@ -9,7 +9,8 @@ import {
   UPDATE_LOCATION_ADDRESS,
   CREATE_SUSPECT_ALIBI,
   END_PLAYER_TURN,
-  ACCUSE_SUSPECT
+  ACCUSE_SUSPECT,
+  RESET_GAME
 } from "../actions/index.js";
 
 /* 
@@ -28,17 +29,44 @@ const game = (
   const { setupData, gameData, screen, playerId, sheet, data } = action;
 
   switch (action.type) {
+    case RESET_GAME: {
+      return { ...state, gameData: {}, screen: "loading", playerId: null };
+    }
     case END_PLAYER_TURN: {
       let newPlayer = state.playerId + 1;
       if (newPlayer === state.gameData.sheets.numPlayers) newPlayer = 0;
       return { ...state, playerId: newPlayer, screen: "startturn" };
     }
     case ACCUSE_SUSPECT: {
-      if (!playerId || !data.suspectId || !data.murdererId) return state;
-      if (data.suspectId === data.murdererId) {
+      if (
+        playerId === undefined ||
+        data.suspectId === undefined ||
+        data.murdererId === undefined
+      )
+        return state;
+      if (data.suspectId === data.murdererId)
         return { ...state, screen: "solved" };
-      }
-      return { ...state, screen: "unsolved" };
+
+      const newSheets = { ...state.gameData.sheets };
+      newSheets.numPlayers = newSheets.numPlayers - 1;
+      const sheetKeys = Object.keys(newSheets);
+      // Don't consider the numPlayers key when determining who the next
+      // player will be once this one is removed
+      const currentPlayerIndex = sheetKeys.indexOf(playerId.toString());
+      const nextIndex =
+        currentPlayerIndex === sheetKeys.length - 2
+          ? 0
+          : currentPlayerIndex + 1;
+      const newPlayerId = sheetKeys[nextIndex];
+      delete newSheets[playerId];
+      const newGameData = { ...state.gameData, sheets: newSheets };
+      const newState = {
+        ...state,
+        gameData: newGameData,
+        screen: "unsolved",
+        playerId: newPlayerId
+      };
+      return newState;
     }
     case RECEIVE_GET_SETUP_DATA:
       return { ...state, setupData };

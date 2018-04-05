@@ -13,6 +13,13 @@ export const UPDATE_LOCATION_WEAPON = "UPDATE_LOCATION_WEAPON";
 export const CREATE_SUSPECT_ALIBI = "CREATE_SUSPECT_ALIBI";
 export const END_PLAYER_TURN = "END_PLAYER_TURN";
 export const ACCUSE_SUSPECT = "ACCUSE_SUSPECT";
+export const RESET_GAME = "RESET_GAME";
+
+export const resetGame = () => {
+  return {
+    type: RESET_GAME
+  }
+}
 
 export const getSetupData = () => dispatch => {
   Api.getSetupData().then(data => {

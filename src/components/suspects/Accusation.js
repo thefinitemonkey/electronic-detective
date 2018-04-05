@@ -23,7 +23,7 @@ class Accusation extends PureComponent {
 
   handleAccusation = () => {
     this.props.accuseSuspect(
-      this.props.game.gameData.playerId,
+      this.props.game.playerId,
       this.state.accusation,
       this.props.game.gameData.murderer
     );

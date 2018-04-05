@@ -6,7 +6,7 @@ import { changeGameScreen, setPlayerTurn } from "../actions/index";
 class GameStart extends PureComponent {
   componentWillReceiveProps = (props) => {
     this.props = props;
-    if (props.game.playerId !== null) this.props.changeGameScreen("interrogation");
+    if (props.game.playerId !== null) this.props.changeGameScreen("investigation");
   }
 
   setPlayerTurn = player => {

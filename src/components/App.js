@@ -5,6 +5,7 @@ import Players from "./Players";
 import GameStart from "./GameStart";
 import Investigation from "./Investigation";
 import StartTurn from "./StartTurn";
+import Unsolved from "./Unsolved";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 class App extends Component {
@@ -31,12 +32,14 @@ class App extends Component {
       case "startturn":
         renderItem = <StartTurn />;
         break;
-      case "interrogation":
+      case "investigation":
         renderItem = <Investigation />;
         break;
       case "solved":
+        renderItem = <Investigation />;
         break;
       case "unsolved":
+        renderItem = <Unsolved />;
         break;
       default:
         renderItem = null;

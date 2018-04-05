@@ -16,7 +16,7 @@ class StartTurn extends PureComponent {
           <RaisedButton
             primary={true}
             label="Start Turn"
-            onClick={e => this.props.changeGameScreen("interrogation")}
+            onClick={e => this.props.changeGameScreen("investigation")}
           />
         </div>
       </div>
