@@ -6,6 +6,7 @@ import GameStart from "./GameStart";
 import Investigation from "./Investigation";
 import StartTurn from "./StartTurn";
 import Unsolved from "./Unsolved";
+import Solved from "./Solved";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 class App extends Component {
@@ -36,7 +37,7 @@ class App extends Component {
         renderItem = <Investigation />;
         break;
       case "solved":
-        renderItem = <Investigation />;
+        renderItem = <Solved />;
         break;
       case "unsolved":
         renderItem = <Unsolved />;
