@@ -4,7 +4,13 @@ import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
-import { buildGame, changeGameScreen, setGameDifficulty } from "../actions/index";
+import {
+  buildGame,
+  changeGameScreen,
+  setGameDifficulty
+} from "../actions/index";
+import { css } from "react-emotion";
+import { h2 } from "../utils/globalcss";
 
 class Players extends PureComponent {
   state = {
@@ -48,60 +54,98 @@ class Players extends PureComponent {
 
   handleDifficultyChange = (event, index, value) => {
     this.props.setGameDifficulty(value);
-  }
+  };
 
   render = () => {
     return (
-      <div>
-        <div>
-          <SelectField floatingLabelText="Difficulty" value={this.props.game.difficulty} onChange={this.handleDifficultyChange}>
-            <MenuItem value={3} primaryText="Easy" />
-            <MenuItem value={2} primaryText="Medium" />
-            <MenuItem value={1} primaryText="Hard" />
-          </SelectField>
-        </div>
-        {this.state.players.map((name, player) => (
-          <div key={player}>
-            <TextField
-              value={name}
-              onChange={e => {
-                this.updateNameEntry(e.target.value, player);
-              }}
-              hintText="Player Name"
-            />
-            {player > 0 ? (
-              <RaisedButton
-                onClick={() => {
-                  this.removePlayer(player);
-                }}
-                label="-"
-                style={style}
-              />
-            ) : null}
+      <div className={container}>
+        <div className={spacertop} />
+        <div className={spacermid}>
+          <h2 className={[h2, h2modified].join(" ")}>Set Difficulty</h2>
+          <div>
+            <SelectField
+              floatingLabelText="Difficulty"
+              value={this.props.game.difficulty}
+              onChange={this.handleDifficultyChange}
+            >
+              <MenuItem value={3} primaryText="Easy" />
+              <MenuItem value={2} primaryText="Medium" />
+              <MenuItem value={1} primaryText="Hard" />
+            </SelectField>
           </div>
-        ))}
-        <div>
-          <RaisedButton
-            disabled={this.state.players.length > 3}
-            onClick={this.addPlayer}
-            label="+"
-            style={style}
-          />
+          <h2 className={[h2, h2modified].join(" ")}>Set Player(s)</h2>
+          {this.state.players.map((name, player) => (
+            <div key={player}>
+              <TextField
+                value={name}
+                onChange={e => {
+                  this.updateNameEntry(e.target.value, player);
+                }}
+                hintText="Player Name"
+              />
+              {player > 0 ? (
+                <RaisedButton
+                  onClick={() => {
+                    this.removePlayer(player);
+                  }}
+                  label="-"
+                  style={style}
+                />
+              ) : null}
+            </div>
+          ))}
+          <div>
+            <RaisedButton
+              disabled={this.state.players.length > 3}
+              onClick={this.addPlayer}
+              label="+"
+              style={style}
+            />
+          </div>
+          <div>
+            <RaisedButton
+              onClick={this.startGame}
+              label="Start Game"
+              style={style}
+              primary={true}
+            />
+          </div>
         </div>
-        <div>
-          <RaisedButton
-            onClick={this.startGame}
-            label="Start Game"
-            style={style}
-            primary={true}
-          />
-        </div>
+        <div className={spacerbottom} />
       </div>
     );
   };
 }
 
 const style = { margin: 12 };
+
+const h2modified = css`
+  margin-top: 32px;
+  margin-bottom: 0px;
+`;
+
+const container = css`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  min-height: 600px;
+`;
+
+const spacertop = css`
+  flex: 1;
+`;
+
+const spacermid = css`
+  flex: 3;
+`;
+
+const spacerbottom = css`
+  flex: 2;
+`;
 
 function mapStateToProps(game) {
   return { game };

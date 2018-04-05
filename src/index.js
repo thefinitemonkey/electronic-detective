@@ -8,7 +8,7 @@ import { body } from "./utils/globalcss";
 
 WebFont.load({
   google: {
-    families: ["Roboto:400,700", "Roboto Condensed", "sans-serif"]
+    families: ["Roboto:400,700", "Roboto Condensed", "Geostar", "sans-serif"]
   }
 });
 

@@ -3,7 +3,8 @@ import { css } from "react-emotion";
 export const h1 = css`
   font-size: 24px;
   font-weight: bold;
-  font-family: "Roboto Condensed";
+  font-family: "Geostar";
+  color: #e88b12;
 `;
 
 export const h2 = css`
