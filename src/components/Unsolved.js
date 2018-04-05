@@ -11,12 +11,21 @@ class Unsolved extends PureComponent {
     // If there is only one active player then they made
     // a bad guess and the game is over. Otherwise they
     // will be removed and the game will continue
-    if (Object.keys(this.props.game.gameData.sheets).length === 1) {
+    if (this.props.game.gameData.sheets.numPlayers === 0) {
       this.setState({ gameOver: true });
       return;
     }
     this.setState({ gameOver: false });
   };
+
+  /*
+  static getDerivedStateFromProps = (nextProps, prevState) => {
+    if (nextProps.game.gameData.sheets.numPlayers === 0) {
+      return { gameOver: true };
+    }
+    return { gameOver: false };
+  }
+  */
 
   handlePlayAgain = () => {
     this.props.resetGame();
