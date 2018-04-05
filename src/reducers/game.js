@@ -33,8 +33,10 @@ const game = (
       return { ...state, gameData: {}, screen: "loading", playerId: null };
     }
     case END_PLAYER_TURN: {
-      let newPlayer = state.playerId + 1;
-      if (newPlayer === state.gameData.sheets.numPlayers) newPlayer = 0;
+      const sheetKeys = Object.keys(state.gameData.sheets);
+      const playerIndex = sheetKeys.indexOf(state.playerId.toString());
+      const newIndex = playerIndex === sheetKeys.length - 2 ? 0 : playerIndex + 1;
+      const newPlayer = sheetKeys[newIndex];
       return { ...state, playerId: newPlayer, screen: "startturn" };
     }
     case ACCUSE_SUSPECT: {
