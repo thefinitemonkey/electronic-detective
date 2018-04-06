@@ -83,32 +83,34 @@ class Players extends PureComponent {
                 }}
                 hintText="Player Name"
               />
-              {player > 0 ? (
-                <RaisedButton
-                  onClick={() => {
-                    this.removePlayer(player);
-                  }}
-                  label="-"
-                  style={style}
-                />
-              ) : null}
+
+              <RaisedButton
+                onClick={() => {
+                  this.removePlayer(player);
+                }}
+                disabled={this.state.players.length === 1}
+                label="-"
+                style={style}
+              />
             </div>
           ))}
-          <div>
-            <RaisedButton
-              disabled={this.state.players.length > 3}
-              onClick={this.addPlayer}
-              label="+"
-              style={style}
-            />
-          </div>
-          <div>
-            <RaisedButton
-              onClick={this.startGame}
-              label="Start Game"
-              style={style}
-              primary={true}
-            />
+          <div className={secondaryContainer}>
+            <div>
+              <RaisedButton
+                disabled={this.state.players.length > 3}
+                onClick={this.addPlayer}
+                label="+"
+                style={style}
+              />
+            </div>
+            <div className={startGameButton}>
+              <RaisedButton
+                onClick={this.startGame}
+                label="Start Game"
+                style={style}
+                primary={true}
+              />
+            </div>
           </div>
         </div>
         <div className={spacerbottom} />
@@ -134,6 +136,16 @@ const container = css`
   flex: 1;
   min-height: 600px;
 `;
+
+const secondaryContainer = css`
+  display:flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
+
+const startGameButton = css`
+  margin-top: 25px;
+`
 
 const spacertop = css`
   flex: 1;
