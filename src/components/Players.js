@@ -15,7 +15,8 @@ import { h2 } from "../utils/globalcss";
 class Players extends PureComponent {
   state = {
     players: [""],
-    addEnabled: true
+    addEnabled: true,
+    fieldError: false
   };
 
   addPlayer = () => {
@@ -46,6 +47,21 @@ class Players extends PureComponent {
   startGame = () => {
     // If there are no players, then no game
     if (this.state.players.length === 0) return;
+    let skip = false;
+    this.state.players.forEach(player => {
+      console.log("players===''", player === "");
+      if (player === "" || player === undefined) {
+        console.log("Setting field error to true");
+        this.setState({ fieldError: true });
+        skip = true;
+        return;
+      }
+    });
+
+    console.log("out of foreach");
+    if (skip) return;
+
+    this.setState({ fieldError: false });
 
     // Build the game state for the players
     this.props.buildGame(this.props.game.setupData, this.state.players);
@@ -81,6 +97,7 @@ class Players extends PureComponent {
                 onChange={e => {
                   this.updateNameEntry(e.target.value, player);
                 }}
+                errorText={this.state.fieldError && "A name is required"}
                 hintText="Player Name"
               />
 
@@ -138,14 +155,14 @@ const container = css`
 `;
 
 const secondaryContainer = css`
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: flex-end;
 `;
 
 const startGameButton = css`
   margin-top: 25px;
-`
+`;
 
 const spacertop = css`
   flex: 1;
