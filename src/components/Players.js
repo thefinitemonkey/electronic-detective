@@ -49,12 +49,9 @@ class Players extends PureComponent {
     if (this.state.players.length === 0) return;
     let skip = false;
     this.state.players.forEach(player => {
-      console.log("players===''", player === "");
       if (player === "" || player === undefined) {
-        console.log("Setting field error to true");
         this.setState({ fieldError: true });
         skip = true;
-        return;
       }
     });
 
@@ -97,7 +94,7 @@ class Players extends PureComponent {
                 onChange={e => {
                   this.updateNameEntry(e.target.value, player);
                 }}
-                errorText={this.state.fieldError && "A name is required"}
+                errorText={(this.state.fieldError && name==="") && "A name is required"}
                 hintText="Player Name"
               />
 
