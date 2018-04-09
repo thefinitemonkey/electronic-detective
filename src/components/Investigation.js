@@ -60,7 +60,7 @@ const endTurnDisplay = css`
   position: fixed;
   bottom: 0;
   width: 100%;
-  margin-left: -8px;
+  margin-left: -18px;
 `;
 
 function mapStateToProps(game) {

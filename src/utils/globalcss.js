@@ -1,5 +1,10 @@
 import { css } from "react-emotion";
 
+export const app = css`
+  margin-left: 10px;
+  margin-right: 10px;
+`;
+
 export const h1 = css`
   font-size: 30px;
   font-weight: bold;

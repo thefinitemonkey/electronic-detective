@@ -8,7 +8,7 @@ import StartTurn from "./StartTurn";
 import Unsolved from "./Unsolved";
 import Solved from "./Solved";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import { h1 } from "../utils/globalcss";
+import { h1, app } from "../utils/globalcss";
 
 class App extends Component {
   shouldComponentUpdate = props => {
@@ -48,7 +48,7 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
+      <div className={app}>
         <h1 className={h1}>Electronic Detective</h1>
         <MuiThemeProvider>{renderItem}</MuiThemeProvider>
       </div>
