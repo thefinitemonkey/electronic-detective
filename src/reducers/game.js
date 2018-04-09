@@ -96,7 +96,7 @@ const game = (
         !data ||
         data.suspectId === null ||
         data.statement === null ||
-        typeof playerId !== "number"
+        playerId === null
       )
         return state;
       const gameData = state.gameData;
