@@ -24,9 +24,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Installation
 
-Copy or fork this [repository](https://github.com/thefinitemonkey/electronic-detective)
-Run 'npm install'
-Run 'npm start'
+* Copy or fork this [repository](https://github.com/thefinitemonkey/electronic-detective)
+* Run 'npm install'
+* Run 'npm start'
 
 ## To-Do Items
 
