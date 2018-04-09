@@ -84,12 +84,14 @@ class App extends Component {
           </div>
         </div>
         <MuiThemeProvider>
-          {renderItem}
-          <RulesDialog
-            dialogOpen={this.state.dialogOpen}
-            handleDialogClose={this.handleDialogClose}
-            handleDialogOpen={this.handleDialogOpen}
-          />>
+          <div>
+            {renderItem}
+            <RulesDialog
+              dialogOpen={this.state.dialogOpen}
+              handleDialogClose={this.handleDialogClose}
+              handleDialogOpen={this.handleDialogOpen}
+            />
+          </div>
         </MuiThemeProvider>
       </div>
     );
