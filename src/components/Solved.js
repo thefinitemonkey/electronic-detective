@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { h2, body, bodyStrong } from "../utils/globalcss";
 import { resetGame } from "../actions/index";
 import RaisedButton from "material-ui/RaisedButton";
+import { css } from "react-emotion";
 
 class Solved extends PureComponent {
   handlePlayAgain = () => {
@@ -11,13 +12,16 @@ class Solved extends PureComponent {
 
   render = () => {
     return (
-      <div>
-        <div>
-          <h2 className={h2}>{`${this.props.game.gameData.sheets[this.props.game.playerId].name} WINS`}</h2>
-          <div className={body}>
-            The murderer was correctly identified through skillful investigation!
+      <div className={horzContainer}>
+        <div className={vertContainer}>
+          <h2 className={h2}>{`${
+            this.props.game.gameData.sheets[this.props.game.playerId].name
+          } WINS`}</h2>
+          <div className={[body, trkText].join(" ")}>
+            The murderer was correctly identified through skillful
+            investigation!
           </div>
-          <div>
+          <div className={trkPortrait}>
             <img
               src={`/images/characters/${
                 this.props.game.setupData.characters[
@@ -27,14 +31,14 @@ class Solved extends PureComponent {
               alt={"Murderer Profile"}
             />
           </div>
-          <div className={bodyStrong}>
+          <div className={[bodyStrong, trkName].join(" ")}>
             {
               this.props.game.setupData.characters[
                 this.props.game.gameData.murderer
               ].name
             }
           </div>
-          <div>
+          <div className={playAgainButton}>
             <RaisedButton
               primary={true}
               label="Play Again"
@@ -46,6 +50,37 @@ class Solved extends PureComponent {
     );
   };
 }
+
+const horzContainer = css`
+  display: flex;
+  flex: 1;
+  justify-content: center;
+`;
+
+const vertContainer = css`
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  justify-content: center;
+  align-items: center;
+`;
+
+const trkText = css`
+  font-size: 16px;
+`;
+
+const trkName = css`
+  font-size: 18px;
+`;
+
+const trkPortrait = css`
+  margin-top: 20px;
+  margin-bottom: 20px;
+`;
+
+const playAgainButton = css`
+  margin-top: 25px;
+`;
 
 function mapStateToProps(game) {
   return { game };
