@@ -1,30 +1,17 @@
 {
-	"name": "",
-	"victimID": 0,
-	"clueSelections": {
-		"sex": "",
-		"location": {
-			"side": "",
-			"town": ""
-		},
-		"weapon": {
-			"type": "" 
-		},
-		"locations": [
-			{
-				"id": 0,
-				"attendees": [],
-				"address": {
-					"side": "",
-					"town": ""
-				}
-			}
-		]
-	},
-	"suspectStatements": [
-		{
-			"id": 0,
-			"statements": []
-		}
-	]
+  "name": "",
+  "victim": 0,
+  "scene": "",
+  "clueSelections": {
+    "sex": "",
+    "hiding": {
+      "side": "",
+      "town": ""
+    },
+    "weapons": {
+      "used": ""
+    },
+    "locations": {}
+  },
+  "suspectStatements": {}
 }

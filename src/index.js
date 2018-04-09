@@ -1,10 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import './css/index.css';
-//mport App from './js/App';
-import GameManager from './js/GameManager';
-//import registerServiceWorker from './registerServiceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import store from "./store/store.js";
+import App from "./components/App";
+import WebFont from "webfontloader";
+import { body } from "./utils/globalcss";
 
-ReactDOM.render(<BrowserRouter><GameManager /></BrowserRouter>, document.getElementById('root'));
+WebFont.load({
+  google: {
+    families: ["Roboto:400,700", "Roboto Condensed", "Geostar", "sans-serif"]
+  }
+});
+
+ReactDOM.render(
+  <Provider store={store()}>
+    <App className={body} />
+  </Provider>,
+  document.getElementById("root")
+);
 //registerServiceWorker();

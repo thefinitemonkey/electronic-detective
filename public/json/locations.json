@@ -1,91 +1,43 @@
-{"locations": [
-	{
-		"id": "A",
-		"name": "Art Show",
-		"address": {
-			"side": "",
-			"town": ""
-		},
-		"scene": false,
-		"weapon": {
-			"type": null,
-			"print": null
-		},
-		"attendees": {"men":[], "women":[]}
-	},
+{
+  "A": {
+    "name": "Art Show",
+    "address": { "side": "", "town": "" },
+    "occupants": [],
+    "weapon": ""
+  },
 
-	{
-		"id": "B",
-		"name": "Box at Theatre",
-		"address": {
-			"side": "",
-			"town": ""
-		},
-		"scene": false,
-		"weapon": {
-			"type": null,
-			"print": null
-		},
-		"attendees": {"men":[], "women":[]}
-	},
+  "B": {
+    "name": "Box at Theatre",
+    "address": { "side": "", "town": "" },
+    "occupants": [],
+    "weapon": ""
+  },
 
-	{
-		"id": "C",
-		"name": "Card Party",
-		"address": {
-			"side": "",
-			"town": ""
-		},
-		"scene": false,
-		"weapon": {
-			"type": null,
-			"print": null
-		},
-		"attendees": {"men":[], "women":[]}
-	},
+  "C": {
+    "name": "Card Party",
+    "address": { "side": "", "town": "" },
+    "occupants": [],
+    "weapon": ""
+  },
 
-	{
-		"id": "D",
-		"name": "Docks",
-		"address": {
-			"side": "",
-			"town": ""
-		},
-		"scene": false,
-		"weapon": {
-			"type": null,
-			"print": null
-		},
-		"attendees": {"men":[], "women":[]}
-	},
+  "D": {
+    "name": "Docks",
+    "address": { "side": "", "town": "" },
+    "occupants": [],
+    "weapon": ""
+  },
 
-	{
-		"id": "E",
-		"name": "Embassy",
-		"address": {
-			"side": "",
-			"town": ""
-		},
-		"scene": false,
-		"weapon": {
-			"type": null,
-			"print": null
-		},
-		"attendees": {"men":[], "women":[]}
-	},
+  "E": {
+    "name": "Embassy",
+    "address": { "side": "", "town": "" },
+    "occupants": [],
+    "weapon": ""
+  },
 
-	{
-		"id": "F",
-		"name": "Factory",
-		"address": {
-			"side": "",
-			"town": ""
-		},
-		"scene": false,
-		"weapon": {
-			"type": null,
-			"print": null
-		},
-		"attendees": {"men":[], "women":[]}
-	}	
-]}
+  "F": {
+    "name": "Factory",
+    "address": { "side": "", "town": "" },
+    "occupants": [],
+    "weapon": ""
+  }
+}
