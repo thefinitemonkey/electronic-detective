@@ -44,7 +44,7 @@ class Statement extends PureComponent {
           })`}</div>
           <div>
             <TextField
-              style={{ fontSize: "12px", width: "100%" }}
+              style={{ fontSize: "13px", width: "100%" }}
               disabled={victim === suspect.id ? true : false}
               hintText={`${suspect.name}'s statement`}
               value={this.state.statement}
@@ -65,10 +65,9 @@ class Statement extends PureComponent {
 }
 
 const statementItem = css`
-  margin: 0px 25px 50px 25px;
   flex: 1;
-  min-width: 150px;
-  max-width: 200px;
+  min-width: 250px;
+  max-width: 500px;
 `;
 
 function mapStateToProps(game) {

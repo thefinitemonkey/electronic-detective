@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { css } from "react-emotion";
-import { h2, h3, bodyStrong } from "../../utils/globalcss";
+import { h2, h3 } from "../../utils/globalcss";
 import Alibi from "./Alibi";
 import Questions from "./Questions";
 import StatementField from "../common/StatementField";
@@ -11,7 +11,8 @@ class Interrogation extends PureComponent {
 
   handleQuestionClick = () => {
     // If we're out of questions then bubble up to display the end turn
-    if (this.state.questionsRemaining - 1 === 0) this.props.handleEndTurnDisplay();
+    if (this.state.questionsRemaining - 1 === 0)
+      this.props.handleEndTurnDisplay();
 
     this.setState({ questionsRemaining: this.state.questionsRemaining - 1 });
   };
@@ -20,7 +21,7 @@ class Interrogation extends PureComponent {
     const character = this.props.game.setupData.characters[
       this.props.suspectId
     ];
-    const suspect = { ...character, id: this.props.suspectId }
+    const suspect = { ...character, id: this.props.suspectId };
 
     return (
       <div>
@@ -47,11 +48,10 @@ class Interrogation extends PureComponent {
                 />
               </div>
             </div>
-            <div className={bodyStrong}>{character.name}</div>
           </div>
           <div>
             <h3 className={[h3, statementHeader].join(" ")}>
-              Initial Statement
+              {character.name}
             </h3>
             <div>
               <Alibi suspectId={this.props.suspectId} />
@@ -91,10 +91,12 @@ const characterImages = css`
 const infoBlock = css`
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 15px;
 `;
 
 const statementHeader = css`
   margin-top: 0;
+  margin-bottom: 0;
 `;
 
 function mapStateToProps(game) {

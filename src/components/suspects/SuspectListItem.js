@@ -61,16 +61,18 @@ class SuspectListItem extends PureComponent {
           </div>
           {this.state.questionsVisible && (
             <div className={availableQuestions}>
+            <ul className={questionsUl}>
               {character.availableQuestions.map(qId => {
                 return (
-                  <div
-                    className={[body, question].join(" ")}
+                  <li
+                    className={[body, question, questionsLi].join(" ")}
                     key={`${this.props.suspectId}-q${qId}`}
                   >
                     {this.props.game.setupData.questions[qId].question}
-                  </div>
+                  </li>
                 );
               })}
+              </ul>
             </div>
           )}
         </div>
@@ -110,7 +112,17 @@ const availableQuestions = css`
   margin-top: 5px;
   margin-bottom: 10px;
   border-top: 1px solid #ddd;
+  max-width: 265px;
 `;
+
+const questionsUl = css`
+  padding-left: 16px;
+  margin: 5px 0px 0px 0px;
+`
+
+const questionsLi = css`
+  margin-bottom: 3px;
+`
 
 const extraInfoLinks = css`
   margin-top: 5px;
@@ -126,7 +138,7 @@ const extraInfoLink = css`
 `;
 
 const question = css`
-  font-size: 12px;
+  font-size: 13px;
 `;
 
 function mapStateToProps(game) {

@@ -1,20 +1,20 @@
 import { css } from "react-emotion";
 
 export const h1 = css`
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
   font-family: "Geostar";
   color: #e88b12;
 `;
 
 export const h2 = css`
-  font-size: 20px;
+  font-size: 24px;
   font-weight: normal;
   font-family: "Roboto Condensed";
 `;
 
 export const h3 = css`
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   font-family: "Roboto";
 `;

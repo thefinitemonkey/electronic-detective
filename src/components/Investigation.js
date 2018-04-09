@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { css } from "react-emotion";
 import CaseSheet from "./casesheet/CaseSheet";
 import Suspects from "./suspects/Suspects";
-import { h1 } from "../utils/globalcss";
 import { endPlayerTurn } from "../actions/index";
 import RaisedButton from "material-ui/RaisedButton";
 
@@ -23,9 +22,6 @@ class Investigation extends PureComponent {
   render = () => {
     return (
       <div>
-        <h1 className={h1}>{`${
-          this.props.game.gameData.sheets[this.props.game.playerId].name
-        }'s Investigation`}</h1>
         <Tabs>
           <Tab label={`Case Sheet`}>
             <CaseSheet />

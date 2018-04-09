@@ -98,6 +98,8 @@ const twoColumn = css`
 
 const column = css`
   flex: 1;
+  min-width: 345px;
+  margin-bottom: 20px;
 `;
 
 const questionLink = css`

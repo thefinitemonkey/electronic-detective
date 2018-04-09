@@ -43,6 +43,7 @@ class Alibi extends PureComponent {
 
 const alibiList = css`
     padding-left: 15px;
+    margin-top: 5px;
 `
 
 function mapStateToProps(game) {
