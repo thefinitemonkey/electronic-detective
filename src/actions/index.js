@@ -1,6 +1,7 @@
-import * as Api from "../api/Api";
+//import * as Api from "../api/Api";
 import * as Builder from "../utils/builder";
 
+export const GET_SETUP_DATA = "GET_SETUP_DATA";
 export const RECEIVE_GET_SETUP_DATA = "RECEIVE_GET_SETUP_DATA";
 export const BUILD_GAME = "BUILD_GAME";
 export const CHANGE_GAME_SCREEN = "CHANGE_GAME_SCREEN";
@@ -29,10 +30,13 @@ export const setGameDifficulty = level => {
   };
 };
 
-export const getSetupData = () => dispatch => {
-  Api.getSetupData().then(data => {
+export const getSetupData = () => {
+  /*Api.getSetupData().then(data => {
     dispatch(receiveGetSetupData(data));
-  });
+  });*/
+  return {
+    type: GET_SETUP_DATA
+  }
 };
 
 export const receiveGetSetupData = setupData => {
@@ -56,9 +60,11 @@ export const accuseSuspect = (playerId, suspectId, murdererId) => {
   };
 };
 
+/*
 export const buildGame = (setupData, players = []) => dispatch => {
   dispatch(finalizeBuildGame(Builder.buildGame(setupData, players)));
 };
+*/
 
 export const finalizeBuildGame = gameData => {
   return {

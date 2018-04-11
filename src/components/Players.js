@@ -5,10 +5,12 @@ import TextField from "material-ui/TextField";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 import {
-  buildGame,
+  finalizeBuildGame,
   changeGameScreen,
   setGameDifficulty
 } from "../actions/index";
+
+import * as Builder from "../utils/builder";
 import { css } from "react-emotion";
 import { h2 } from "../utils/globalcss";
 
@@ -55,13 +57,14 @@ class Players extends PureComponent {
       }
     });
 
-    console.log("out of foreach");
     if (skip) return;
 
     this.setState({ fieldError: false });
 
     // Build the game state for the players
-    this.props.buildGame(this.props.game.setupData, this.state.players);
+    const gameData = Builder.buildGame(this.props.game.setupData, this.state.players);
+    console.log("gameData", gameData);
+    this.props.finalizeBuildGame(gameData);
     this.props.changeGameScreen("gamestart");
   };
 
@@ -179,8 +182,8 @@ function mapStateToProps(game) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    buildGame: (setupData, numPlayers) =>
-      dispatch(buildGame(setupData, numPlayers)),
+    finalizeBuildGame: (gameData) =>
+      dispatch(finalizeBuildGame(gameData)),
     changeGameScreen: screen => dispatch(changeGameScreen(screen)),
     setGameDifficulty: level => dispatch(setGameDifficulty(level))
   };
