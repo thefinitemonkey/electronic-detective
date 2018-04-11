@@ -21,7 +21,7 @@ class Investigation extends PureComponent {
 
   render = () => {
     return (
-      <div>
+      <div className={investigationSpace}>
         <Tabs>
           <Tab label={`Case Sheet`}>
             <CaseSheet />
@@ -46,6 +46,10 @@ class Investigation extends PureComponent {
     );
   };
 }
+
+const investigationSpace = css`
+  padding-bottom: 50px;
+`
 
 const buttonDisplay = css`
   margin-right: 20px;
