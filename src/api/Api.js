@@ -51,3 +51,9 @@ export function getSetupData() {
       console.log("error loading setup data", error);
     });
 }
+
+export function getSetupDataFile(url) {
+  return fetch(url).then(data => {
+    return data.json();
+  });
+}
