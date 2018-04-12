@@ -2,6 +2,8 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { getSetupData, changeGameScreen } from "../actions/index";
 import CircularProgress from "material-ui/CircularProgress";
+import { css } from "react-emotion";
+import { h2 } from "../utils/globalcss";
 
 class Loader extends PureComponent {
   state = {
@@ -27,15 +29,62 @@ class Loader extends PureComponent {
 
   render = () => {
     return (
-      <div>
-        <div>Loading</div>
-        <div>
-          <CircularProgress size={60} thickness={7} />
+      <div className={centeredHorz}>
+        <div className={centeredVert}>
+          <div className={topSpace} />
+          <div className={middleSpace}>
+            <div>
+              <h2 className={[h2, loadingText].join(" ")}>Loading</h2>
+            </div>
+            <div>
+              <CircularProgress size={60} thickness={7} />
+            </div>
+          </div>
+          <div className={bottomSpace} />
         </div>
       </div>
     );
   };
 }
+
+const centeredHorz = css`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  min-height: 300px;
+`;
+
+const centeredVert = css`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
+const topSpace = css`
+  flex: 1;
+`;
+
+const middleSpace = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 3;
+`;
+
+const bottomSpace = css`
+  flex: 2;
+`;
+
+const loadingText = css`
+  font-size: 32px;
+  margin-bottom: 25px;
+`;
 
 function mapStateToProps(game) {
   return { game };
