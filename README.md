@@ -35,4 +35,4 @@ The following are up-and-coming tasks
 * Re-render image files to final sizes
 * Add a service worker for preloading and offline play
 * Add unit test scripts
-* Switch from Thunks to Sagas because I'm interested in learning those  :-)
+* ~~Switch from Thunks to Sagas because I'm interested in learning those  :-)~~
