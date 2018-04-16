@@ -1,6 +1,6 @@
 // API functions for loading, saving, and managing game data
 
-export function getSetupData() {
+/* export function getSetupData() {
   // Get the data for all of the setup files and return them
   // as a single object
   const sheet = fetch("/json/casesheet.json");
@@ -50,8 +50,10 @@ export function getSetupData() {
     .catch(error => {
       console.log("error loading setup data", error);
     });
-}
+}*/
 
+// Fetch the required file and return the JSON data from
+// the Promise
 export function getSetupDataFile(url) {
   return fetch(url).then(data => {
     return data.json();
