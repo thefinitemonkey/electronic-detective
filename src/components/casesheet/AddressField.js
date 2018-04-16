@@ -4,10 +4,14 @@ import { connect } from "react-redux";
 import { updateLocationAddress } from "../../actions/index";
 
 class Location extends PureComponent {
-  state = {
-    address: this.props.game.gameData.sheets[this.props.game.playerId]
-      .locations[this.props.locationId].address[this.props.area]
-  };
+  constructor(props) {
+    super(props);
+    console.log("props", props);
+    this.state = {
+      address: this.props.game.gameData.sheets[this.props.game.playerId]
+        .locations[this.props.locationId].address[this.props.area]
+    };
+  }
 
   updateState = value => {
     this.setState({ address: value });
@@ -22,7 +26,7 @@ class Location extends PureComponent {
     //const setupData = this.props.game.setupData;
     const playerId = this.props.game.playerId;
     //const location = gameData.sheets[playerId].locations[this.props.locationId];
-
+    console.log("game", this.props.game);
     return (
       <div>
         <TextField
