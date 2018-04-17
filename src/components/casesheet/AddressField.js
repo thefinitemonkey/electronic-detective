@@ -3,15 +3,11 @@ import TextField from "material-ui/TextField";
 import { connect } from "react-redux";
 import { updateLocationAddress } from "../../actions/index";
 
-class Location extends PureComponent {
-  constructor(props) {
-    super(props);
-    console.log("props", props);
-    this.state = {
+class AddressField extends PureComponent {
+    state = {
       address: this.props.game.gameData.sheets[this.props.game.playerId]
         .locations[this.props.locationId].address[this.props.area]
     };
-  }
 
   updateState = value => {
     this.setState({ address: value });
@@ -26,12 +22,11 @@ class Location extends PureComponent {
     //const setupData = this.props.game.setupData;
     const playerId = this.props.game.playerId;
     //const location = gameData.sheets[playerId].locations[this.props.locationId];
-    console.log("game", this.props.game);
     return (
       <div>
         <TextField
           style={{ fontSize: "13px", width: "100%" }}
-          hintText={this.props.hint}
+          label={this.props.hint}
           id={this.props.fieldId}
           value={this.state.address}
           onChange={e => this.updateState(e.target.value)}
@@ -60,4 +55,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Location);
+export default connect(mapStateToProps, mapDispatchToProps)(AddressField);

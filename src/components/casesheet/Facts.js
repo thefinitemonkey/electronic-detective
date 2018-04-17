@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
-import { RadioButton, RadioButtonGroup } from "material-ui/RadioButton";
+import Radio, { RadioGroup } from "material-ui/Radio";
+import {FormControlLabel} from "material-ui/Form";
 import { connect } from "react-redux";
 import { deepCopy } from "../../utils/builder";
 import { updatePlayerClues } from "../../actions/index";
@@ -60,27 +61,27 @@ class Facts extends PureComponent {
               className={[bodyStrong, radioHeading].join(" ")}
             >{`Sex of the murderer:`}</div>
             <div className={radioGroupDiv}>
-              <RadioButtonGroup
+              <RadioGroup
                 className={[radioGroup, victimInfo].join(" ")}
                 name="murdererSex"
-                valueSelected={sheet.clueSelections.sex}
+                value={sheet.clueSelections.sex}
                 onChange={e =>
                   this.updateClueSelection(["sex"], e.target.value)
                 }
               >
-                <RadioButton
+                <FormControlLabel control={<Radio/>}
                   value="male"
                   label="Male"
                   className={radioButton}
                   style={{ maxWidth: "33%" }}
                 />
-                <RadioButton
+                <FormControlLabel control={<Radio/>}
                   value="female"
                   label="Female"
                   className={[radioButton, radioButtonLastChild].join(" ")}
                   style={{ maxWidth: "33%" }}
                 />
-              </RadioButtonGroup>
+              </RadioGroup>
             </div>
           </div>
           <div>
@@ -90,10 +91,10 @@ class Facts extends PureComponent {
               </div>
               <div className={radioGroupDiv}>
                 <div>
-                  <RadioButtonGroup
+                  <RadioGroup
                     className={[radioGroup, victimInfo].join(" ")}
                     name="murdererSide"
-                    valueSelected={sheet.clueSelections.hiding.side}
+                    value={sheet.clueSelections.hiding.side}
                     onChange={e =>
                       this.updateClueSelection(
                         ["hiding", "side"],
@@ -101,25 +102,25 @@ class Facts extends PureComponent {
                       )
                     }
                   >
-                    <RadioButton
+                    <FormControlLabel control={<Radio/>}
                       value="west"
                       label="West"
                       style={{ maxWidth: "33%" }}
                       className={radioButton}
                     />
-                    <RadioButton
+                    <FormControlLabel control={<Radio/>}
                       value="east"
                       label="East"
                       style={{ maxWidth: "33%" }}
                       className={[radioButton, radioButtonLastChild].join(" ")}
                     />
-                  </RadioButtonGroup>
+                  </RadioGroup>
                 </div>
                 <div>
-                  <RadioButtonGroup
+                  <RadioGroup
                     className={[radioGroup, victimInfo].join(" ")}
                     name="murdererTown"
-                    valueSelected={sheet.clueSelections.hiding.town}
+                    value={sheet.clueSelections.hiding.town}
                     onChange={e =>
                       this.updateClueSelection(
                         ["hiding", "town"],
@@ -127,25 +128,25 @@ class Facts extends PureComponent {
                       )
                     }
                   >
-                    <RadioButton
+                    <FormControlLabel control={<Radio/>}
                       value="uptown"
                       label="Uptown"
                       className={radioButton}
                       style={{ maxWidth: "33%" }}
                     />
-                    <RadioButton
+                    <FormControlLabel control={<Radio/>}
                       value="midtown"
                       label="Midtown"
                       className={radioButton}
                       style={{ maxWidth: "33%" }}
                     />
-                    <RadioButton
+                    <FormControlLabel control={<Radio/>}
                       value="downtown"
                       label="Downtown"
                       className={[radioButton, radioButtonLastChild].join(" ")}
                       style={{ maxWidth: "33%" }}
                     />
-                  </RadioButtonGroup>
+                  </RadioGroup>
                 </div>{" "}
               </div>
             </div>
@@ -155,33 +156,33 @@ class Facts extends PureComponent {
               {`Weapon used in murder:`}
             </div>
             <div className={radioGroupDiv}>
-              <RadioButtonGroup
+              <RadioGroup
                 className={[radioGroup, victimInfo].join(" ")}
                 name="murdererWeapon"
-                valueSelected={sheet.clueSelections.weapons.used}
+                value={sheet.clueSelections.weapons.used}
                 onChange={e =>
                   this.updateClueSelection(["weapons", "used"], e.target.value)
                 }
               >
-                <RadioButton
+                <FormControlLabel control={<Radio/>}
                   value=".38"
                   label=".38"
                   className={radioButton}
                   style={{maxWidth: "33%"}}
                 />
-                <RadioButton
+                <FormControlLabel control={<Radio/>}
                   value=".45"
                   label=".45"
                   className={radioButton}
                   style={{maxWidth: "33%"}}
                 />
-              </RadioButtonGroup>
+              </RadioGroup>
 
               <div className={victimInfo}>
                 <div className={[fingerprintGroup, threeColumn].join(" ")}>
-                  <RadioButtonGroup
+                  <RadioGroup
                     name="38Prints"
-                    valueSelected={
+                    value={
                       sheet.clueSelections.weapons[".38"].fingerprint
                     }
                     onChange={e =>
@@ -191,20 +192,20 @@ class Facts extends PureComponent {
                       )
                     }
                   >
-                    <RadioButton
+                    <FormControlLabel control={<Radio/>}
                       value="odd"
                       label="Odd"
                     />
-                    <RadioButton
+                    <FormControlLabel control={<Radio/>}
                       value="even"
                       label="Even"
                     />
-                  </RadioButtonGroup>
+                  </RadioGroup>
                 </div>
                 <div className={[fingerprintGroup, threeColumn].join(" ")}>
-                  <RadioButtonGroup
+                  <RadioGroup
                     name="45Prints"
-                    valueSelected={
+                    value={
                       sheet.clueSelections.weapons[".45"].fingerprint
                     }
                     onChange={e =>
@@ -214,15 +215,15 @@ class Facts extends PureComponent {
                       )
                     }
                   >
-                    <RadioButton
+                    <FormControlLabel control={<Radio/>}
                       value="odd"
                       label="Odd"
                     />
-                    <RadioButton
+                    <FormControlLabel control={<Radio/>}
                       value="even"
                       label="Even"
                     />
-                  </RadioButtonGroup>
+                  </RadioGroup>
                 </div>
               </div>
             </div>

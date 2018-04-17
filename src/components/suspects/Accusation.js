@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import TextField from "material-ui/TextField";
-import RaisedButton from "material-ui/RaisedButton";
+import Button from "material-ui/Button";
 import { h2, body } from "../../utils/globalcss";
 import { accuseSuspect } from "../../actions/index";
 import { css } from "react-emotion";
@@ -40,18 +40,16 @@ class Accusation extends PureComponent {
           <div className={accusationElement}>
             <TextField
               style={{ width: "50px" }}
-              hintText={`#`}
+              label={`#`}
               value={this.state.accusation}
               onChange={e => this.handleAccusationChange(e.target.value)}
             />
           </div>
           <div>
-            <RaisedButton
-              primary={true}
-              label={`Accuse`}
+            <Button variant="raised"
               onClick={this.handleAccusation}
               disabled={this.state.accusation === ""}
-            />
+            >Accuse</Button>
           </div>
         </div>
       </div>

@@ -46,7 +46,7 @@ class Statement extends PureComponent {
             <TextField
               style={{ fontSize: "13px", width: "100%" }}
               disabled={victim === suspect.id ? true : false}
-              hintText={`${suspect.name}'s statement`}
+              lbael={`${suspect.name}'s statement`}
               value={this.state.statement}
               onChange={e => this.updateStateStatement(e.target.value)}
               onBlur={e =>

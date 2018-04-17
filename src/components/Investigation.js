@@ -1,14 +1,14 @@
 import React, { PureComponent } from "react";
-import { Tabs, Tab } from "material-ui/Tabs";
+import Tabs, { Tab } from "material-ui/Tabs";
 import { connect } from "react-redux";
 import { css } from "react-emotion";
 import CaseSheet from "./casesheet/CaseSheet";
 import Suspects from "./suspects/Suspects";
 import { endPlayerTurn } from "../actions/index";
-import RaisedButton from "material-ui/RaisedButton";
+import Button from "material-ui/Button";
 
 class Investigation extends PureComponent {
-  state = { displayEndTurn: false };
+  state = { displayEndTurn: false, tabSelection: 0 };
 
   handleEndTurn = () => {
     this.setState({ displayEndTurn: false });
@@ -19,26 +19,32 @@ class Investigation extends PureComponent {
     this.setState({ displayEndTurn: true });
   };
 
+  handleTabSelection = (event, value) => {
+    this.setState({ tabSelection: value });
+  };
+
   render = () => {
     return (
       <div className={investigationSpace}>
-        <Tabs>
-          <Tab label={`Case Sheet`}>
-            <CaseSheet />
-          </Tab>
-          <Tab label={`Suspects`}>
-            <Suspects handleEndTurnDisplay={this.handleEndTurnDisplay} />
-          </Tab>
+        <Tabs value={this.state.tabSelection} onChange={this.handleTabSelection}>
+          <Tab label={`Case Sheet`} />
+          <Tab label={`Suspects`} />
         </Tabs>
+        <div>
+          {this.state.tabSelection === 0 && <CaseSheet />}
+          {this.state.tabSelection === 1 && (
+            <Suspects handleEndTurnDisplay={this.handleEndTurnDisplay} />
+          )}
+        </div>
         {this.state.displayEndTurn && (
           <div className={endTurnDisplay}>
             <div className={buttonDisplay}>
-              <RaisedButton
-                label="End Turn"
-                backgroundColor="#a4c639"
-                labelColor={"#fff"}
+              <Button
+                variant="raised"
+                /*backgroundColor="#a4c639"
+                labelColor={"#fff"}*/
                 onClick={e => this.handleEndTurn()}
-              />
+              >End Turn</Button>
             </div>
           </div>
         )}
@@ -49,7 +55,7 @@ class Investigation extends PureComponent {
 
 const investigationSpace = css`
   padding-bottom: 50px;
-`
+`;
 
 const buttonDisplay = css`
   margin-right: 20px;

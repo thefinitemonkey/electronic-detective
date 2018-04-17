@@ -1,29 +1,34 @@
 import React from "react";
-import { mount } from "enzyme";
-import { createMount } from "material-ui/test-utils";
+import { shallow } from "enzyme";
+import getMuiTheme from "material-ui/styles/getMuiTheme";
+import baseTheme from "material-ui/styles/baseThemes/darkBaseTheme";
+//import { createMount } from "material-ui/test-utils";
 import AddressField from "./AddressField";
 import Enzyme from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import PropTypes from "proptypes";
+import { TextField } from "material-ui";
 
 Enzyme.configure({ adapter: new Adapter() });
+const muiTheme = getMuiTheme(baseTheme);
 
 describe("AddressField", () => {
   let store;
   let context;
   let props;
   let options;
-  let mountedAddressField;
+  let mountedAddressField = undefined;
   let materialMount;
+
   const addressField = () => {
     if (!mountedAddressField) {
-      mountedAddressField = materialMount(<AddressField {...props} />, options);
+      mountedAddressField = shallow(<AddressField {...props} />, options);
     }
     return mountedAddressField;
   };
 
   beforeAll(() => {
-    materialMount = createMount();
+    //materialMount = createMount({mount: Enzyme.mount()});
   });
 
   beforeEach(() => {
@@ -47,31 +52,34 @@ describe("AddressField", () => {
     };
 
     options = {
-      context: { store },
-      childContextTypes: { store: PropTypes.object.isRequired }
+      context: { muiTheme, store },
+      childContextTypes: { muiTheme: PropTypes.object.isRequired, store: PropTypes.object.isRequired }
     };
 
     props = {
       locationId: "C",
       area: "side",
-      updateLocationAddress: jest.fn()
+      updateLocationAddress: jest.fn(),
+      hint: "Side of town",
+      fieldId: "sideOfTownField"
     };
     mountedAddressField = undefined;
   });
 
   afterAll(() => {
-    materialMount.cleanUp();
+    //materialMount.cleanUp();
   });
 
   // All tests will go here
-  it("always renders a div", () => {
-    const divs = addressField().find("div");
-    expect(divs.length).toBeGreaterThan(0);
+  it("always renders an AddressField component", () => {
+    const field = addressField().find("AddressField");
+    expect(field.length).toBe(1);
   });
 
   describe("the rendered div", () => {
     it("contains everything else that gets rendered", () => {
-      const divs = addressField().find("div");
+      const addField = addressField();
+      const divs = addField.find("AddressField");
       // When using .find, enzyme arranges the nodes in order such
       // that the outermost node is first in the list. So we can
       // use .first() to get the outermost div.

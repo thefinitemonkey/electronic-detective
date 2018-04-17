@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
-import Dialog from "material-ui/Dialog";
-import RaisedButton from "material-ui/RaisedButton";
+import Dialog, {DialogTitle} from "material-ui/Dialog";
+import Button from "material-ui/Button";
 import { body, bodyStrong, bodyCondensed } from "../utils/globalcss";
 
 class RulesDialog extends PureComponent {
@@ -23,7 +23,7 @@ class RulesDialog extends PureComponent {
 
   render = () => {
     const actions = [
-      <RaisedButton label="Close" primary={true} onClick={this.handleDialogClose} />
+      <Button variant="raised" label="Close" primary={true} onClick={this.handleDialogClose} />
     ];
 
     return (
@@ -31,13 +31,11 @@ class RulesDialog extends PureComponent {
         <Dialog
           title="Electronic Detective Rules"
           actions={actions}
-          modal={false}
           open={this.state.dialogOpen}
-          onRequestClose={this.handleDialogClose}
-          autoScrollBodyContent={true}
+          onClose={this.handleDialogClose}
         >
+        <DialogTitle>Things to Know</DialogTitle>
           <div>
-            <div className={bodyCondensed}>Things to know</div>
             <div className={body}>
               <ul>
                 <li>Only one murderer</li>

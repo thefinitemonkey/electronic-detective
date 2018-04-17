@@ -1,9 +1,11 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
-import RaisedButton from "material-ui/RaisedButton";
+import Button from "material-ui/Button";
 import TextField from "material-ui/TextField";
-import SelectField from "material-ui/SelectField";
-import MenuItem from "material-ui/MenuItem";
+import Select from "material-ui/Select";
+import MenuItem from "material-ui/Menu";
+import Input, { InputLabel } from "material-ui/Input";
+import { FormControl } from "material-ui/Form";
 import {
   finalizeBuildGame,
   changeGameScreen,
@@ -62,7 +64,10 @@ class Players extends PureComponent {
     this.setState({ fieldError: false });
 
     // Build the game state for the players
-    const gameData = Builder.buildGame(this.props.game.setupData, this.state.players);
+    const gameData = Builder.buildGame(
+      this.props.game.setupData,
+      this.state.players
+    );
     console.log("gameData", gameData);
     this.props.finalizeBuildGame(gameData);
     this.props.changeGameScreen("gamestart");
@@ -79,15 +84,19 @@ class Players extends PureComponent {
         <div className={spacermid}>
           <h2 className={[h2, h2modified].join(" ")}>Set Difficulty</h2>
           <div>
-            <SelectField
-              floatingLabelText="Difficulty"
-              value={this.props.game.difficulty}
-              onChange={this.handleDifficultyChange}
-            >
-              <MenuItem value={3} primaryText="Easy" />
-              <MenuItem value={2} primaryText="Medium" />
-              <MenuItem value={1} primaryText="Hard" />
-            </SelectField>
+            <FormControl>
+              <InputLabel htmlFor="difficulty-select">Difficulty</InputLabel>
+              <Select
+                inputProps={{ name: "Difficulty", id: "difficulty-select" }}
+                value={this.props.game.difficulty}
+                onChange={this.handleDifficultyChange}
+                native
+              >
+                <option value={3}>Easy</option>
+                <option value={2}>Medium</option>
+                <option value={1}>Hard</option>
+              </Select>
+            </FormControl>
           </div>
           <h2 className={[h2, h2modified].join(" ")}>Set Player(s)</h2>
           {this.state.players.map((name, player) => (
@@ -97,36 +106,37 @@ class Players extends PureComponent {
                 onChange={e => {
                   this.updateNameEntry(e.target.value, player);
                 }}
-                errorText={(this.state.fieldError && name==="") && "A name is required"}
-                hintText="Player Name"
+                error={this.state.fieldError && name === ""}
+                label="Player Name"
               />
 
-              <RaisedButton
+              <Button
+                variant="raised"
                 onClick={() => {
                   this.removePlayer(player);
                 }}
                 disabled={this.state.players.length === 1}
-                label="-"
                 style={style}
-              />
+              >
+                -
+              </Button>
             </div>
           ))}
           <div className={secondaryContainer}>
             <div>
-              <RaisedButton
+              <Button
+                variant="raised"
                 disabled={this.state.players.length > 3}
                 onClick={this.addPlayer}
-                label="+"
                 style={style}
-              />
+              >
+                +
+              </Button>
             </div>
             <div className={startGameButton}>
-              <RaisedButton
-                onClick={this.startGame}
-                label="Start Game"
-                style={style}
-                primary={true}
-              />
+              <Button variant="raised" onClick={this.startGame} style={style}>
+                Start Game
+              </Button>
             </div>
           </div>
         </div>
@@ -182,8 +192,7 @@ function mapStateToProps(game) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    finalizeBuildGame: (gameData) =>
-      dispatch(finalizeBuildGame(gameData)),
+    finalizeBuildGame: gameData => dispatch(finalizeBuildGame(gameData)),
     changeGameScreen: screen => dispatch(changeGameScreen(screen)),
     setGameDifficulty: level => dispatch(setGameDifficulty(level))
   };

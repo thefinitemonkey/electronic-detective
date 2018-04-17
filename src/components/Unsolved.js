@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { h2, body, bodyStrong } from "../utils/globalcss";
 import { changeGameScreen, resetGame } from "../actions/index";
-import RaisedButton from "material-ui/RaisedButton";
+import Button from "material-ui/Button";
 import { css } from "react-emotion";
 
 class Unsolved extends PureComponent {
@@ -66,11 +66,9 @@ class Unsolved extends PureComponent {
               } -- The Real Killer`}
             </div>
             <div className={playAgainButton}>
-              <RaisedButton
-                primary={true}
-                label="Play Again"
-                onClick={e => this.handlePlayAgain()}
-              />
+              <Button variant="raised" onClick={e => this.handlePlayAgain()}>
+                Play Again
+              </Button>
             </div>
           </div>
         ) : (
@@ -81,13 +79,13 @@ class Unsolved extends PureComponent {
               up and took you out as well! You are no longer in the game.
             </div>
             <div>
-              <RaisedButton className={playAgainButton}
-                primary={true}
-                label={`${
-                  this.props.game.gameData.sheets[this.props.game.playerId].name
-                }'s Turn`}
+              <Button
+                variant="raised"
+                className={playAgainButton}
                 onClick={e => this.handleContinueGame()}
-              />
+              >{`${
+                this.props.game.gameData.sheets[this.props.game.playerId].name
+              }'s Turn`}</Button>
             </div>
           </div>
         )}

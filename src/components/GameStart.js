@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
-import RaisedButton from "material-ui/RaisedButton";
+import Button from "material-ui/Button";
 import { changeGameScreen, setPlayerTurn } from "../actions/index";
 import { css } from "react-emotion";
 import { h2, body, bodyStrong } from "../utils/globalcss";
@@ -53,11 +53,9 @@ class GameStart extends PureComponent {
           </div>
           <div className={centeredcontainer}>
             <div className={startGameButton}>
-              <RaisedButton
-                label={`Start Investigation`}
-                primary={true}
+              <Button variant="raised"
                 onClick={() => this.setPlayerTurn(0)}
-              />
+              >Start Investigation</Button>
             </div>
           </div>
         </div>

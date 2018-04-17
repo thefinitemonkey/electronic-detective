@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { h2 } from "../utils/globalcss";
-import RaisedButton from "material-ui/RaisedButton";
+import Button from "material-ui/Button";
 import { changeGameScreen } from "../actions/index";
 import { css } from "react-emotion";
 
@@ -14,11 +14,9 @@ class StartTurn extends PureComponent {
             this.props.game.gameData.sheets[this.props.game.playerId].name
           }'s Turn`}</h2>
           <div className={nextTurnButton}>
-            <RaisedButton
-              primary={true}
-              label="Start Turn"
+            <Button variant="raised"
               onClick={e => this.props.changeGameScreen("investigation")}
-            />
+            >Start Turn</Button>
           </div>
         </div>
       </div>

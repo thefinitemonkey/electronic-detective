@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { h2, body, bodyStrong } from "../utils/globalcss";
 import { resetGame } from "../actions/index";
-import RaisedButton from "material-ui/RaisedButton";
+import Button from "material-ui/Button";
 import { css } from "react-emotion";
 
 class Solved extends PureComponent {
@@ -39,11 +39,9 @@ class Solved extends PureComponent {
             }
           </div>
           <div className={playAgainButton}>
-            <RaisedButton
-              primary={true}
-              label="Play Again"
+            <Button variant="raised"
               onClick={e => this.handlePlayAgain()}
-            />
+            >Play Again</Button>
           </div>
         </div>
       </div>

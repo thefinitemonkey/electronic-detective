@@ -83,7 +83,6 @@ class App extends Component {
             </a>
           </div>
         </div>
-        <MuiThemeProvider>
           <div>
             {renderItem}
             <RulesDialog
@@ -92,7 +91,6 @@ class App extends Component {
               handleDialogOpen={this.handleDialogOpen}
             />
           </div>
-        </MuiThemeProvider>
       </div>
     );
   };

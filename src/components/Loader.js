@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { getSetupData, changeGameScreen } from "../actions/index";
-import CircularProgress from "material-ui/CircularProgress";
+import {CircularProgress} from "material-ui/Progress";
 import { css } from "react-emotion";
 import { h2 } from "../utils/globalcss";
 

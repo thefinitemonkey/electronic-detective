@@ -108,7 +108,7 @@ class Location extends PureComponent {
         <div>
           <TextField
             style={{ fontSize: "13px", width: "100%" }}
-            hintText="Type"
+            label="Type"
             id={`${this.props.locationId}-weapon`}
             value={this.state.weapon}
             onChange={e => this.updateState(e.target.value)}
