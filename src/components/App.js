@@ -7,7 +7,6 @@ import Investigation from "./Investigation";
 import StartTurn from "./StartTurn";
 import Unsolved from "./Unsolved";
 import Solved from "./Solved";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import { h1, app, body } from "../utils/globalcss";
 import { css } from "react-emotion";
 import RulesDialog from "./RulesDialog";

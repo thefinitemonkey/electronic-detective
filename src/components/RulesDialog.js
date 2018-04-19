@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import Dialog, {DialogTitle} from "material-ui/Dialog";
 import Button from "material-ui/Button";
-import { body, bodyStrong, bodyCondensed } from "../utils/globalcss";
+import { body, bodyStrong } from "../utils/globalcss";
 
 class RulesDialog extends PureComponent {
   state = {

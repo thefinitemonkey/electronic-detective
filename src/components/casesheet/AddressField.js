@@ -3,11 +3,13 @@ import TextField from "material-ui/TextField";
 import { connect } from "react-redux";
 import { updateLocationAddress } from "../../actions/index";
 
-class AddressField extends PureComponent {
-    state = {
-      address: this.props.game.gameData.sheets[this.props.game.playerId]
-        .locations[this.props.locationId].address[this.props.area]
-    };
+export class AddressField extends PureComponent {
+  state = {
+    address:
+      this.props.game.gameData.sheets[this.props.game.playerId].locations[
+        this.props.locationId
+      ].address[this.props.area] || ""
+  };
 
   updateState = value => {
     this.setState({ address: value });

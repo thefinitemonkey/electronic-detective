@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import Button from "material-ui/Button";
 import TextField from "material-ui/TextField";
 import Select from "material-ui/Select";
-import MenuItem from "material-ui/Menu";
-import Input, { InputLabel } from "material-ui/Input";
+import { InputLabel } from "material-ui/Input";
 import { FormControl } from "material-ui/Form";
 import {
   finalizeBuildGame,
@@ -134,7 +133,7 @@ class Players extends PureComponent {
               </Button>
             </div>
             <div className={startGameButton}>
-              <Button variant="raised" onClick={this.startGame} style={style}>
+              <Button variant="raised" color="primary" onClick={this.startGame} style={style}>
                 Start Game
               </Button>
             </div>
