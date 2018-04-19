@@ -62,7 +62,7 @@ const location = css`
   flex: 1;
   margin: 0 25px 50px 25px;
   max-width: 200px;
-  min-width: 150px;
+  min-width: 200px;
 `;
 
 function mapStateToProps(game) {

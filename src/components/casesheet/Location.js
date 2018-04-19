@@ -85,7 +85,7 @@ class Location extends PureComponent {
             </tbody>
           </table>
         </div>
-        <div>
+        <div className={addressSection}>
           <div className={bodyStrong}>Address</div>
           <div>
             <AddressField
@@ -139,6 +139,10 @@ const crimeScene = css`
 
 const occupantTable = css`
   border-spacing: 7px 0px;
+  position: relative;
+  left: -8px;
+  margin-top: 10px;
+  margin-bottom: 25px;
 `;
 
 const occupantRow = css`
@@ -148,6 +152,10 @@ const occupantRow = css`
 const occupantCol = css`
   width: 50%;
 `;
+
+const addressSection = css`
+  margin-bottom: 25px;
+`
 
 function mapStateToProps(game) {
   return { game };
