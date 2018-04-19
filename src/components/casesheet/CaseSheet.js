@@ -6,7 +6,7 @@ import Statements from "./Statements";
 import { css } from "react-emotion";
 import { h2, h3 } from "../../utils/globalcss";
 
-class CaseSheet extends PureComponent {
+export class CaseSheet extends PureComponent {
   constructor(props) {
     super(props);
     this.props = props;

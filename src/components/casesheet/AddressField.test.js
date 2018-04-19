@@ -1,7 +1,5 @@
 import React from "react";
 import { mount } from "enzyme";
-//import getMuiTheme from "material-ui/styles/getMuiTheme";
-//import baseTheme from "material-ui/styles/baseThemes/darkBaseTheme";
 import { createMount } from "material-ui/test-utils";
 import { AddressField } from "./AddressField";
 import Enzyme from "enzyme";
