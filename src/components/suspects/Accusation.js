@@ -59,7 +59,7 @@ class Accusation extends PureComponent {
 
 const accusationArea = css`
   display: flex;
-  align-items: center;
+  align-items: baseline;
 `;
 
 const accusationElement = css`
