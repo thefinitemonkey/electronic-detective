@@ -88,7 +88,7 @@ const game = (
       return { ...state, turn: { ...state.turn, ...data } };
     }
     case RESET_GAME: {
-      return { ...state, gameData: {}, screen: "loading", playerId: null };
+      return { ...state, gameData: {}, screen: "players", playerId: null };
     }
     case SET_GAME_DIFFICULTY: {
       if (!data.level) return state;
