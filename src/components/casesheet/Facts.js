@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import Radio, { RadioGroup } from "material-ui/Radio";
-import {FormControlLabel} from "material-ui/Form";
+import { FormControlLabel } from "material-ui/Form";
 import { connect } from "react-redux";
 import { deepCopy } from "../../utils/builder";
 import { updatePlayerClues } from "../../actions/index";
@@ -62,20 +62,23 @@ class Facts extends PureComponent {
             >{`Sex of the murderer:`}</div>
             <div className={radioGroupDiv}>
               <RadioGroup
-                className={[radioGroup, victimInfo].join(" ")}
+                style={rowStyle}
+                className={[radioGroup, radioGroupCol, victimInfo].join(" ")}
                 name="murdererSex"
                 value={sheet.clueSelections.sex}
                 onChange={e =>
                   this.updateClueSelection(["sex"], e.target.value)
                 }
               >
-                <FormControlLabel control={<Radio/>}
+                <FormControlLabel
+                  control={<Radio />}
                   value="male"
                   label="Male"
                   className={radioButton}
                   style={{ maxWidth: "33%" }}
                 />
-                <FormControlLabel control={<Radio/>}
+                <FormControlLabel
+                  control={<Radio />}
                   value="female"
                   label="Female"
                   className={[radioButton, radioButtonLastChild].join(" ")}
@@ -92,7 +95,10 @@ class Facts extends PureComponent {
               <div className={radioGroupDiv}>
                 <div>
                   <RadioGroup
-                    className={[radioGroup, victimInfo].join(" ")}
+                    style={rowStyle}
+                    className={[radioGroup, radioGroupRow, victimInfo].join(
+                      " "
+                    )}
                     name="murdererSide"
                     value={sheet.clueSelections.hiding.side}
                     onChange={e =>
@@ -102,13 +108,15 @@ class Facts extends PureComponent {
                       )
                     }
                   >
-                    <FormControlLabel control={<Radio/>}
+                    <FormControlLabel
+                      control={<Radio />}
                       value="west"
                       label="West"
                       style={{ maxWidth: "33%" }}
                       className={radioButton}
                     />
-                    <FormControlLabel control={<Radio/>}
+                    <FormControlLabel
+                      control={<Radio />}
                       value="east"
                       label="East"
                       style={{ maxWidth: "33%" }}
@@ -118,7 +126,10 @@ class Facts extends PureComponent {
                 </div>
                 <div>
                   <RadioGroup
-                    className={[radioGroup, victimInfo].join(" ")}
+                    style={rowStyle}
+                    className={[radioGroup, radioGroupRow, victimInfo].join(
+                      " "
+                    )}
                     name="murdererTown"
                     value={sheet.clueSelections.hiding.town}
                     onChange={e =>
@@ -128,19 +139,22 @@ class Facts extends PureComponent {
                       )
                     }
                   >
-                    <FormControlLabel control={<Radio/>}
+                    <FormControlLabel
+                      control={<Radio />}
                       value="uptown"
                       label="Uptown"
                       className={radioButton}
                       style={{ maxWidth: "33%" }}
                     />
-                    <FormControlLabel control={<Radio/>}
+                    <FormControlLabel
+                      control={<Radio />}
                       value="midtown"
                       label="Midtown"
                       className={radioButton}
                       style={{ maxWidth: "33%" }}
                     />
-                    <FormControlLabel control={<Radio/>}
+                    <FormControlLabel
+                      control={<Radio />}
                       value="downtown"
                       label="Downtown"
                       className={[radioButton, radioButtonLastChild].join(" ")}
@@ -157,34 +171,36 @@ class Facts extends PureComponent {
             </div>
             <div className={radioGroupDiv}>
               <RadioGroup
-                className={[radioGroup, victimInfo].join(" ")}
+                style={rowStyle}
+                className={[radioGroup, radioGroupRow, victimInfo].join(" ")}
                 name="murdererWeapon"
                 value={sheet.clueSelections.weapons.used}
                 onChange={e =>
                   this.updateClueSelection(["weapons", "used"], e.target.value)
                 }
               >
-                <FormControlLabel control={<Radio/>}
+                <FormControlLabel
+                  control={<Radio />}
                   value=".38"
                   label=".38"
                   className={radioButton}
-                  style={{maxWidth: "33%"}}
+                  style={{ maxWidth: "33%" }}
                 />
-                <FormControlLabel control={<Radio/>}
+                <FormControlLabel
+                  control={<Radio />}
                   value=".45"
                   label=".45"
                   className={radioButton}
-                  style={{maxWidth: "33%"}}
+                  style={{ maxWidth: "33%" }}
                 />
               </RadioGroup>
 
               <div className={victimInfo}>
                 <div className={[fingerprintGroup, threeColumn].join(" ")}>
                   <RadioGroup
+                    style={colStyle}
                     name="38Prints"
-                    value={
-                      sheet.clueSelections.weapons[".38"].fingerprint
-                    }
+                    value={sheet.clueSelections.weapons[".38"].fingerprint}
                     onChange={e =>
                       this.updateClueSelection(
                         ["weapons", ".38", "fingerprint"],
@@ -192,11 +208,13 @@ class Facts extends PureComponent {
                       )
                     }
                   >
-                    <FormControlLabel control={<Radio/>}
+                    <FormControlLabel
+                      control={<Radio />}
                       value="odd"
                       label="Odd"
                     />
-                    <FormControlLabel control={<Radio/>}
+                    <FormControlLabel
+                      control={<Radio />}
                       value="even"
                       label="Even"
                     />
@@ -204,10 +222,9 @@ class Facts extends PureComponent {
                 </div>
                 <div className={[fingerprintGroup, threeColumn].join(" ")}>
                   <RadioGroup
+                    style={colStyle}
                     name="45Prints"
-                    value={
-                      sheet.clueSelections.weapons[".45"].fingerprint
-                    }
+                    value={sheet.clueSelections.weapons[".45"].fingerprint}
                     onChange={e =>
                       this.updateClueSelection(
                         ["weapons", ".45", "fingerprint"],
@@ -215,11 +232,13 @@ class Facts extends PureComponent {
                       )
                     }
                   >
-                    <FormControlLabel control={<Radio/>}
+                    <FormControlLabel
+                      control={<Radio />}
                       value="odd"
                       label="Odd"
                     />
-                    <FormControlLabel control={<Radio/>}
+                    <FormControlLabel
+                      control={<Radio />}
                       value="even"
                       label="Even"
                     />
@@ -262,6 +281,22 @@ const radioGroup = css`
   justify-content: flex-start;
 `;
 
+const radioGroupRow = css`
+  flex-direction: row;
+`;
+
+const rowStyle = {
+  flexDirection: "row"
+};
+
+const colStyle = {
+  flexDirection: "column"
+};
+
+const radioGroupCol = css`
+  flex-direction: column;
+`;
+
 const radioButton = css`
   //margin-right: 20px;
   margin-bottom: 15px;
@@ -279,7 +314,7 @@ const fingerprintGroup = css`
 const threeColumn = css`
   max-width: 33%;
   display: table;
-`
+`;
 
 function mapStateToProps(game) {
   return { game };
