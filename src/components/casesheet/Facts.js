@@ -7,7 +7,7 @@ import { updatePlayerClues } from "../../actions/index";
 import { css } from "react-emotion";
 import { body, bodyStrong } from "../../utils/globalcss";
 
-class Facts extends PureComponent {
+export class Facts extends PureComponent {
   constructor(props) {
     super(props);
     this.props = props;

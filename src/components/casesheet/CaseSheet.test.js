@@ -50,14 +50,12 @@ describe("CaseSheet", () => {
     };
 
     mountedCaseSheet = shallow(<CaseSheet {...props} />, options);
-    console.log("CaseSheet", mountedCaseSheet.debug());
   });
 
   // All tests will go here
   describe("the CaseSheet", () => {
-    it("always renders a div", () => {
-      const field = mountedCaseSheet.find("Connect(Facts)");
-      expect(field.length).toBe(1);
+    it("always renders a div as the first element", () => {
+      expect(mountedCaseSheet.first().type()).toBe("div");
     });
 
     it("component contains everything else that gets rendered", () => {

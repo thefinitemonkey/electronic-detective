@@ -5,14 +5,12 @@ import { AddressField } from "./AddressField";
 import Enzyme from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import PropTypes from "proptypes";
-import { TextField } from "material-ui";
 
 Enzyme.configure({ adapter: new Adapter() });
 //const muiTheme = getMuiTheme(baseTheme);
 
 describe("AddressField", () => {
   let store;
-  let context;
   let props;
   let options;
   const materialMount = createMount();
@@ -54,6 +52,7 @@ describe("AddressField", () => {
     };
 
     mountedAddressField = materialMount(<AddressField {...props} />, options);
+    //console.log("mountedAddressField -- ", mountedAddressField.find("AddressField").type());
   });
 
   beforeEach(() => {
@@ -66,9 +65,8 @@ describe("AddressField", () => {
 
   // All tests will go here
   describe("the AddressField", () => {
-    it("always renders an AddressField component", () => {
-      const field = mountedAddressField.find("AddressField");
-      expect(field.length).toBe(1);
+    it("always renders AddressField as the root element", () => {
+      expect(mountedAddressField.first().type()).toBe(AddressField);
     });
 
     it("component contains everything else that gets rendered", () => {
