@@ -5,9 +5,10 @@ import { h2, h3 } from "../../utils/globalcss";
 import Alibi from "./Alibi";
 import Questions from "./Questions";
 import StatementField from "../common/StatementField";
+import { updateTurnData } from "../../actions/index";
 
 class Interrogation extends PureComponent {
-  state = { questionsRemaining: this.props.game.difficulty };
+  state = { questionsRemaining: this.props.game.turn.questionsRemaining };
 
   handleQuestionClick = () => {
     // If we're out of questions then bubble up to display the end turn
@@ -15,6 +16,9 @@ class Interrogation extends PureComponent {
       this.props.handleEndTurnDisplay();
 
     this.setState({ questionsRemaining: this.state.questionsRemaining - 1 });
+    this.props.updateTurnData({
+      questionsRemaining: this.state.questionsRemaining - 1
+    });
   };
 
   render = () => {
@@ -28,7 +32,9 @@ class Interrogation extends PureComponent {
         <h2 className={h2}>{`${this.state.questionsRemaining} Question${
           this.state.questionsRemaining > 1
             ? `s`
-            : this.state.questionsRemaining === 0 ? `s` : ``
+            : this.state.questionsRemaining === 0
+              ? `s`
+              : ``
         } Left`}</h2>
         <div className={infoBlock}>
           <div>
@@ -103,4 +109,10 @@ function mapStateToProps(game) {
   return { game };
 }
 
-export default connect(mapStateToProps)(Interrogation);
+function mapDispatchToProps(dispatch) {
+  return {
+    updateTurnData: data => dispatch(updateTurnData(data))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Interrogation);

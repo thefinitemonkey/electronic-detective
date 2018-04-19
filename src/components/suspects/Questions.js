@@ -3,11 +3,12 @@ import { connect } from "react-redux";
 import { css } from "react-emotion";
 import { h3, body } from "../../utils/globalcss";
 import { getQuestionResponse } from "./AnswerLogic";
+import { updateTurnData } from "../../actions/index";
 
 class Questions extends PureComponent {
   state = {
-    questionsAnswered: {},
-    answerOrder: [],
+    questionsAnswered: this.props.game.turn.questionsAnswered,
+    answerOrder: this.props.game.turn.answerOrder,
     questionsRemaining: this.props.questionsRemaining
   };
 
@@ -37,6 +38,10 @@ class Questions extends PureComponent {
     this.setState({
       questionsAnswered: newQuestionsAnswered,
       questionsRemaining: this.state.questionsRemaining - 1,
+      answerOrder: newOrder
+    });
+    this.props.updateTurnData({
+      questionsAnswered: newQuestionsAnswered,
       answerOrder: newOrder
     });
   };
@@ -124,4 +129,10 @@ function mapStateToProps(game) {
   return { game };
 }
 
-export default connect(mapStateToProps)(Questions);
+function mapDispatchToProps(dispatch) {
+  return {
+    updateTurnData: data => dispatch(updateTurnData(data))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Questions);

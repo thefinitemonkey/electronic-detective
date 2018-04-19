@@ -16,6 +16,8 @@ export const END_PLAYER_TURN = "END_PLAYER_TURN";
 export const ACCUSE_SUSPECT = "ACCUSE_SUSPECT";
 export const RESET_GAME = "RESET_GAME";
 export const SET_GAME_DIFFICULTY = "SET_GAME_DIFFICULTY";
+export const SET_NEW_TURN = "SET_NEW_TURN";
+export const UPDATE_TURN_DATA = "UPDATE_TURN_DATA";
 
 export const resetGame = () => {
   return {
@@ -30,13 +32,26 @@ export const setGameDifficulty = level => {
   };
 };
 
+export const updateTurnData = data => {
+  return {
+    type: UPDATE_TURN_DATA,
+    data
+  };
+};
+
+export const setNewTurn = () => {
+  return {
+    type: SET_NEW_TURN
+  };
+};
+
 export const getSetupData = () => {
   /*Api.getSetupData().then(data => {
     dispatch(receiveGetSetupData(data));
   });*/
   return {
     type: GET_SETUP_DATA
-  }
+  };
 };
 
 export const receiveGetSetupData = setupData => {

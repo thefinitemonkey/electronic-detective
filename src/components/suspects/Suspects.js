@@ -2,12 +2,20 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import SuspectList from "./SuspectList";
 import Interrogation from "./Interrogation";
+import { updateTurnData } from "../../actions/index";
 
 class Suspects extends PureComponent {
-  state = { display: "list", interrogationSuspect: 0 };
+  state = {
+    display: this.props.game.turn.display,
+    interrogationSuspect: this.props.game.turn.interrogationSuspect
+  };
 
   interrogateSuspect = suspectId => {
     this.setState({ display: "interrogate", interrogationSuspect: suspectId });
+    this.props.updateTurnData({
+      display: "interrogate",
+      interrogationSuspect: suspectId
+    });
   };
 
   renderSuspectList = () => {
@@ -21,7 +29,10 @@ class Suspects extends PureComponent {
   renderInterrogation = () => {
     return (
       <div>
-        <Interrogation suspectId={this.state.interrogationSuspect} handleEndTurnDisplay={this.props.handleEndTurnDisplay} />
+        <Interrogation
+          suspectId={this.state.interrogationSuspect}
+          handleEndTurnDisplay={this.props.handleEndTurnDisplay}
+        />
       </div>
     );
   };
@@ -41,4 +52,10 @@ function mapStateToProps(game) {
   return { game };
 }
 
-export default connect(mapStateToProps)(Suspects);
+function mapDispatchToProps(dispatch) {
+  return {
+    updateTurnData: data => dispatch(updateTurnData(data))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Suspects);

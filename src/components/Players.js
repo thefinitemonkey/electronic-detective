@@ -73,7 +73,7 @@ class Players extends PureComponent {
   };
 
   handleDifficultyChange = (event, index, value) => {
-    this.props.setGameDifficulty(value);
+    this.props.setGameDifficulty(event.target.value);
   };
 
   render = () => {
