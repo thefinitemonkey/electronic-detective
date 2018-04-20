@@ -111,13 +111,13 @@ describe("Facts", () => {
       });
     });
 
-    it("calls the updateClueSelection when sex changes", () => {
+    it("calls updatePlayerClues with correct data when selection changes", () => {
         const input = mountedFacts.find("input[name='murdererSex']").first();
         const sampleSex = props.game.gameData.sheets[2].clueSelections.sex;
-        input.simulate("change", {target:{checked: true}});
+        input.simulate("change", {target:{checked: true, value: "male"}});
         expect(props.updatePlayerClues.mock.calls.length > 0);
         expect(props.updatePlayerClues.mock.calls[0][0]).toBe(2);
-        expect(props.updatePlayerClues.mock.calls[0][1].clueSelections.sex).not.toBe(sampleSex);
+        expect(props.updatePlayerClues.mock.calls[0][1].clueSelections.sex).toBe("male");
     })
   });
 });
