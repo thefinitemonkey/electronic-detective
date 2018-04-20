@@ -5,6 +5,7 @@ import { AddressField } from "./AddressField";
 import Enzyme from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import PropTypes from "proptypes";
+import { testStore } from "../../utils/teststore";
 
 Enzyme.configure({ adapter: new Adapter() });
 //const muiTheme = getMuiTheme(baseTheme);
@@ -18,24 +19,7 @@ describe("AddressField", () => {
   let mountedAddressField;
 
   beforeAll(() => {
-    store = {
-      subscribe: () => {},
-      dispatch: () => {},
-      getState: () => ({
-        playerId: 2,
-        gameData: {
-          sheets: {
-            2: {
-              locations: {
-                C: {
-                  address: { side: "", town: "" }
-                }
-              }
-            }
-          }
-        }
-      })
-    };
+    store = testStore;
 
     options = {
       context: { store },

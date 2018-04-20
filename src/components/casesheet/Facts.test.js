@@ -5,6 +5,7 @@ import { createMount } from "material-ui/test-utils";
 import Enzyme from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import PropTypes from "proptypes";
+import { testStore } from "../../utils/teststore";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -16,54 +17,7 @@ describe("Facts", () => {
   const materialMount = createMount();
 
   beforeAll(() => {
-    store = {
-      subscribe: () => {},
-      dispatch: () => {},
-      getState: () => ({
-        playerId: 2,
-        setupData: {
-          characters: {
-            3: { name: "Test character" }
-          },
-          locations: {
-            A: { name: "Test location" }
-          }
-        },
-        gameData: {
-          victim: 3,
-          scene: "A",
-          sheets: {
-            numPlayers: 3,
-            2: {
-              name: "Test",
-              victim: 3,
-              scene: "A",
-              clueSelections: {
-                sex: "",
-                hiding: { side: "", town: "" },
-                weapons: {
-                  used: "",
-                  ".45": { fingerprint: "" },
-                  ".38": { fingerprint: "" }
-                }
-              },
-              suspectStatements: {},
-              locations: {
-                C: {
-                  address: { side: "", town: "" }
-                },
-                D: {
-                  address: { side: "", town: "" }
-                },
-                F: {
-                  address: { side: "", town: "" }
-                }
-              }
-            }
-          }
-        }
-      })
-    };
+    store = testStore;
 
     options = {
       context: { store },
@@ -112,12 +66,14 @@ describe("Facts", () => {
     });
 
     it("calls updatePlayerClues with correct data when selection changes", () => {
-        const input = mountedFacts.find("input[name='murdererSex']").first();
-        const sampleSex = props.game.gameData.sheets[2].clueSelections.sex;
-        input.simulate("change", {target:{checked: true, value: "male"}});
-        expect(props.updatePlayerClues.mock.calls.length > 0);
-        expect(props.updatePlayerClues.mock.calls[0][0]).toBe(2);
-        expect(props.updatePlayerClues.mock.calls[0][1].clueSelections.sex).toBe("male");
-    })
+      const input = mountedFacts.find("input[name='murdererSex']").first();
+      const sampleSex = props.game.gameData.sheets[2].clueSelections.sex;
+      input.simulate("change", { target: { checked: true, value: "male" } });
+      expect(props.updatePlayerClues.mock.calls.length > 0);
+      expect(props.updatePlayerClues.mock.calls[0][0]).toBe(2);
+      expect(props.updatePlayerClues.mock.calls[0][1].clueSelections.sex).toBe(
+        "male"
+      );
+    });
   });
 });

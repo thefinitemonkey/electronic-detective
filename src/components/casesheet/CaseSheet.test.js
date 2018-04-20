@@ -4,6 +4,7 @@ import { CaseSheet } from "./CaseSheet";
 import Enzyme from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import PropTypes from "proptypes";
+import { testStore } from "../../utils/teststore";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -14,30 +15,7 @@ describe("CaseSheet", () => {
   let props;
 
   beforeAll(() => {
-    store = {
-      subscribe: () => {},
-      dispatch: () => {},
-      getState: () => ({
-        playerId: 2,
-        gameData: {
-          sheets: {
-            2: {
-              locations: {
-                C: {
-                  address: { side: "", town: "" }
-                },
-                D: {
-                  address: { side: "", town: "" }
-                },
-                F: {
-                  address: { side: "", town: "" }
-                }
-              }
-            }
-          }
-        }
-      })
-    };
+    store = testStore;
 
     options = {
       context: { store },
@@ -73,7 +51,10 @@ describe("CaseSheet", () => {
     });
 
     it("initializes component state", () => {
-      expect(mountedCaseSheet.state()).toMatchObject({locationKeys:["C", "D", "F"], playerId:2});
+      expect(mountedCaseSheet.state()).toMatchObject({
+        locationKeys: ["C", "D", "F"],
+        playerId: 2
+      });
     });
   });
 });
