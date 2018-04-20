@@ -52,7 +52,7 @@ describe("CaseSheet", () => {
 
     it("initializes component state", () => {
       expect(mountedCaseSheet.state()).toMatchObject({
-        locationKeys: ["C", "D", "F"],
+        locationKeys: ["A", "C", "D", "F"],
         playerId: 2
       });
     });

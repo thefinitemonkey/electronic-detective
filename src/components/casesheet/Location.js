@@ -11,7 +11,7 @@ import {
   bodyCondensed,
 } from "../../utils/globalcss";
 
-class Location extends PureComponent {
+export class Location extends PureComponent {
   state = {
     weapon: this.props.game.gameData.sheets[this.props.game.playerId].locations[
       this.props.locationId
@@ -92,7 +92,7 @@ class Location extends PureComponent {
               hint="Side of town"
               locationId={this.props.locationId}
               area={"side"}
-              fieldId={`${this.props.locationdId}-side`}
+              fieldId={`${this.props.locationId}-side`}
             />
           </div>
           <div>
@@ -100,7 +100,7 @@ class Location extends PureComponent {
               hint="Part of town"
               locationId={this.props.locationId}
               area={"town"}
-              fieldId={`${this.props.locationdId}-town`}
+              fieldId={`${this.props.locationId}-town`}
             />
           </div>
         </div>
