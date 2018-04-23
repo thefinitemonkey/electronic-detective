@@ -50,6 +50,7 @@ describe("Facts", () => {
 
   afterAll(() => {
     materialMount.cleanUp();
+    connectedMaterialMount.cleanUp();
   });
 
   // All tests will go here
@@ -79,11 +80,6 @@ describe("Facts", () => {
       });
     });
 
-    /*
-    it("has a updatePlayerClues dispatch function"), () => {
-
-    }
-*/
     it("renders a RadioGroup for murdererSex", () => {
       expect(
         mountedConnectedFacts.find("RadioGroup[name='murdererSex']").length
