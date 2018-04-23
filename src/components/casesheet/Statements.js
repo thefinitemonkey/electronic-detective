@@ -4,7 +4,7 @@ import { updateSuspectStatement } from "../../actions/index";
 import StatementField from "../common/StatementField";
 import { css } from "react-emotion";
 
-class Statements extends PureComponent {
+export class Statements extends PureComponent {
   render = () => {
     return (
       <div className={statementsList}>
